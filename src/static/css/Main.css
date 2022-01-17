@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Logo';
+    src: url(../fonts/MagicOwl.otf);
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+  }
+
+.logoFont {
+    font-family: 'Logo';
+}

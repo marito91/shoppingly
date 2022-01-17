@@ -1,0 +1,69 @@
+
+.discount-section {
+    background-color: #56453E;
+    text-align: center;
+}
+
+.discount-header {
+    display: inline;
+    float: inline-end;
+    color: #E0D7C7;
+}
+
+.header1 {
+    font-size: 170px;
+}
+
+.header2{
+    font-size: 100px;
+}
+
+.header3 {
+    font-size: 30px;
+}
+
+.discount-btn {
+    margin-bottom: 1%;
+    padding-left: 55px;
+    padding-right: 55px;
+}
+
+.header4 {
+    font-size: 40px;
+}
+
+.discount-btn:hover {
+    background-color: #E0D7C7;
+}
+
+
+/* PHONES */
+@media only screen and (max-width: 1200px) {
+    /* Phones */
+    .header1 {
+        font-size: 50px;
+    }
+    
+    .header2{
+        font-size: 25px;
+    }
+
+    .header3 {
+        font-size: 10px;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .discount-btn {
+        margin-top: 2%;
+        margin-bottom: 2%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .header4 {
+        font-size: 15px;
+    }
+    
+}
+

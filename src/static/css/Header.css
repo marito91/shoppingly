@@ -1,0 +1,16 @@
+.links {
+    font-size: large;
+    color: #56453E;
+}
+
+.header-icons {
+    /* Color filtered by codepen.io */
+    filter: invert(24%) sepia(3%) saturate(3104%) hue-rotate(332deg) brightness(99%) contrast(84%);
+}
+
+
+
+/* PHONES */
+/*@media only screen and (max-width: 1200px) {
+    /* Phones */
+    
