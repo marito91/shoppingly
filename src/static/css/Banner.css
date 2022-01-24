@@ -1,0 +1,80 @@
+
+
+
+
+/* Women's wear section */
+
+.womens-wear {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #56453E;
+
+}
+
+.womens-wear-items {
+    align-items: center;
+}
+
+.grid-ww-pic {
+    width: 100%;
+    height: auto;
+}
+
+.img-info {
+    position: absolute;
+    top: 124%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.img-btn {
+    color: "#56453E";
+    margin-left: 40%;
+}
+
+.img-btn:hover {
+    background-color: #E0D7C7;
+    width: 100px;
+    height: 38px;
+    margin-left: 37%;
+}
+
+
+@media only screen and (min-width: 1020px) {
+    .offers {
+        display: none;
+        background-color: #56453E;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+    /* Small Laptops */
+    @media only screen and (max-width: 1200px) {  
+
+        
+    }
+    
+    /* TABLETS */
+    @media only screen and (max-width: 1020px) {
+        
+
+    }
+
+
+    /* PHONES */
+    @media only screen and (max-width: 768px) {
+
+        .pic1 {
+            display: none;
+        }
+
+        .pic3 {
+            display: none;
+        }
+
+    }
+    
+
+

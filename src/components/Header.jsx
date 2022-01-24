@@ -38,10 +38,10 @@ export default function Header() {
           </>
         );
     }
-
+   
     return (
         <> 
-            <Navbar expand="lg" style={{ backgroundColor: "#E0D7C7" }}>
+            <Navbar fixed="top" className="border" expand="lg" style={{ backgroundColor: "#E0D7C7" }}>
                 <Container>
                     <Navbar.Brand href="#home" className="logoFont">
                         <img alt="" src={dress} width="30" height="30" className="d-inline-block align-top" />{' '}
@@ -50,9 +50,30 @@ export default function Header() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto links">
-                            <Nav.Link href="#">Men</Nav.Link>
-                            <Nav.Link href="#">Women</Nav.Link>
-                            <Nav.Link href="#">Kids</Nav.Link>
+                            <NavDropdown title="Men" id="basic-nav-dropdown">
+                                <NavDropdown.Item href="#">Shirts</NavDropdown.Item>
+                                <NavDropdown.Item href="#">Pants</NavDropdown.Item>
+                                <NavDropdown.Item href="#">Underwear</NavDropdown.Item>
+                                <NavDropdown.Item href="#">Shoes</NavDropdown.Item>
+                                <NavDropdown.Item href="#">Beachwear</NavDropdown.Item>
+                                <NavDropdown.Item href="#">Sportswear</NavDropdown.Item>
+                            </NavDropdown>
+                            <NavDropdown title="Women" id="basic-nav-dropdown">
+                                <NavDropdown.Item href="#">Shirts</NavDropdown.Item>
+                                <NavDropdown.Item href="#">Pants</NavDropdown.Item>
+                                <NavDropdown.Item href="#">Underwear</NavDropdown.Item>
+                                <NavDropdown.Item href="#">Shoes</NavDropdown.Item>
+                                <NavDropdown.Item href="#">Beachwear</NavDropdown.Item>
+                                <NavDropdown.Item href="#">Sportswear</NavDropdown.Item>
+                            </NavDropdown>
+                            <NavDropdown title="Kids" id="basic-nav-dropdown">
+                                <NavDropdown.Item href="#">Shirts</NavDropdown.Item>
+                                <NavDropdown.Item href="#">Pants</NavDropdown.Item>
+                                <NavDropdown.Item href="#">Underwear</NavDropdown.Item>
+                                <NavDropdown.Item href="#">Shoes</NavDropdown.Item>
+                                <NavDropdown.Item href="#">Beachwear</NavDropdown.Item>
+                                <NavDropdown.Item href="#">Sportswear</NavDropdown.Item>
+                            </NavDropdown>
                             <Nav.Link href="#">Offers</Nav.Link>
                         </Nav>
                         <Form className="d-flex">
