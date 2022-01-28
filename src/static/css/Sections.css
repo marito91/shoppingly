@@ -1,6 +1,7 @@
 .column {
     float: left;
-    width: 25%;
+    width: 50%;
+    align-items: center;
   }
   
   /* Clear floats after the columns */
@@ -19,3 +20,21 @@
       }
 }
     
+.zoom {
+  padding: 50px;
+  transition: transform .2s; /* Animation */
+  width: auto;
+  height: 350px;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  transform: scale(1.3); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+
+.sections {
+  cursor: pointer;
+  height: auto;
+  width: 100%;
+}
