@@ -4,6 +4,7 @@ import React from 'react';
 import Banner from './Banner'
 import Promo from './Promo'
 import Sections from './Sections'
+import Information from './Information'
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
             <Promo />
             <Banner />
             <Sections />
+            <Information />
             
         </>
     )

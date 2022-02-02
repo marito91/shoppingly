@@ -29,6 +29,10 @@
     margin-bottom: 1%;
     padding-left: 55px;
     padding-right: 55px;
+    border-top-left-radius: calc(3.25rem - 15px);
+    border-top-right-radius: calc(3.25rem - 15px);
+    border-bottom-left-radius: calc(3.25rem - 15px);
+    border-bottom-right-radius: calc(3.25rem - 15px);
 }
 
 .header4 {
@@ -78,7 +82,7 @@
 /* PHONES */
 @media only screen and (max-width: 768px) {
     .discount-section {
-        margin-top: 12%;
+        margin-top: 20%;
     }
 
     .pic1 {

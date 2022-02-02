@@ -5,17 +5,12 @@ import '../static/css/Main.css';
 import '../static/css/Promo.css';
 
 
-// Media
-import casualFall from '../static/img/stock-photos/women/casual-fall.jpg';
-import casualBlue from '../static/img/stock-photos/women/casual-blue.jpg';
-import blueJeanJacket from '../static/img/stock-photos/women/bluejean-jacket.jpg';
-import forest from '../static/img/stock-photos/women/forest.jpg';
 
 export default function Promo() {
   return (
     <>
         <section style={{ backgroundColor: "white"}}>
-            <div className="discount-section">
+            <div className="discount-section main-font">
                 <h3 className="discount-header header2">Up to </h3>
                 <h1 className="discount-header header1"> <strong> 50% </strong></h1>
                 <h3 className="discount-header header2">discount</h3>

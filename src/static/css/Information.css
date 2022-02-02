@@ -1,0 +1,98 @@
+
+
+.info-sections {
+    text-align: center;
+    align-items: center;
+    font-size: xx-large;
+    color: #56453E;
+    padding-left: 4%;
+    padding-top: 16%;
+    padding-right: 4%;
+    padding-bottom: 16%;
+    filter: brightness(75%);
+  }
+
+.info {
+    padding-left: 10%;
+    padding-top: 10%;
+    padding-right: 10%;
+    padding-bottom: 10%;
+}
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+.info-text {
+    font-size: x-large;
+    color: white;
+}
+
+.info-btn {
+    border-top-left-radius: calc(3.25rem - 15px);
+    border-top-right-radius: calc(3.25rem - 15px);
+    border-bottom-left-radius: calc(3.25rem - 15px);
+    border-bottom-right-radius: calc(3.25rem - 15px);
+}
+
+.info-btn:hover {
+    background-color: #E0D7C7;
+}
+
+.info-sections:hover  {
+    filter: brightness(100%);
+    cursor: pointer;
+  }
+
+
+
+  /* PHONES */
+@media only screen and (max-width: 768px) {
+
+    .info-sections {
+        float: center;
+        text-align: center;
+        width: 100%;
+        align-items: center;
+        font-size: xx-large;
+        color: #56453E;
+        padding-left: 4%;
+        padding-top: 4%;
+        padding-right: 4%;
+        padding-bottom: 4%;
+        margin-bottom: 5%;
+
+      }
+
+      .info-text {
+        font-size: large;
+    }
+}
+
+
+
+  /* PHONES */
+  @media only screen and (min-width: 992px) {
+
+        #grid {
+            display: grid;
+            height: auto;
+            grid-template: repeat(1, 1fr) / repeat(3, 1fr);
+            gap: 20px 20px;
+            padding-left: 3%;
+            padding-right: 3%;
+        }
+}
+
+  /* PHONES */
+  @media only screen and (max-width: 992px) {
+
+    .info-sections {
+        margin-bottom: 5%;
+    }
+
+}
+

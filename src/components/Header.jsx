@@ -17,7 +17,6 @@ export default function Header() {
 
     function ShoppingCart({ name, ...props }) {
         const [show, setShow] = useState(false);
-        const [items, setItems] = useState([]);
       
         const handleClose = () => setShow(false);
         const handleShow = () => setShow(true);
@@ -43,13 +42,13 @@ export default function Header() {
         <> 
             <Navbar fixed="top" className="border" expand="lg" style={{ backgroundColor: "#E0D7C7" }}>
                 <Container>
-                    <Navbar.Brand href="#home" className="logoFont">
-                        <img alt="" src={dress} width="30" height="30" className="d-inline-block align-top" />{' '}
+                    <Navbar.Brand href="#home" className="logoFont" style={{ fontSize: "2.0em" }}>
+                        <img alt="" src={dress} width="32" height="32" style={{ marginTop: "3%" }} className="d-inline-block align-top" />{' '}
                         Shoppingly
                     </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto links">
+                    <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                    <Navbar.Collapse className="main-font" id="basic-navbar-nav">
+                        <Nav className="me-auto links" style={{ fontSize: "x-large" }} >
                             <NavDropdown title="Men" id="basic-nav-dropdown">
                                 <NavDropdown.Item href="#">Shirts</NavDropdown.Item>
                                 <NavDropdown.Item href="#">Pants</NavDropdown.Item>
@@ -76,12 +75,12 @@ export default function Header() {
                             </NavDropdown>
                             <Nav.Link href="#">Offers</Nav.Link>
                         </Nav>
-                        <Form className="d-flex">
+                        <Form className="d-flex" style={{ fontSize: "large" }} >
                             <FormControl type="search" placeholder="Something in mind?" className="me-2" aria-label="Search" />
                             <Button variant="outline-success">Search</Button>
                         </Form>
                         <Nav.Link href="#">
-                            <img alt="" src={user} width="30" height="30" className="d-inline-block align-top header-icons" />
+                            <img alt="" src={user} width="30" height="30" className="d-inline-block align-top header-icons user-logo" />
                         </Nav.Link>
                         <Navbar.Brand href="#home" className="links">
                             {['end'].map((placement, idx) => (

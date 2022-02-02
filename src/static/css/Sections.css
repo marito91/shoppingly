@@ -1,7 +1,24 @@
+hr.section-border {
+  border-top: 3px solid #56453E;
+}
+
+.title {
+  color: #56453E;
+  text-align: center;
+  font-size: xx-large;
+}
+
+
 .column {
     float: left;
     width: 50%;
     align-items: center;
+    font-size: xx-large;
+    color: #56453E;
+    padding-left: 4%;
+    padding-top: 4%;
+    padding-right: 4%;
+    padding-bottom: 4%;
   }
   
   /* Clear floats after the columns */
@@ -17,24 +34,17 @@
     .column {
         float: left;
         width: 50%;
+        font-size: large;
       }
 }
     
-.zoom {
-  padding: 50px;
-  transition: transform .2s; /* Animation */
-  width: auto;
-  height: 350px;
-  margin: 0 auto;
-}
-
-.zoom:hover {
-  transform: scale(1.3); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-}
-
 
 .sections {
   cursor: pointer;
   height: auto;
   width: 100%;
+}
+
+.sections .p {
+  cursor: pointer;
 }

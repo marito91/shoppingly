@@ -1,49 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 // Libraries
 import Card from 'react-bootstrap/Card'
 
 // CSS
+import '../static/css/Main.css';
 import '../static/css/Sections.css'
 
 
 // Media women
-import redShirt from '../static/img/stock-photos/women/red-shirt-jacket.jpg';
-import casualBlue from '../static/img/stock-photos/women/casual-blue.jpg';
-import aquamarine from '../static/img/stock-photos/women/aquamarine.jpg';
-import formal from '../static/img/stock-photos/women/formal-women.jpg';
 import clothes from '../static/img/stock-photos/women/clothes.jpeg';
 import womenModel from '../static/img/stock-photos/women/womenClothes.jpeg';
 
 // Media men
-import ocreJacket from '../static/img/stock-photos/men/ocre-jacket.jpg';
-import sportShirt from '../static/img/stock-photos/men/sport-shirt.jpg';
-import whitePants from '../static/img/stock-photos/men/white-pants.jpg';
-import brownShirt from '../static/img/stock-photos/men/brown-shirt.jpg';
-import earthJacket from '../static/img/stock-photos/men/earth-jacket.jpg';
-import earthJeans from '../static/img/stock-photos/men/earth-jeans.jpg';
-import earthShirt from '../static/img/stock-photos/men/earth-tshirt.jpg';
-import hoodie from '../static/img/stock-photos/men/hoodie.jpg';
-import jeans from '../static/img/stock-photos/men/jeans.jpg';
-import leather from '../static/img/stock-photos/men/leather.jpg';
-import stripped from '../static/img/stock-photos/men/stripped-shirt.jpg';
-import whiteShirt from '../static/img/stock-photos/men/white-shirt.jpg';
 import display from '../static/img/stock-photos/men/display.jpg';
 import menModel from '../static/img/stock-photos/men/menModel.jpeg';
+
+// Media kids
+import kidModel from '../static/img/stock-photos/kids/kids.jpeg';
+import kids from '../static/img/stock-photos/kids/kids-clothes.jpeg';
+
+// Media offers
+import store from '../static/img/stock-photos/offers/store.jpeg';
+import discount from '../static/img/stock-photos/offers/discount.jpeg';
 
 export default function Sections() {
 
     
   return (
       <>
-        <div className="row">
+      <hr className="section-border" />
+      <h2 className="main-font title" style={{ marginTop: "5%", marginBottom: "5%" }}>Clothing</h2>
+        <div className="row main-font">
             <div className="column">
               <Card style={{ textAlign: "center", border: "none"  }}>
                 <Card.Img className="sections" src={menModel} 
                         onMouseOver={image => (image.currentTarget.src = display)} 
                         onMouseOut={image => (image.currentTarget.src = menModel)}/>
                 <Card.Body>
-                  <Card.Link href="#">Men</Card.Link>
+                  <p style={{ cursor: "pointer" }}>Men</p>
                 </Card.Body>
               </Card>
             </div>
@@ -53,14 +48,32 @@ export default function Sections() {
                         onMouseOver={image => (image.currentTarget.src = clothes)} 
                         onMouseOut={image => (image.currentTarget.src = womenModel)}/>
                 <Card.Body>
-                  <Card.Link href="#">Women</Card.Link>
+                  <p style={{ cursor: "pointer" }}>Women</p>
                 </Card.Body>
               </Card>
             </div>
         </div>
-        <div className="row">
-            <div className="column">3rd Column</div>
-            <div className="column">4th Column</div>
+        <div className="row main-font">
+            <div className="column">
+              <Card style={{ textAlign: "center", border: "none" }}>
+                <Card.Img className="sections" src={kidModel} 
+                        onMouseOver={image => (image.currentTarget.src = kids)} 
+                        onMouseOut={image => (image.currentTarget.src = kidModel)}/>
+                <Card.Body>
+                  <p style={{ cursor: "pointer" }}>Kids</p>
+                </Card.Body>
+              </Card>
+            </div>
+            <div className="column">
+              <Card style={{ textAlign: "center", border: "none" }}>
+                <Card.Img className="sections" src={store} 
+                        onMouseOver={image => (image.currentTarget.src = discount)} 
+                        onMouseOut={image => (image.currentTarget.src = store)}/>
+                <Card.Body>
+                  <p style={{ cursor: "pointer" }}>Offers</p>
+                </Card.Body>
+              </Card>
+            </div>
         </div>
       </>
   )
