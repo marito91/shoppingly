@@ -1,10 +1,11 @@
 import React from 'react';
 
 // Components
-import Banner from './Banner'
-import Promo from './Promo'
-import Sections from './Sections'
-import Information from './Information'
+import Banner from './Home/Banner'
+import Promo from './Home/Promo'
+import Sections from './Home/Sections'
+import Information from './Home/Information'
+import Signup from './Home/Signup'
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
             <Banner />
             <Sections />
             <Information />
+            <Signup />
             
         </>
     )

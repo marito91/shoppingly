@@ -32,10 +32,11 @@ hr.section-border {
 @media only screen and (max-width: 768px) {
 
     .column {
-        float: left;
-        width: 50%;
-        font-size: large;
-      }
+      float: left;
+      width: 50%;
+      font-size: large;
+    }
+    
 }
     
 

@@ -4,20 +4,20 @@ import React from 'react'
 //import Button from 'react-bootstrap/Button'
 
 // CSS
-import '../static/css/Main.css';
-import '../static/css/Banner.css';
+import '../../static/css/Main.css';
+import '../../static/css/Banner.css';
 
 
 // Media
-import casualFall from '../static/img/stock-photos/women/casual-fall.jpg';
-import casualBlue from '../static/img/stock-photos/women/casual-blue.jpg';
-import blueJeanJacket from '../static/img/stock-photos/women/bluejean-jacket.jpg';
-import forest from '../static/img/stock-photos/women/forest.jpg';
+import casualFall from '../../static/img/stock-photos/women/casual-fall.jpg';
+import casualBlue from '../../static/img/stock-photos/women/casual-blue.jpg';
+import blueJeanJacket from '../../static/img/stock-photos/women/bluejean-jacket.jpg';
+import forest from '../../static/img/stock-photos/women/forest.jpg';
 
 export default function Banner() {
     return (
         <>
-            <container className="womens-wear">
+            <div className="womens-wear">
                 <div className="womens-wear-items pic1">
                     <img className="grid-ww-pic" src={forest} alt="" />
                 </div>
@@ -27,7 +27,7 @@ export default function Banner() {
                 <div className="womens-wear-items pic3">
                     <img className="grid-ww-pic" src={blueJeanJacket} alt="" />
                 </div>
-            </container>
+            </div>
             
         </>
     )

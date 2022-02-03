@@ -47,6 +47,34 @@
     cursor: pointer;
   }
 
+.invitation-banner {
+    background-color: #56453E;
+    margin-bottom: 5%;
+    padding-right: 25%; 
+    padding-left: 10%;
+    padding-top: 6%; 
+    padding-bottom: 6%; 
+}
+
+.join-header {
+    display: inline;
+    float: inline-end;
+    color: #E0D7C7;
+    font-size: 60px;
+}
+
+.join-btn {
+    margin-bottom: 1%;
+    padding-left: 55px;
+    padding-right: 55px;
+    border-top-left-radius: calc(3.25rem - 15px);
+    border-top-right-radius: calc(3.25rem - 15px);
+    border-bottom-left-radius: calc(3.25rem - 15px);
+    border-bottom-right-radius: calc(3.25rem - 15px);
+}
+
+
+
 
 
   /* PHONES */
@@ -70,6 +98,14 @@
       .info-text {
         font-size: large;
     }
+
+    .join-header {
+        display: inline;
+        float: inline-end;
+        color: #E0D7C7;
+        font-size: 20px;
+    }
+
 }
 
 
@@ -85,6 +121,7 @@
             padding-left: 3%;
             padding-right: 3%;
         }
+
 }
 
   /* PHONES */
@@ -95,4 +132,5 @@
     }
 
 }
+
 

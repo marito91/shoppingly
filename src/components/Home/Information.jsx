@@ -1,16 +1,14 @@
 import React from 'react';
 
-// Libraries
-import Card from 'react-bootstrap/Card'
 
 // CSS
-import '../static/css/Main.css';
-import '../static/css/Information.css';
+import '../../static/css/Main.css';
+import '../../static/css/Information.css';
 
 // Media
-import mask from '../static/img/stock-photos/safety.jpeg';
-import commitment from '../static/img/stock-photos/commitment.jpeg';
-import diversity from '../static/img/stock-photos/diversity.jpeg';
+import mask from '../../static/img/stock-photos/safety.jpeg';
+import commitment from '../../static/img/stock-photos/commitment.jpeg';
+import diversity from '../../static/img/stock-photos/diversity.jpeg';
 
 export default function Information() {
 
@@ -31,9 +29,15 @@ export default function Information() {
             </div>
             <div className="info-sections" style={{ backgroundImage: `url(${diversity})`, backgroundPosition: "center", backgroundSize: "cover" }}>
                 <h2 style={{ color: "white" }}>Diversity</h2>
-                <p className="info-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam tenetur ad, saepe aperiam illum, perspiciatis fuga culpa molestias numquam consequatur at blanditiis iste qui dolorem dolorum debitis eaque pariatur modi?</p>
+                <p className="info-text">In Shoppingly we believe that everyone is different and equal at the same time. That's why in our politics we also look forward to improve the conditions of people from all genders and cultures.</p>
                 <button className="info-btn">Discover more</button>
             </div>
+        </div>
+        <div className="main-font invitation-banner">
+            <h1 className="join-header">Join the nation and get <strong>15%</strong> discount on your next purchase. Did we mention that a friend can also get an additional <strong>10%</strong> discount? </h1>
+            <br />
+            <button className="discount-btn" style={{ color: "#56453E" }}><h6 className="header4">Get now</h6></button>
+            <br />
         </div>
       </>
 

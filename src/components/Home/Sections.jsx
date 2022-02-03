@@ -4,25 +4,25 @@ import React from 'react';
 import Card from 'react-bootstrap/Card'
 
 // CSS
-import '../static/css/Main.css';
-import '../static/css/Sections.css'
+import '../../static/css/Main.css';
+import '../../static/css/Sections.css'
 
 
 // Media women
-import clothes from '../static/img/stock-photos/women/clothes.jpeg';
-import womenModel from '../static/img/stock-photos/women/womenClothes.jpeg';
+import clothes from '../../static/img/stock-photos/women/clothes.jpeg';
+import womenModel from '../../static/img/stock-photos/women/womenClothes.jpeg';
 
 // Media men
-import display from '../static/img/stock-photos/men/display.jpg';
-import menModel from '../static/img/stock-photos/men/menModel.jpeg';
+import display from '../../static/img/stock-photos/men/display.jpg';
+import menModel from '../../static/img/stock-photos/men/menModel.jpeg';
 
 // Media kids
-import kidModel from '../static/img/stock-photos/kids/kids.jpeg';
-import kids from '../static/img/stock-photos/kids/kids-clothes.jpeg';
+import kidModel from '../../static/img/stock-photos/kids/kids.jpeg';
+import kids from '../../static/img/stock-photos/kids/kids-clothes.jpeg';
 
 // Media offers
-import store from '../static/img/stock-photos/offers/store.jpeg';
-import discount from '../static/img/stock-photos/offers/discount.jpeg';
+import store from '../../static/img/stock-photos/offers/store.jpeg';
+import discount from '../../static/img/stock-photos/offers/discount.jpeg';
 
 export default function Sections() {
 
