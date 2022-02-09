@@ -8,13 +8,17 @@ import Button from 'react-bootstrap/Button'
 import '../../static/css/Main.css';
 import '../../static/css/Shop/Shopping.css';
 
+// Media
+import mask from '../../static/img/stock-photos/safety.jpeg';
+
 
 export default function Clothes() {
+    
   return (
       <>
         <div className="shopping">
             <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top" src={mask} />
                 <Card.Body>
                     <Card.Title>Card Title</Card.Title>
                     <Card.Text>
