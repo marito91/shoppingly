@@ -19,11 +19,14 @@ export default function Signup() {
         firstName : "",
         lastName : "",
         email : "",
-        date : ""
+        date : "",
+        offers: false,
+        ideas: false,
+        nation: false
     })
 
     const handleChange = event => {
-        const value = event.target.value;
+        const value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
         setInformation({
             ...information, [event.target.name] : value
         })
@@ -32,13 +35,13 @@ export default function Signup() {
     const handleSubmit = event => {
         event.preventDefault();
         console.log(information)
-        alert(information)
+        alert("Thank you for subscribing! Welcome to the club!")
     }
 
   return (
       
         <div className="form-container main-font">
-            <h1 style={{ textAlign: "center" }}> <strong>Join our crew!</strong> </h1>
+            <h1 style={{ textAlign: "center" }}><strong>Join our crew!</strong></h1>
             <h3 style={{ textAlign: "center" }}>Free exclusive content for you to enjoy by signing up.</h3>
             <form className="signup" onSubmit={handleSubmit}>
                 <div className="signup-row">
@@ -49,7 +52,7 @@ export default function Signup() {
                             id="name-input" 
                             type="text" 
                             name="firstName"
-                            placeholder="Enter your first name"
+                            placeholder="Your first name"
                             value={information.firstName} 
                             onChange={handleChange} 
                             required/>
@@ -60,7 +63,7 @@ export default function Signup() {
                             className="signup-inputs" 
                             type="text" 
                             name="lastName" 
-                            placeholder="Enter your last name" 
+                            placeholder="Your last name" 
                             value={information.lastName} 
                             onChange={handleChange} 
                             required/>
@@ -72,7 +75,7 @@ export default function Signup() {
                         className="signup-inputs" 
                         type="text" 
                         name="email"
-                        placeholder="Enter your email"  
+                        placeholder="Email address"  
                         value={information.email} 
                         onChange={handleChange} 
                         required/>
@@ -89,11 +92,29 @@ export default function Signup() {
                 </div>
                 <div className="signup-row">
                     <strong>Preferences</strong><br />
-                        <input className="checkboxes" style={{ margin: ".4rem" }} name="offers" type="checkbox"/>
+                        <input
+                            className="checkboxes" 
+                            style={{ margin: ".4rem" }} 
+                            name="offers" 
+                            type="checkbox"
+                            onChange={handleChange}
+                            checked={information.offers}/>
                         <label className="check-labels">Exclusive offers</label><br />
-                        <input className="checkboxes" style={{ margin: ".4rem" }} name="ideas" type="checkbox"/>
+                        <input 
+                            className="checkboxes" 
+                            style={{ margin: ".4rem" }} 
+                            name="ideas" 
+                            type="checkbox"
+                            onChange={handleChange}
+                            checked={information.ideas}/>
                         <label className="check-labels">Sets ideas</label><br />
-                        <input className="checkboxes" style={{ margin: ".4rem" }} name="nation" type="checkbox"/>
+                        <input 
+                            className="checkboxes" 
+                            style={{ margin: ".4rem" }} 
+                            name="nation" 
+                            type="checkbox"
+                            onChange={handleChange}
+                            checked={information.nation}/>
                         <label className="check-labels">Shoppingly nation</label>
                 </div>
                 <div className="signup-row">

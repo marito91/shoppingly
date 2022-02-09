@@ -4,7 +4,7 @@
     background-color: #56453E;
     text-align: center;
     padding: 10px;
-    margin-top: 3%;
+    padding-top: 5%;
 }
 
 .discount-header {
@@ -48,7 +48,7 @@
 @media only screen and (max-width: 1200px) {
     /* Small Laptops */
     .discount-section {
-        margin-top: 6%;
+        padding-top: 10%;
     }
 
     .header1 {
@@ -82,7 +82,7 @@
 /* PHONES */
 @media only screen and (max-width: 768px) {
     .discount-section {
-        margin-top: 20%;
+        padding-top: 20%;
     }
 
     .pic1 {

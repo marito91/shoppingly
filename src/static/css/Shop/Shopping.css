@@ -1,0 +1,16 @@
+.shopping {
+    padding-top: 10%;
+}
+
+
+
+
+
+/* PHONES */
+@media only screen and (max-width: 992px) {
+
+        .shopping {
+            padding-top: 25%;
+        }
+    
+}

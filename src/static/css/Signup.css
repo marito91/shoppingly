@@ -77,6 +77,11 @@
 
 
     .check-labels {
-        font-size: large;
+        font-size: medium;
       }
+
+    .signup-inputs::-webkit-input-placeholder {
+        font-size: 20px;
+        line-height: 3;
+    }
 }

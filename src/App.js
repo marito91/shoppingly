@@ -6,14 +6,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //import Prueba from './components/Home/Prueba';
 import Header from './components/Header';
 import Home from './components/Home';
-//import Footer from './components/Footer';
+import Shop from './components/Shop';
+import Footer from './components/Footer';
+
 
 
 function App() {
   return (
     <>
       <Header />
-      <Home />
+      <Shop />
+      <Footer />
     </>
   );
 }

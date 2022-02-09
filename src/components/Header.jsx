@@ -52,26 +52,18 @@ export default function Header() {
                             <NavDropdown title="Men" id="basic-nav-dropdown">
                                 <NavDropdown.Item href="#">Shirts</NavDropdown.Item>
                                 <NavDropdown.Item href="#">Pants</NavDropdown.Item>
-                                <NavDropdown.Item href="#">Underwear</NavDropdown.Item>
                                 <NavDropdown.Item href="#">Shoes</NavDropdown.Item>
-                                <NavDropdown.Item href="#">Beachwear</NavDropdown.Item>
-                                <NavDropdown.Item href="#">Sportswear</NavDropdown.Item>
                             </NavDropdown>
                             <NavDropdown title="Women" id="basic-nav-dropdown">
                                 <NavDropdown.Item href="#">Shirts</NavDropdown.Item>
-                                <NavDropdown.Item href="#">Pants</NavDropdown.Item>
-                                <NavDropdown.Item href="#">Underwear</NavDropdown.Item>
+                                <NavDropdown.Item href="#">Dresses</NavDropdown.Item>
                                 <NavDropdown.Item href="#">Shoes</NavDropdown.Item>
                                 <NavDropdown.Item href="#">Beachwear</NavDropdown.Item>
-                                <NavDropdown.Item href="#">Sportswear</NavDropdown.Item>
                             </NavDropdown>
                             <NavDropdown title="Kids" id="basic-nav-dropdown">
                                 <NavDropdown.Item href="#">Shirts</NavDropdown.Item>
                                 <NavDropdown.Item href="#">Pants</NavDropdown.Item>
-                                <NavDropdown.Item href="#">Underwear</NavDropdown.Item>
                                 <NavDropdown.Item href="#">Shoes</NavDropdown.Item>
-                                <NavDropdown.Item href="#">Beachwear</NavDropdown.Item>
-                                <NavDropdown.Item href="#">Sportswear</NavDropdown.Item>
                             </NavDropdown>
                             <Nav.Link href="#">Offers</Nav.Link>
                         </Nav>
