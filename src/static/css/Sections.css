@@ -19,6 +19,8 @@ hr.section-border {
     padding-top: 4%;
     padding-right: 4%;
     padding-bottom: 4%;
+    padding-left: 2%;
+    padding-right: 2%;
   }
   
   /* Clear floats after the columns */

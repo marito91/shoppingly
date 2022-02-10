@@ -7,27 +7,54 @@ import Button from 'react-bootstrap/Button'
 // CSS
 import '../../static/css/Main.css';
 import '../../static/css/Shop/Shopping.css';
+import hostbase from '../vars.js';
 
 // Media
 import mask from '../../static/img/stock-photos/safety.jpeg';
 
 
 export default function Clothes() {
-    
+
+    const [catalogue, setCatalogue] = useState([]);
+
+    useEffect(() => {
+        fetch(`${hostbase}/shop/men/shirts`)
+        .then(res => res.json())
+        .then(res => {
+            if (res.status === "ok") {
+                setCatalogue(res.mensShirtsCatalogue)
+                console.log(res.mensShirtsCatalogue)
+                //alert(res.msg);
+            } else {
+                alert("Could not load info.");
+            }
+        })
+    }, []);
+
   return (
       <>
         <div className="shopping">
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={mask} />
-                <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-            </Card>           
+            {
+                catalogue.map( c =>
+                    <div className="garments">
+                    <Card>
+                        <Card.Img variant="top" src={mask} />
+                        <Card.Body>
+                            <Card.Title key={c.name} value={c}>{c.name}</Card.Title>
+                            <Card.Text key={c.price} value={c}>$ {c.price}</Card.Text>
+                            <select name="" id="">Size
+                                <option value="">XS</option>
+                                <option value="">S</option>
+                                <option value="">M</option>
+                                <option value="">L</option>
+                                <option value="">XL</option>
+                            </select>
+                            <Button variant="primary">Go somewhere</Button>
+                        </Card.Body>
+                    </Card>
+                    </div>    
+                    )
+            }
         </div>
     </>
   )
