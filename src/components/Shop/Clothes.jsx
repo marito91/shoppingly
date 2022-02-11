@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 // Libraries
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card';
 
 // CSS
 import '../../static/css/Main.css';
@@ -33,23 +32,24 @@ export default function Clothes() {
 
   return (
       <>
-        <div className="shopping">
+        <h1 className="main-font section">Men's Shirts</h1>
+        <div className="shopping main-font">
             {
                 catalogue.map( c =>
                     <div className="garments">
-                    <Card>
+                    <Card style={{ border: "none" }}>
                         <Card.Img variant="top" src={mask} />
                         <Card.Body>
                             <Card.Title key={c.name} value={c}>{c.name}</Card.Title>
                             <Card.Text key={c.price} value={c}>$ {c.price}</Card.Text>
-                            <select name="" id="">Size
+                            <select name="" id="" className="size">
                                 <option value="">XS</option>
                                 <option value="">S</option>
                                 <option value="">M</option>
                                 <option value="">L</option>
                                 <option value="">XL</option>
                             </select>
-                            <Button variant="primary">Go somewhere</Button>
+                            <button className="add-btn">Add to cart</button>
                         </Card.Body>
                     </Card>
                     </div>    

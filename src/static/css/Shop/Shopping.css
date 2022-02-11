@@ -1,3 +1,9 @@
+.section {
+    padding-top: 10%;
+    text-align: center;
+    color: #56453E;
+}
+
 .shopping {
     padding-top: 10%;
     padding-left: 5%;
@@ -17,6 +23,37 @@
     color: #56453E;
     padding-top: 4%;
     padding-bottom: 4%;
+    padding-left: 6%;
+    padding-right: 6%;
+    font-size: x-large;
+}
+
+.size {
+    border-color: #E0D7C7;
+    width: 40%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    border-top-left-radius: calc(3.25rem - 15px);
+    border-top-right-radius: calc(3.25rem - 15px);
+    border-bottom-left-radius: calc(3.25rem - 15px);
+    border-bottom-right-radius: calc(3.25rem - 15px);
+}
+
+.add-btn {
+    color: white;
+    background-color: #56453E;
+    margin-left: 4%;
+    border-top-left-radius: calc(3.25rem - 15px);
+    border-top-right-radius: calc(3.25rem - 15px);
+    border-bottom-left-radius: calc(3.25rem - 15px);
+    border-bottom-right-radius: calc(3.25rem - 15px);
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+.add-btn:hover {
+    background-color: #E0D7C7;
+    color: #56453E;
 }
 
 
