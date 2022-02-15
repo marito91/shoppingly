@@ -1,16 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 // Components
-import Clothes from './Shop/Clothes'
-import hostbase from './vars.js';
+import ShirtsMen from './Shop/ShirtsMen'
 
 export default function Shop() {
-    console.log(hostbase)
-
 
   return (
     <>
-        <Clothes />
+        <ShirtsMen />
     </>
   )
 }

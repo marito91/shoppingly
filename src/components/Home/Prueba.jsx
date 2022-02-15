@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 
 
 export default function Prueba() {
@@ -16,8 +16,8 @@ export default function Prueba() {
         <div>
             <h1>Hello, have a look a this button:</h1>
             <h2>Counter:{count}</h2>
-            <button onClick={() => (setCount(count + 1), setCounter(counter +1))}>+</button>
-            <button onClick={() => (setCount(count - 1), setCounter(counter +1))}>-</button>
+            <button onClick={() => (setCount(count + 1) setCounter(counter +1))}>+</button>
+            <button onClick={() => (setCount(count - 1) setCounter(counter +1))}>-</button>
             <h2>{document.title}</h2>
         </div>
     )

@@ -5,15 +5,20 @@ import { Navbar, Nav, Container, NavDropdown, Form, FormControl, Button } from '
 import Offcanvas from 'react-bootstrap/Offcanvas'
 
 // Media
-import dress from '../static/img/dress.svg';
-import user from '../static/img/user.svg';
-import cart from '../static/img/cart.svg';
+import dress from '../static/img/icons/dress.svg';
+import user from '../static/img/icons/user.svg';
+import cart from '../static/img/icons/shoppingcart.svg';
 
 // CSS
 import '../static/css/Main.css';
 import '../static/css/Header.css';
 
+// Components
+import Product from './Shop/Product';
+
 export default function Header() {
+
+    const [shopcart, setShopcart] = useState([]);
 
     function ShoppingCart({ name, ...props }) {
         const [show, setShow] = useState(false);
@@ -31,7 +36,7 @@ export default function Header() {
                 <Offcanvas.Title>Shopping cart</Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                Your cart is empty.
+                  <Product />
               </Offcanvas.Body>
             </Offcanvas>
           </>

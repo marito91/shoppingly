@@ -1,13 +1,8 @@
 
 // Libraries
-import { React, useState } from 'react'
-import { Navbar, Nav, Container, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
-import Offcanvas from 'react-bootstrap/Offcanvas'
+import { React } from 'react'
 
 // Media
-import dress from '../static/img/dress.svg';
-import user from '../static/img/user.svg';
-import cart from '../static/img/cart.svg';
 import instagram from '../static/img/icons/instagram.svg';
 import facebook from '../static/img/icons/facebook.svg';
 import youtube from '../static/img/icons/youtube.svg';

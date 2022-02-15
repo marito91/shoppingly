@@ -5,7 +5,6 @@
 }
 
 .shopping {
-    padding-top: 10%;
     padding-left: 5%;
     padding-right: 5%;
 }
@@ -26,6 +25,10 @@
     padding-left: 6%;
     padding-right: 6%;
     font-size: x-large;
+}
+
+.models {
+    cursor: pointer;
 }
 
 .size {
@@ -63,8 +66,22 @@
 /* PHONES */
 @media only screen and (max-width: 992px) {
 
-        .shopping {
+        .section {
             padding-top: 25%;
+            text-align: center;
+            color: #56453E;
+        }
+
+        .garments {
+            float: left;
+            width: 100%;
+            align-items: center;
+            color: #56453E;
+            padding-top: 4%;
+            padding-bottom: 4%;
+            padding-left: 6%;
+            padding-right: 6%;
+            font-size: x-large;
         }
     
 }
