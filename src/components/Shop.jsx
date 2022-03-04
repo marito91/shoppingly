@@ -1,13 +1,13 @@
 import React from 'react';
 
 // Components
-import ShirtsMen from './Shop/ShirtsMen'
+import Men from './Shop/Men'
 
 export default function Shop() {
 
   return (
     <>
-        <ShirtsMen />
+        <Men />
     </>
   )
 }

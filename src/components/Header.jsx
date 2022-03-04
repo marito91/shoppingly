@@ -54,24 +54,13 @@ export default function Header() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse className="main-font" id="basic-navbar-nav">
                         <Nav className="me-auto links" style={{ fontSize: "x-large" }} >
-                            <NavDropdown title="Men" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#">Shirts</NavDropdown.Item>
-                                <NavDropdown.Item href="#">Pants</NavDropdown.Item>
-                                <NavDropdown.Item href="#">Shoes</NavDropdown.Item>
-                                <NavDropdown.Item href="#">Beachwear</NavDropdown.Item>
+                            <NavDropdown title="Clothing" id="basic-nav-dropdown">
+                                <NavDropdown.Item href="#">Men</NavDropdown.Item>
+                                <NavDropdown.Item href="#">Women</NavDropdown.Item>
+                                <NavDropdown.Item href="#">Kids</NavDropdown.Item>
                             </NavDropdown>
-                            <NavDropdown title="Women" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#">Shirts</NavDropdown.Item>
-                                <NavDropdown.Item href="#">Pants</NavDropdown.Item>
-                                <NavDropdown.Item href="#">Dresses</NavDropdown.Item>
-                                <NavDropdown.Item href="#">Shoes</NavDropdown.Item>
-                                <NavDropdown.Item href="#">Beachwear</NavDropdown.Item>
-                            </NavDropdown>
-                            <NavDropdown title="Kids" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#">Shirts</NavDropdown.Item>
-                                <NavDropdown.Item href="#">Pants</NavDropdown.Item>
-                                <NavDropdown.Item href="#">Shoes</NavDropdown.Item>
-                            </NavDropdown>
+                            <Nav.Link href="#">Accesories</Nav.Link>
+                            <Nav.Link href="#">About Us</Nav.Link>
                             <Nav.Link href="#">Offers</Nav.Link>
                         </Nav>
                         <Form className="d-flex" style={{ fontSize: "large" }} >
