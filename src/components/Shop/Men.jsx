@@ -54,7 +54,15 @@ export default function Men() {
     }
 
   return (
-      <>
+      <> 
+        <h1 className="main-font section">Men's Shirts</h1>
+        <div className="shopping main-font">
+            {shirts.map(product => (
+                <Product key={product.id} product={product}/>
+            ))}
+        </div>
+
+      {/*
         <h1 className="main-font section">Men's Shirts</h1>
         <div className="shopping main-font">
             {
@@ -67,12 +75,12 @@ export default function Men() {
                             <Card.Body className="garment-body">
                                 <Card.Title key={c.name} value={c.name}>{c.name}</Card.Title>
                                 <Card.Text key={c.price} value={c.price}>${c.price}</Card.Text>
-                                    <select key={c.size} value={c.size} onChange={handleChange} name="" id="" className="size">
-                                        <option key={c.stock.xs.id} value={c.stock.xs.id}>{c.stock.xs.id}</option>
-                                        <option key={c.stock.s.id} value={c.stock.s.id}>{c.stock.s.id}</option>
-                                        <option key={c.stock.m.id} value={c.stock.m.id}>{c.stock.m.id}</option>
-                                        <option key={c.stock.l.id} value={c.stock.l.id}>{c.stock.l.id}</option>
-                                        <option key={c.stock.xl.id} value={c.stock.xl.id}>{c.stock.xl.id}</option>
+                                    <select key={c.id} value={c.id} onChange={handleChange} name="" id="" className="size">
+                                        <option key={c.stock.xs.size} value={c.stock.xs.size}>{c.stock.xs.size}</option>
+                                        <option key={c.stock.s.size} value={c.stock.s.size}>{c.stock.s.size}</option>
+                                        <option key={c.stock.m.size} value={c.stock.m.size}>{c.stock.m.size}</option>
+                                        <option key={c.stock.l.size} value={c.stock.l.size}>{c.stock.l.size}</option>
+                                        <option key={c.stock.xl.size} value={c.stock.xl.size}>{c.stock.xl.size}</option>
                                     </select>
                                     <button className="add-btn" onClick={() => addProduct( c.name, c.price, size, c.img1 )}>Add to cart</button>
                             </Card.Body>
@@ -82,6 +90,7 @@ export default function Men() {
             }
         </div>
         <button className="add-btn" onClick={() => console.log(cart)}>Print</button>
+        */}
     </>
   )
 }

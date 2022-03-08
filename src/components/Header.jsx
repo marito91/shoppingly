@@ -15,33 +15,13 @@ import '../static/css/Header.css';
 
 // Components
 import Product from './Shop/Product';
+import Bag from './Shop/Bag';
 
-export default function Header() {
+export default function Header(props) {
 
     const [shopcart, setShopcart] = useState([]);
 
-    function ShoppingCart({ name, ...props }) {
-        const [show, setShow] = useState(false);
-      
-        const handleClose = () => setShow(false);
-        const handleShow = () => setShow(true);
-      
-        return (
-          <>
-            <Nav.Link onClick={handleShow}>
-              {name}
-            </Nav.Link>
-            <Offcanvas show={show} onHide={handleClose} {...props}>
-              <Offcanvas.Header closeButton>
-                <Offcanvas.Title>Shopping cart</Offcanvas.Title>
-              </Offcanvas.Header>
-              <Offcanvas.Body>
-                  <Product />
-              </Offcanvas.Body>
-            </Offcanvas>
-          </>
-        );
-    }
+    const { cartItems } = props;
    
     return (
         <> 
@@ -72,7 +52,7 @@ export default function Header() {
                         </Nav.Link>
                         <Navbar.Brand href="#home" className="links">
                             {['end'].map((placement, idx) => (
-                                <ShoppingCart key={idx} placement={placement} name={<img alt="" src={cart} width="30" height="30" className="d-inline-block align-top header-icons" />} />
+                                <Bag key={idx} placement={placement} name={<img alt="" src={cart} width="30" height="30" className="d-inline-block align-top header-icons" />} />
                             ))}
                         </Navbar.Brand>
                     </Navbar.Collapse>

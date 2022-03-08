@@ -1,40 +1,68 @@
-import React, { useState, useEffect } from 'react';
-
 // Libraries
 import Card from 'react-bootstrap/Card';
+import React, { useState, useEffect, useRef } from 'react';
+import { Navbar, Nav, Container, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import Offcanvas from 'react-bootstrap/Offcanvas'
+
+// CSS
+import '../../static/css/Main.css';
+import '../../static/css/Shop/Shopping.css';
+import hostbase from '../vars.js';
 
 // Media
 import menModel from '../../static/img/stock-photos/men/menModel.jpeg';
 
-export default function Product({products}) {
+export default function Product(props) {
 
     const [quantity, setQuantity] = useState(0);
 
-/*
-    const submitUpdate = (value, text) => {
-        updateTask(edit.id, value, text)
-        setEdit({
-            id: null,
-            value:'',
-            text: ''
-        })
+    const { product } = props;
 
-        console.log(edit)
+    const [shirts, setShirts] = useState([]);
+    const [newProduct, setNewProduct] = useState({
+        name : "",
+        price : 0,
+        chosenSize : "",
+        img : ""
+    });
+    const [cart, setCart] = useState([]);
+
+
+    // This is not working 100% right -> It's grabbing a global state size and not the one from each garment.
+    const [size, setSize] = useState("XS");
+
+    const handleChange = event => {
+        setSize(event.target.value);
+        console.log(event.target.value)
+    };
+
+    function addProduct(productName, productPrice, productSize, thumbnail) {
+        const newCart = [{ name: productName, price: productPrice, chosenSize: productSize, img: thumbnail }, ...cart]
+        setCart(newCart)
+        console.log(cart)
     }
 
-*/
 
   return (
+
+    <div className="garments">
         <Card style={{ border: "none" }}>
-            <Card.Body>  
-                <Card.Text>
-                    <img src={menModel} style={{width:"128px", float:"left", display: "inline", marginRight: "2%"}}/>
-                    <Card.Title>Product</Card.Title>
-                    <button onClick={() => setQuantity(quantity - 1)} style={{display:"inline", float:"left"}}>-</button>
-                    <p style={{display:"inline", float:"left"}}>{quantity}</p>
-                    <button onClick={() => setQuantity(quantity + 1)}>+</button>
-                </Card.Text>
+            <Card.Img variant="top" className="models" key={product.img1} value={product.img1} src={require('../../static/img/stock-photos/men/' + product.img1 + '.jpeg')}                         
+                onMouseOver={image => (image.currentTarget.src = require('../../static/img/stock-photos/men/' + product.img2 + '.jpeg'))} 
+                onMouseOut={image => (image.currentTarget.src = require('../../static/img/stock-photos/men/' + product.img1 + '.jpeg'))}/>
+            <Card.Body className="garment-body">
+                <Card.Title key={product.name} value={product.name}>{product.name}</Card.Title>
+                <Card.Text key={product.price} value={product.price}>${product.price}</Card.Text>
+                    <select key={product.id} value={product.id} onChange={handleChange} name="" id="" className="size">
+                        <option key={product.stock.xs.size} value={product.stock.xs.size}>{product.stock.xs.size}</option>
+                        <option key={product.stock.s.size} value={product.stock.s.size}>{product.stock.s.size}</option>
+                        <option key={product.stock.m.size} value={product.stock.m.size}>{product.stock.m.size}</option>
+                        <option key={product.stock.l.size} value={product.stock.l.size}>{product.stock.l.size}</option>
+                        <option key={product.stock.xl.size} value={product.stock.xl.size}>{product.stock.xl.size}</option>
+                    </select>
+                    <button className="add-btn" onClick={() => addProduct( product.name, product.price, size, product.img1 )}>Add to cart</button>
             </Card.Body>
         </Card>
+    </div>    
   )
 }
