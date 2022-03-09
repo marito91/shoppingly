@@ -20,8 +20,6 @@ import Bag from './Shop/Bag';
 export default function Header(props) {
 
     const [shopcart, setShopcart] = useState([]);
-
-    const { cartItems } = props;
    
     return (
         <> 

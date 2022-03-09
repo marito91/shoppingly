@@ -13,6 +13,7 @@ import hostbase from '../vars.js';
 // Components
 import Product from '../Shop/Product';
 
+
 export default function Men() {
 
     const [shirts, setShirts] = useState([]);

@@ -1,7 +1,7 @@
 
 // Libraries
 import { React, useState } from 'react'
-import { Navbar, Nav, Container, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
 import Offcanvas from 'react-bootstrap/Offcanvas'
 
 export default function Bag({ name, ...props }) {
