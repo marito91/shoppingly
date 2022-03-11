@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Libraries
-import Card from 'react-bootstrap/Card';
-import { Navbar, Nav, Container, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
-import Offcanvas from 'react-bootstrap/Offcanvas'
+//import { Navbar, Nav, Container, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 
 // CSS
 import '../../static/css/Main.css';
@@ -14,27 +12,13 @@ import hostbase from '../vars.js';
 import Product from '../Shop/Product';
 
 
-export default function Men() {
+export default function Men(props) {
 
+    const { cartItems, product, onAdd, onRemove } = props;
     const [shirts, setShirts] = useState([]);
-    const [product, setProduct] = useState({
-        name : "",
-        price : 0,
-        chosenSize : "",
-        img : ""
-    });
-    const [cart, setCart] = useState([]);
+    const [pants, setPants] = useState([]);
 
-
-    // This is not working 100% right -> It's grabbing a global state size and not the one from each garment.
-    const [size, setSize] = useState("XS");
-
-    const handleChange = event => {
-        setSize(event.target.value);
-        console.log(event.target.value)
-    };
-
-
+    // Fetches shirts for men
     useEffect(() => {
         fetch(`${hostbase}/shop/men/shirts`)
         .then(res => res.json())
@@ -48,50 +32,35 @@ export default function Men() {
         })
     }, []);
 
-    function addProduct(productName, productPrice, productSize, thumbnail) {
-        const newCart = [{ name: productName, price: productPrice, chosenSize: productSize, img: thumbnail }, ...cart]
-        setCart(newCart)
-        console.log(cart)
-    }
+    // Fetches Pants for men
+    useEffect(() => {
+        fetch(`${hostbase}/shop/men/pants`)
+        .then(res => res.json())
+        .then(res => {
+            if (res.status === "ok") {
+                setPants(res.mensPantsCatalogue)
+            } else {
+                alert("Could not load info.");
+            }
+        })
+    }, []);
+
 
   return (
       <> 
         <h1 className="main-font section">Men's Shirts</h1>
         <div className="shopping main-font">
             {shirts.map(product => (
-                <Product key={product.id} product={product}/>
+                <Product key={product.id} product={product} onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} />
             ))}
         </div>
-
-      {/*
-        <h1 className="main-font section">Men's Shirts</h1>
+        <h1 className="main-font section">Men's Pants</h1>
         <div className="shopping main-font">
-            {
-                shirts.map( c =>
-                    <div className="garments">
-                        <Card style={{ border: "none" }}>
-                            <Card.Img variant="top" className="models" key={c.img1} value={c.img1} src={require('../../static/img/stock-photos/men/' + c.img1 + '.jpeg')}                         
-                                onMouseOver={image => (image.currentTarget.src = require('../../static/img/stock-photos/men/' + c.img2 + '.jpeg'))} 
-                                onMouseOut={image => (image.currentTarget.src = require('../../static/img/stock-photos/men/' + c.img1 + '.jpeg'))}/>
-                            <Card.Body className="garment-body">
-                                <Card.Title key={c.name} value={c.name}>{c.name}</Card.Title>
-                                <Card.Text key={c.price} value={c.price}>${c.price}</Card.Text>
-                                    <select key={c.id} value={c.id} onChange={handleChange} name="" id="" className="size">
-                                        <option key={c.stock.xs.size} value={c.stock.xs.size}>{c.stock.xs.size}</option>
-                                        <option key={c.stock.s.size} value={c.stock.s.size}>{c.stock.s.size}</option>
-                                        <option key={c.stock.m.size} value={c.stock.m.size}>{c.stock.m.size}</option>
-                                        <option key={c.stock.l.size} value={c.stock.l.size}>{c.stock.l.size}</option>
-                                        <option key={c.stock.xl.size} value={c.stock.xl.size}>{c.stock.xl.size}</option>
-                                    </select>
-                                    <button className="add-btn" onClick={() => addProduct( c.name, c.price, size, c.img1 )}>Add to cart</button>
-                            </Card.Body>
-                        </Card>
-                    </div>    
-                    )
-            }
+            {/*pants.map(product => (
+                <Product key={product.id} product={product} onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} />
+            ))*/}
         </div>
-        <button className="add-btn" onClick={() => console.log(cart)}>Print</button>
-        */}
+
     </>
   )
 }

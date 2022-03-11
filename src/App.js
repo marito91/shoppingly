@@ -1,5 +1,6 @@
 // Libraries
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from 'react';
 
 
 // Components
@@ -12,9 +13,10 @@ import Footer from './components/Footer';
 
 
 function App() {
+
+
   return (
     <>
-      <Header />
       <Shop />
       <Footer />
     </>

@@ -19,6 +19,7 @@ import Bag from './Shop/Bag';
 
 export default function Header(props) {
 
+    const { cartItems, onAdd, onRemove, countCartItems } = props;
     const [shopcart, setShopcart] = useState([]);
    
     return (
@@ -48,10 +49,24 @@ export default function Header(props) {
                         <Nav.Link href="#">
                             <img alt="" src={user} width="30" height="30" className="d-inline-block align-top header-icons user-logo" />
                         </Nav.Link>
-                        <Navbar.Brand href="#home" className="links">
+                        <Navbar.Brand href="#home" className="links" style={{ display: "inline" }}>
                             {['end'].map((placement, idx) => (
-                                <Bag key={idx} placement={placement} name={<img alt="" src={cart} width="30" height="30" className="d-inline-block align-top header-icons" />} />
+                                <Bag key={idx} 
+                                    placement={placement} 
+                                    onAdd={onAdd} 
+                                    onRemove={onRemove} 
+                                    cartItems={cartItems} 
+                                    name={<img alt="" src={cart} width="30" height="30" className="d-inline-block align-top header-icons" />} 
+                                />
                             ))}
+                        </Navbar.Brand>
+                        <Navbar.Brand>
+                            { '' }
+                            {countCartItems ? (
+                                <button className="cart-count">{countCartItems}</button>
+                            ) : 
+                                ( '' )
+                            }
                         </Navbar.Brand>
                     </Navbar.Collapse>
                 </Container>

@@ -36,10 +36,7 @@
     width: 50%;
     padding-top: 3%;
     padding-bottom: 3%;
-    border-top-left-radius: calc(3.25rem - 15px);
-    border-top-right-radius: calc(3.25rem - 15px);
-    border-bottom-left-radius: calc(3.25rem - 15px);
-    border-bottom-right-radius: calc(3.25rem - 15px);
+    border-radius: 0.5rem;
     font-size: large;
     margin-left: 4%;
 }
@@ -48,10 +45,7 @@
     color: white;
     background-color: #56453E;
     margin-left: 4%;
-    border-top-left-radius: calc(3.25rem - 15px);
-    border-top-right-radius: calc(3.25rem - 15px);
-    border-bottom-left-radius: calc(3.25rem - 15px);
-    border-bottom-right-radius: calc(3.25rem - 15px);
+    border-radius: 0.5rem;
     padding-top: 3%;
     padding-bottom: 3%;
     font-size: large;
@@ -59,6 +53,80 @@
 }
 
 .add-btn:hover {
+    background-color: #E0D7C7;
+    color: #56453E;
+}
+
+.bag-row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+.row.center {
+    align-items: center;
+}
+
+.bag-col-1 {
+    flex: 1;
+}
+
+.bag-col-2 {
+    flex: 2;
+}
+
+.bag-price {
+    text-align: right;
+}
+
+button.add {
+    color: white;
+    background-color: #56453E;
+    width: 1.5rem;
+    font-size: small;
+    padding: 0.2rem;
+    margin: 0.1rem;
+    border-radius: 0.5rem;
+  }
+
+  button.remove {
+    color: white;
+    background-color: #56453E;
+    width: 1.5rem;
+    font-size: small;
+    padding: 0.2rem;
+    margin: 0.1rem;
+    border-radius: 0.5rem;
+  }
+
+  .add:hover {
+    background-color: #E0D7C7;
+    color: #56453E;
+}
+
+  .remove:hover {
+    background-color: #E0D7C7;
+    color: #56453E;
+}
+
+.cart-count {
+    background-color: #56453E;
+    border: none;
+    color: white;
+    width: 1.5rem;
+    margin-left: -1.5rem;
+}
+
+.checkout {
+    color: white;
+    background-color: #56453E;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-size: large;
+    margin-top: 2%;
+    border-radius: 0.5rem;
+}
+
+.checkout:hover {
     background-color: #E0D7C7;
     color: #56453E;
 }
@@ -112,6 +180,14 @@
 
         .garment-body {
             text-align: center;
+        }
+
+        .cart-count {
+            background-color: #56453E;
+            border: none;
+            color: white;
+            width: 1.5rem;
+            margin-left: 1.2rem;
         }
     
 }
