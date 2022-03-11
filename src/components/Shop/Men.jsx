@@ -54,7 +54,7 @@ export default function Men(props) {
                 <Product key={product.id} product={product} onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} />
             ))}
         </div>
-        <h1 className="main-font section">Men's Pants</h1>
+        <h1 className="main-font section-2">Men's Pants</h1>
         <div className="shopping main-font">
             {/*pants.map(product => (
                 <Product key={product.id} product={product} onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} />

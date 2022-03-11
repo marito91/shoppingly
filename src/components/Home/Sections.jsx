@@ -9,20 +9,20 @@ import '../../static/css/Sections.css'
 
 
 // Media women
-import clothes from '../../static/img/stock-photos/women/clothes.jpeg';
-import womenModel from '../../static/img/stock-photos/women/womenClothes.jpeg';
+import clothes from '../../static/img/stock-photos/clothes.jpeg';
+import womenModel from '../../static/img/stock-photos/womenClothes.jpeg';
 
 // Media men
-import display from '../../static/img/stock-photos/men/display.jpg';
-import menModel from '../../static/img/stock-photos/men/menModel.jpeg';
+import display from '../../static/img/stock-photos/display.jpg';
+import menModel from '../../static/img/stock-photos/menModel.jpeg';
 
 // Media kids
-import kidModel from '../../static/img/stock-photos/kids/kids.jpeg';
-import kids from '../../static/img/stock-photos/kids/kids-clothes.jpeg';
+import kidModel from '../../static/img/stock-photos/kids.jpeg';
+import kids from '../../static/img/stock-photos/kids-clothes.jpeg';
 
 // Media offers
-import store from '../../static/img/stock-photos/offers/store.jpeg';
-import discount from '../../static/img/stock-photos/offers/discount.jpeg';
+import store from '../../static/img/stock-photos/store.jpeg';
+import discount from '../../static/img/stock-photos/discount.jpeg';
 
 export default function Sections() {
 

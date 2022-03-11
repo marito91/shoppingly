@@ -4,6 +4,12 @@
     color: #56453E;
 }
 
+.section-2 {
+    padding-top: 4%;
+    text-align: center;
+    color: #56453E;
+}
+
 .shopping {
     padding-left: 5%;
     padding-right: 5%;
@@ -33,7 +39,7 @@
 
 .size {
     border-color: #E0D7C7;
-    width: 50%;
+    width: 40%;
     padding-top: 3%;
     padding-bottom: 3%;
     border-radius: 0.5rem;
@@ -82,7 +88,7 @@ button.add {
     color: white;
     background-color: #56453E;
     width: 1.5rem;
-    font-size: small;
+    font-size: medium;
     padding: 0.2rem;
     margin: 0.1rem;
     border-radius: 0.5rem;
@@ -92,7 +98,7 @@ button.add {
     color: white;
     background-color: #56453E;
     width: 1.5rem;
-    font-size: small;
+    font-size: medium;
     padding: 0.2rem;
     margin: 0.1rem;
     border-radius: 0.5rem;
@@ -114,6 +120,7 @@ button.add {
     color: white;
     width: 1.5rem;
     margin-left: -1.5rem;
+    border-radius: 0.5rem;
 }
 
 .checkout {
@@ -156,10 +163,7 @@ button.add {
         .size {
             border-color: #E0D7C7;
             width: 25%;
-            border-top-left-radius: calc(3.25rem - 15px);
-            border-top-right-radius: calc(3.25rem - 15px);
-            border-bottom-left-radius: calc(3.25rem - 15px);
-            border-bottom-right-radius: calc(3.25rem - 15px);
+            border-radius: 0.5rem;
             font-size: large;
             padding-top: 1%;
             padding-bottom: 1%;
@@ -169,10 +173,7 @@ button.add {
             color: white;
             background-color: #56453E;
             margin-left: 4%;
-            border-top-left-radius: calc(3.25rem - 15px);
-            border-top-right-radius: calc(3.25rem - 15px);
-            border-bottom-left-radius: calc(3.25rem - 15px);
-            border-bottom-right-radius: calc(3.25rem - 15px);
+            border-radius: 0.5rem;
             font-size: large;
             padding-top: 1%;
             padding-bottom: 1%;

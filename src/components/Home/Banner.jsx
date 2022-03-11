@@ -9,10 +9,9 @@ import '../../static/css/Banner.css';
 
 
 // Media
-import casualFall from '../../static/img/stock-photos/women/casual-fall.jpg';
-import casualBlue from '../../static/img/stock-photos/women/casual-blue.jpg';
-import blueJeanJacket from '../../static/img/stock-photos/women/bluejean-jacket.jpg';
-import forest from '../../static/img/stock-photos/women/forest.jpg';
+import casualFall from '../../static/img/stock-photos/casual-fall.jpg';
+import blueJeanJacket from '../../static/img/stock-photos/bluejean-jacket.jpg';
+import forest from '../../static/img/stock-photos/forest.jpg';
 
 export default function Banner() {
     return (
