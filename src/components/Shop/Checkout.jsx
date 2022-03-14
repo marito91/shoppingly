@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 
 // CSS
 import '../../static/css/Main.css';
+import '../../static/css/Shop/Checkout.css';
 import hostbase from '../vars.js';
+
+// Components
+import Bag from './Bag';
+import Cart from './Cart';
 
 export default function Checkout(props) {
 
@@ -15,7 +20,7 @@ export default function Checkout(props) {
      * Sign Up Button
      */
 
-    const { cartItems } = props;
+    const { cartItems, onAdd, onRemove, countCartItems } = props;
 
     const [information, setInformation] = useState({
         firstName : "",
@@ -43,8 +48,8 @@ export default function Checkout(props) {
   return (
       
     <>
-        <div>
-            <div className='checkout-form'>
+        <div className='row'>
+            <div className='checkout-col'>
                 <div className="form-container main-font">
                     <h1 style={{ textAlign: "center" }}><strong>Join our crew!</strong></h1>
                     <h3 style={{ textAlign: "center" }}>Free exclusive content for you to enjoy by signing up.</h3>
@@ -132,8 +137,9 @@ export default function Checkout(props) {
                     </form>
                 </div>
             </div>
-            <div className='bag'>
+            <div className='checkout-col'>
                 <h1>Hello</h1>
+                <Cart cartItems={cartItems} countCartItems={cartItems.length} />
             </div>
         </div>
     </>

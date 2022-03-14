@@ -1,0 +1,29 @@
+.checkout-col {
+    float: left;
+    width: 50%;
+    align-items: center;
+    font-size: xx-large;
+    color: #56453E;
+    padding-left: 6%;
+    padding-top: 6%;
+    padding-right: 6%;
+    padding-bottom: 6%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+/* PHONES */
+@media only screen and (max-width: 992px) {
+
+    .checkout-col {
+        align-items: center;
+        width: 100%;
+        font-size: large;
+    }
+    
+}

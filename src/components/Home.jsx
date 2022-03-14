@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+
 // Components
 import Banner from './Home/Banner'
 import Promo from './Home/Promo'
@@ -11,6 +12,9 @@ import Footer from './Footer'
 
 export default function Home(props) {
 
+    const { cartItems, onAdd, onRemove } = props;
+
+    /*
     const [cartItems, setCartItems] = useState([]);
   
     const onAdd = (product) => {
@@ -33,8 +37,8 @@ export default function Home(props) {
           )
         );
       }
-    }
-    
+    }*/
+
   return (
         <>
             <Header onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} countCartItems={cartItems.length}  />

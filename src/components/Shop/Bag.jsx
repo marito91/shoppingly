@@ -9,6 +9,9 @@ import { Link } from 'react-router-dom';
 import '../../static/css/Main.css';
 import '../../static/css/Shop/Shopping.css';
 
+// Components
+import Checkout from './Checkout';
+
 
 export default function Bag(props) {
     const [show, setShow] = useState(false);
@@ -27,7 +30,7 @@ export default function Bag(props) {
         const confirm = window.confirm("Do you want to check out?");
 
         if (confirm) {
-            console.log("hello world")
+            console.log("hello world");
         }
 
     }
