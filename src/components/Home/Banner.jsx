@@ -5,7 +5,7 @@ import React from 'react'
 
 // CSS
 import '../../static/css/Main.css';
-import '../../static/css/Banner.css';
+import '../../static/css/Home/Banner.css';
 
 
 // Media

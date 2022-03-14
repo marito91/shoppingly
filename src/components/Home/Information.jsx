@@ -3,7 +3,7 @@ import React from 'react';
 
 // CSS
 import '../../static/css/Main.css';
-import '../../static/css/Information.css';
+import '../../static/css/Home/Information.css';
 
 // Media
 import mask from '../../static/img/stock-photos/safety.jpeg';

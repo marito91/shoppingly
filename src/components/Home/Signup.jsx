@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 // CSS
 import '../../static/css/Main.css';
-import '../../static/css/Signup.css';
+import '../../static/css/Home/Signup.css';
 import hostbase from '../vars.js';
 
 export default function Signup() {

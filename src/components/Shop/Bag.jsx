@@ -3,10 +3,12 @@
 import { React, useState } from 'react'
 import { Nav } from 'react-bootstrap';
 import Offcanvas from 'react-bootstrap/Offcanvas'
+import { Link } from 'react-router-dom';
 
 // CSS
 import '../../static/css/Main.css';
 import '../../static/css/Shop/Shopping.css';
+
 
 export default function Bag(props) {
     const [show, setShow] = useState(false);
@@ -20,6 +22,15 @@ export default function Bag(props) {
     const taxValue = itemPrice * 0.07;
     const shippingValue = itemPrice > 250 ? 0 : 25;
     const total = itemPrice + taxValue + shippingValue;
+
+    function checkout() {
+        const confirm = window.confirm("Do you want to check out?");
+
+        if (confirm) {
+            console.log("hello world")
+        }
+
+    }
   
     return (
       <>
@@ -36,8 +47,8 @@ export default function Bag(props) {
                   <div key={item.id} className="bag-row">
                     <div className="bag-col-2">{item.name}</div>
                     <div>
-                        <button onClick={() => onAdd(item)} className="add">+</button>
                         <button onClick={() => onRemove(item)} className="remove">-</button>
+                        <button onClick={() => onAdd(item)} className="add">+</button>
                     </div>
                     <div className="bag-col-2 bag-price">
                         {item.qty} X ${item.price.toFixed(2)}
@@ -85,7 +96,8 @@ export default function Bag(props) {
                     </div>
                     <hr />
                     <div className="bag-row">
-                        <button className="checkout" onClick={() => window.confirm("Do you want to check out?")}>Checkout</button>
+                        <Link to="/checkout" className='checkout' onClick={checkout}>Checkout</Link>
+                        {/*<button className="checkout" onClick={checkout}>Checkout</button>*/}
                     </div>
                   </>
               )}

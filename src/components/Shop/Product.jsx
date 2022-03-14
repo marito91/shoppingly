@@ -30,13 +30,7 @@ export default function Product(props) {
                 <Card.Title key={product.name} value={product.name}>{product.name}</Card.Title>
                 <Card.Text key={product.price} value={product.price}>${product.price}</Card.Text>
                     <select key={product.id} value={size} onChange={handleChange} name="" id="" className="size">
-                        {product.stock.map(s => <option key={s} value={s}>{s}</option>)}
-                        {/*
-                        <option key={product.stock.xs.size} value={product.stock.xs.size}>{product.stock.xs.size}</option>
-                        <option key={product.stock.s.size} value={product.stock.s.size}>{product.stock.s.size}</option>
-                        <option key={product.stock.m.size} value={product.stock.m.size}>{product.stock.m.size}</option>
-                        <option key={product.stock.l.size} value={product.stock.l.size}>{product.stock.l.size}</option>
-                        <option key={product.stock.xl.size} value={product.stock.xl.size}>{product.stock.xl.size}</option>*/}
+                        {product.sizes.map(size => <option key={size} value={size}>{size}</option>)}
                         </select>
                     {/*<button className="add-btn" onClick={() => addProduct( product.name, product.price, size, product.img1 )}>Add to cart</button>*/}
                     <button className="add-btn" onClick={() => onAdd(product)}>Add to cart</button>

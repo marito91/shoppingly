@@ -1,8 +1,8 @@
 
 // Libraries
-import { React, useState } from 'react'
+import React from 'react'
 import { Navbar, Nav, Container, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
-import Offcanvas from 'react-bootstrap/Offcanvas'
+import { Link } from 'react-router-dom';
 
 // Media
 import dress from '../static/img/icons/dress.svg';
@@ -13,14 +13,13 @@ import cart from '../static/img/icons/shoppingcart.svg';
 import '../static/css/Main.css';
 import '../static/css/Header.css';
 
+
 // Components
-import Product from './Shop/Product';
 import Bag from './Shop/Bag';
 
 export default function Header(props) {
 
     const { cartItems, onAdd, onRemove, countCartItems } = props;
-    const [shopcart, setShopcart] = useState([]);
    
     return (
         <> 
@@ -28,15 +27,15 @@ export default function Header(props) {
                 <Container>
                     <Navbar.Brand href="#home" className="logoFont" style={{ fontSize: "2.0em" }}>
                         <img alt="" src={dress} width="32" height="32" style={{ marginTop: "3%" }} className="d-inline-block align-top" />{' '}
-                        Shoppingly
+                        <Link to="/" style={{ textDecoration:"none", color:"black" }}>Shoppingly</Link>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse className="main-font" id="basic-navbar-nav">
                         <Nav className="me-auto links" style={{ fontSize: "x-large" }} >
                             <NavDropdown title="Clothing" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#">Men</NavDropdown.Item>
-                                <NavDropdown.Item href="#">Women</NavDropdown.Item>
-                                <NavDropdown.Item href="#">Kids</NavDropdown.Item>
+                                <Link to="/shop/men" className='dropdown-item' role="button">Men</Link>
+                                <Link to="/shop/women" className='dropdown-item' role="button">Women</Link>
+                                <Link to="/shop/kids" className='dropdown-item' role="button">Kids</Link>
                             </NavDropdown>
                             <Nav.Link href="#">Accesories</Nav.Link>
                             <Nav.Link href="#">About Us</Nav.Link>

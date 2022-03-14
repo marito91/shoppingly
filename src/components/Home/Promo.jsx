@@ -2,7 +2,7 @@ import React from 'react';
 
 // CSS
 import '../../static/css/Main.css';
-import '../../static/css/Promo.css';
+import '../../static/css/Home/Promo.css';
 
 
 

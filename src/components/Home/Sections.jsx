@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card'
 
 // CSS
 import '../../static/css/Main.css';
-import '../../static/css/Sections.css'
+import '../../static/css/Home/Sections.css';
 
 
 // Media women
