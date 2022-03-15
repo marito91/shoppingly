@@ -1,14 +1,59 @@
-.checkout-col {
+.checkout-row {
+  width: 100%;
+  margin-bottom: 2%;
+}
+
+.checkout-col1 {
     float: left;
-    width: 50%;
+    width: 60%;
     align-items: center;
     font-size: xx-large;
     color: #56453E;
+    padding-left: 10rem;
+    padding-top: 2%;
+    padding-right: 10rem;
+    padding-bottom: 6%;
+    border-right: 2px solid #56453E;
+  }
+
+.checkout-col2 {
+    float: left;
+    width: 40%;
+    align-items: center;
+    font-size: xx-large;
+    color: #56453E;
+    background-color: #fdfdfdef;
     padding-left: 6%;
     padding-top: 6%;
     padding-right: 6%;
     padding-bottom: 6%;
+    border-right: 2px solid #56453E;
   }
+
+  .checkout-steps {
+    display: flex;
+    font-size: medium;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: x-large;
+  }
+
+  .login-link {
+    color: #56453E;
+  }
+
+  .login-link:hover {
+    color: #7e6b64;
+  }
+
   
   /* Clear floats after the columns */
   .row:after {
@@ -17,13 +62,130 @@
     clear: both;
   }
 
+
+.cart {
+    background-color: white;
+}
+
+
+.form-container {
+  margin: 0 auto;
+  transform: translate(0px, 0px);
+  color: #56453E;
+}
+
+.signup-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.signup-column {
+  display: block;
+  float: left;
+  width: 50%;
+}
+
+.signup-inputs {
+  width: 100%;
+  border-radius: 0.5rem;
+  font-size: large;
+  padding-top: 0.8rem;
+}
+
+
+.floating-label-group {
+	position: relative;
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+	.floating-label {
+		font-size: 13px;
+		color: #56453E;
+		position: absolute;
+		pointer-events: none;
+		top: 9px;
+		left: 12px;
+		transition: all 0.1s ease;
+	}
+
+	input:focus ~ .floating-label,
+	input:not(:focus):valid ~ .floating-label {
+		top: -15px;
+		bottom: 0px;
+		left: 0px;
+		font-size: 11px;
+		opacity: 1;
+		color: #56453E;
+	}
+
+
+
+#name-input {
+  width: 95%;
+}
+
+.signup-btn {
+  color: white;
+  background-color: #56453E;
+  width: 100%;
+  padding-top: 1%;
+  margin-bottom: 1%;
+  border-radius: 0.5rem;
+}
+
+.signup-btn:hover {
+  background-color: #E0D7C7;
+  color: #56453E;
+}
+
+.checkboxes {
+  cursor: pointer;
+}
+
+/* PHONES Signup */
+@media only screen and (max-width: 768px) {
+
+  .signup-column {
+      display: block;
+      float: left;
+      width: 100%;
+  }
+
+  #name-input {
+      width: 100%;
+  }
+
+
+  .check-labels {
+      font-size: medium;
+    }
+
+  .signup-inputs::-webkit-input-placeholder {
+      font-size: 20px;
+      line-height: 3;
+  }
+}
+
+  
 /* PHONES */
 @media only screen and (max-width: 992px) {
 
-    .checkout-col {
-        align-items: center;
-        width: 100%;
-        font-size: large;
+    .checkout-col1 {
+      align-items: center;
+      width: 100%;
+      font-size: large;
+      border-bottom: 2px solid #56453E;
+    }
+
+    .checkout-col2 {
+      align-items: center;
+      width: 100%;
+      font-size: large;
+      padding-left: 6%;
+      padding-top: 6%;
+      padding-right: 6%;
+      padding-bottom: 6%;
     }
     
 }

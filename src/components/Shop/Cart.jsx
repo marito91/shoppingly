@@ -1,39 +1,24 @@
 
 // Libraries
-import { React, useState } from 'react'
-import { Nav } from 'react-bootstrap';
-import Offcanvas from 'react-bootstrap/Offcanvas'
-import { Link } from 'react-router-dom';
+import React from 'react'
+
 
 // CSS
 import '../../static/css/Main.css';
 import '../../static/css/Shop/Shopping.css';
 
 // Components
-import Checkout from './Checkout';
+
 
 
 export default function Cart(props) {
-    /*const [show, setShow] = useState(false);
-  
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);*/
 
-    const { cartItems, onAdd, onRemove, name } = props;
+    const { cartItems } = props;
 
     const itemPrice = cartItems.reduce((accumulator, item) => accumulator + (item.price * item.qty), 0);
     const taxValue = itemPrice * 0.07;
     const shippingValue = itemPrice > 250 ? 0 : 25;
     const total = itemPrice + taxValue + shippingValue;
-
-    function checkout() {
-        const confirm = window.confirm("Do you want to check out?");
-
-        if (confirm) {
-            console.log("hello world");
-        }
-
-    }
   
     return (
       <>

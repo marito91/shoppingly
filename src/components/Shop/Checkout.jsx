@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // CSS
 import '../../static/css/Main.css';
@@ -20,12 +20,15 @@ export default function Checkout(props) {
      * Sign Up Button
      */
 
-    const { cartItems, onAdd, onRemove, countCartItems } = props;
+    const { cartItems } = props;
 
-    const [information, setInformation] = useState({
+    const [countries, setCountries] = useState([]);
+
+    const [info, setInfo] = useState({
         firstName : "",
         lastName : "",
         email : "",
+        country : "",
         date : "",
         offers: false,
         ideas: false,
@@ -34,49 +37,114 @@ export default function Checkout(props) {
 
     const handleChange = event => {
         const value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
-        setInformation({
-            ...information, [event.target.name] : value
+        setInfo({
+            ...info, [event.target.name] : value
         })
     }
 
     const handleSubmit = event => {
         event.preventDefault();
-        console.log(information)
+        console.log(info)
         alert("Thank you for subscribing! Welcome to the club!")
     }
+
+    // Fetches Countries 
+    useEffect(() => {
+        fetch(`https://restcountries.com/v3.1/all`)
+        .then(res => res.json())
+        .then(res => {
+            if (res.status === "ok") {
+                setCountries(res)
+                //console.log(res.mensShirtsCatalogue)
+            } else {
+                setCountries(res)
+                //alert("Could not load info.");
+            }
+        })
+    }, []);
+
+    //https://restcountries.com/v3.1/all
 
   return (
       
     <>
         <div className='row'>
-            <div className='checkout-col'>
+            <div className='checkout-col1'>
                 <div className="form-container main-font">
-                    <h1 style={{ textAlign: "center" }}><strong>Join our crew!</strong></h1>
-                    <h3 style={{ textAlign: "center" }}>Free exclusive content for you to enjoy by signing up.</h3>
-                    <form className="signup" onSubmit={handleSubmit}>
+                    <h1 className='logoFont' style={{ textAlign: "center", fontSize: "4rem" }}><strong>Shoppingly</strong></h1>
+                    <div className='checkout-steps'>
+                        <li style={{ cursor: "pointer" }} onClick={() => window.alert("Go back")}>Cart&nbsp;</li>
+                        <li>{'>'}&nbsp;</li>
+                        <strong><li>Information&nbsp;</li></strong>
+                        <li>{'>'}&nbsp;</li>
+                        <li>Shipping&nbsp;</li>
+                        <li>{'>'}&nbsp;</li>
+                        <li>Payment</li>
+                    </div>
+                    <form className="" onSubmit={handleSubmit}>
+                        <div className='contact-info'>
+                            <strong><p>Contact Information</p></strong><p>Already have an account?&nbsp;<a href="" className='login-link'>Log in</a></p>
+                        </div>
                         <div className="signup-row">
-                            <div className="signup-column" style={{ maxWidth: "100%"}}>
-                                <strong>First Name</strong><br />
-                                <input 
-                                    className="signup-inputs" 
-                                    id="name-input" 
-                                    type="text" 
-                                    name="firstName"
-                                    placeholder="Your first name"
-                                    value={information.firstName} 
-                                    onChange={handleChange} 
-                                    required/>
+                            <div style={{ maxWidth: "100%"}}>
+                                <div className='floating-label-group'>
+                                    <input 
+                                        type="text" 
+                                        autocomplete="off" 
+                                        autofocus required 
+                                        className="signup-inputs"
+                                        name='email'
+                                        value={info.email} 
+                                        onChange={handleChange} />
+                                    <label className="floating-label">Email Address</label>
+                                    <input
+                                        className="checkboxes" 
+                                        style={{ margin: ".4rem" }} 
+                                        name="offers" 
+                                        type="checkbox"
+                                        onChange={handleChange}
+                                        checked={info.offers}/>
+                                    <label style={{ fontSize: "large" }}>Keep me up to date about my order</label>
+                                </div>
+                                <div className='contact-info'>
+                                    <strong><p>Shipping Address</p></strong>
+                                </div>
+                                <div className='floating-label-group'>
+                                    <select 
+                                        type="select" 
+                                        autocomplete="off" 
+                                        autofocus required 
+                                        className="signup-inputs"
+                                        name='country'
+                                        onChange={handleChange}
+                                        style={{ paddingTop: "1.5rem" }}>
+                                            {countries.map(country => <option>{country.name.common}</option>)}
+                                    </select>
+                                    <label className="floating-label">Country/Region</label>
+                                </div>
+                                <div className='floating-label-group signup-column'>
+                                    <input 
+                                        type="text" 
+                                        autocomplete="off" 
+                                        autofocus required 
+                                        className="signup-inputs"
+                                        name='firstName'
+                                        id='name-input'
+                                        value={info.firstName} 
+                                        onChange={handleChange} />
+                                    <label className="floating-label">First Name (optional)</label>
+                                </div>
                             </div>
-                            <div className="signup-column">
-                                <strong>Last Name</strong><br />
+                            <div className="floating-label-group signup-column">
                                 <input 
-                                    className="signup-inputs" 
                                     type="text" 
-                                    name="lastName" 
-                                    placeholder="Your last name" 
-                                    value={information.lastName} 
-                                    onChange={handleChange} 
-                                    required/>
+                                    autocomplete="off" 
+                                    autofocus required 
+                                    className="signup-inputs"
+                                    name='lastName'
+                                    value={info.lastName} 
+                                    onChange={handleChange} />
+                                <label className="floating-label">Last Name</label>
                             </div>
                         </div>
                         <div className="signup-row">
@@ -86,7 +154,7 @@ export default function Checkout(props) {
                                 type="text" 
                                 name="email"
                                 placeholder="Email address"  
-                                value={information.email} 
+                                value={info.email} 
                                 onChange={handleChange} 
                                 required/>
                         </div>
@@ -96,7 +164,7 @@ export default function Checkout(props) {
                                 className="signup-inputs" 
                                 type="date" 
                                 name="date"
-                                value={information.date} 
+                                value={info.date} 
                                 onChange={handleChange} 
                                 required/>
                         </div>
@@ -108,7 +176,7 @@ export default function Checkout(props) {
                                     name="offers" 
                                     type="checkbox"
                                     onChange={handleChange}
-                                    checked={information.offers}/>
+                                    checked={info.offers}/>
                                 <label className="check-labels">Exclusive offers</label><br />
                                 <input 
                                     className="checkboxes" 
@@ -116,7 +184,7 @@ export default function Checkout(props) {
                                     name="ideas" 
                                     type="checkbox"
                                     onChange={handleChange}
-                                    checked={information.ideas}/>
+                                    checked={info.ideas}/>
                                 <label className="check-labels">Sets ideas</label><br />
                                 <input 
                                     className="checkboxes" 
@@ -124,7 +192,7 @@ export default function Checkout(props) {
                                     name="nation" 
                                     type="checkbox"
                                     onChange={handleChange}
-                                    checked={information.nation}/>
+                                    checked={info.nation}/>
                                 <label className="check-labels">Shoppingly nation</label>
                         </div>
                         <div className="signup-row">
@@ -137,8 +205,8 @@ export default function Checkout(props) {
                     </form>
                 </div>
             </div>
-            <div className='checkout-col'>
-                <h1>Hello</h1>
+            <div className='checkout-col2'>
+                <h1>Order Summary:</h1>
                 <Cart cartItems={cartItems} countCartItems={cartItems.length} />
             </div>
         </div>
