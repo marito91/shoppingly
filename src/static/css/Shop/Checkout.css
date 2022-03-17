@@ -9,9 +9,9 @@
     align-items: center;
     font-size: xx-large;
     color: #56453E;
-    padding-left: 10rem;
+    padding-left: 3rem;
     padding-top: 2%;
-    padding-right: 10rem;
+    padding-right: 3rem;
     padding-bottom: 6%;
     border-right: 2px solid #56453E;
   }
@@ -46,8 +46,17 @@
     font-size: x-large;
   }
 
+  .contact-info-shipping {
+    display: flex;
+    justify-content: space-between;
+    font-size: large;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
   .login-link {
-    color: #56453E;
+    color: #c5b98ce1;
+    text-decoration: none;
   }
 
   .login-link:hover {
@@ -56,6 +65,12 @@
 
   
   /* Clear floats after the columns */
+  .contact-info:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
   .row:after {
     content: "";
     display: table;
@@ -68,10 +83,17 @@
 }
 
 
-.form-container {
+.form {
   margin: 0 auto;
   transform: translate(0px, 0px);
   color: #56453E;
+}
+
+.signup {
+  padding-left: 3rem;
+  padding-right: 3rem;
+  font-size: x-large;
+  margin-bottom: 3%;
 }
 
 .signup-row:after {
@@ -121,26 +143,70 @@
 
 
 
-#name-input {
+#mid-input {
   width: 95%;
 }
 
-.signup-btn {
-  color: white;
-  background-color: #56453E;
-  width: 100%;
-  padding-top: 1%;
-  margin-bottom: 1%;
-  border-radius: 0.5rem;
+.shipping {
+  align-items: center;
+  float: right;
 }
 
-.signup-btn:hover {
+.shipping-btn {
+  color: white;
+  background-color: #56453E;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: smaller;
+  -webkit-box-pack: justify;
+  float: right;
+  text-decoration: none;
+}
+
+.shipping-btn:hover {
   background-color: #E0D7C7;
   color: #56453E;
+  border-color: #56453E;
 }
 
 .checkboxes {
   cursor: pointer;
+}
+
+.shipping-container {
+  margin-left: 5%;
+  margin-right: 5%;
+  border: 2px solid #56453E;
+  border-radius: 00.5rem;
+  margin-bottom: 2rem;
+}
+
+.division {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.shipping-row {
+  font-size: medium;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.shipping-col-1 {
+  width: 100%;
+  justify-content: space-between;
+  float: right;
+  padding: 1rem;
+}
+
+.shipping-col-2 {
+  padding-right: 1rem;
+  align-items: center;
 }
 
 /* PHONES Signup */
@@ -152,7 +218,7 @@
       width: 100%;
   }
 
-  #name-input {
+  #mid-input {
       width: 100%;
   }
 
@@ -165,6 +231,36 @@
       font-size: 20px;
       line-height: 3;
   }
+
+  .login-info {
+    display: none;
+    justify-content: space-between;
+    font-size: x-large;
+  }
+
+  .shipping {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #spaces {
+    display: none;
+  }
+
+  .shipping-container {
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+
+  .shipping-row {
+    font-size: medium;
+    padding-left: none;
+    padding-right: none;
+    display: flex;
+    align-items: center;
+  }
+
 }
 
   
@@ -176,16 +272,48 @@
       width: 100%;
       font-size: large;
       border-bottom: 2px solid #56453E;
+      border-right: none;
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
 
     .checkout-col2 {
       align-items: center;
       width: 100%;
+      border-right: none;
       font-size: large;
       padding-left: 6%;
       padding-top: 6%;
       padding-right: 6%;
       padding-bottom: 6%;
     }
+    
+
+    .floating-label-group {
+      position: relative;
+      margin-top: 3%;
+      margin-bottom: 3%;
+    }
+      .floating-label {
+        font-size: 13px;
+        color: #56453E;
+        position: absolute;
+        pointer-events: none;
+        top: 9px;
+        left: 12px;
+        transition: all 0.1s ease;
+      }
+    
+      input:focus ~ .floating-label,
+      input:not(:focus):valid ~ .floating-label {
+        top: -15px;
+        bottom: 0px;
+        left: 0px;
+        font-size: 11px;
+        opacity: 1;
+        color: #56453E;
+      }
+      
+    
     
 }

@@ -65,6 +65,12 @@
 /* PHONES */
 @media only screen and (max-width: 768px) {
 
+    .signup {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        margin-bottom: 3%;
+    }
+
     .signup-column {
         display: block;
         float: left;

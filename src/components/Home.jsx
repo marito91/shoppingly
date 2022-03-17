@@ -12,7 +12,7 @@ import Footer from './Footer'
 
 export default function Home(props) {
 
-    const { cartItems, onAdd, onRemove } = props;
+    const { cartItems, onAdd, onRemove, itemPrice, taxValue, shippingValue, total } = props;
 
     /*
     const [cartItems, setCartItems] = useState([]);
@@ -41,7 +41,7 @@ export default function Home(props) {
 
   return (
         <>
-            <Header onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} countCartItems={cartItems.length}  />
+            <Header onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} countCartItems={cartItems.length} />
             <Promo />
             <Banner />
             <Sections />

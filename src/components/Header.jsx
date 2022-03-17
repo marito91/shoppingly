@@ -54,7 +54,7 @@ export default function Header(props) {
                                     placement={placement} 
                                     onAdd={onAdd} 
                                     onRemove={onRemove} 
-                                    cartItems={cartItems} 
+                                    cartItems={cartItems}
                                     name={<img alt="" src={cart} width="30" height="30" className="d-inline-block align-top header-icons" />} 
                                 />
                             ))}

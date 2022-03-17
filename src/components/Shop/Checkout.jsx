@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 
 // CSS
 import '../../static/css/Main.css';
@@ -6,7 +8,6 @@ import '../../static/css/Shop/Checkout.css';
 import hostbase from '../vars.js';
 
 // Components
-import Bag from './Bag';
 import Cart from './Cart';
 
 export default function Checkout(props) {
@@ -20,31 +21,14 @@ export default function Checkout(props) {
      * Sign Up Button
      */
 
-    const { cartItems } = props;
+    const { cartItems, userInfo, handleChange } = props;
 
     const [countries, setCountries] = useState([]);
 
-    const [info, setInfo] = useState({
-        firstName : "",
-        lastName : "",
-        email : "",
-        country : "",
-        date : "",
-        offers: false,
-        ideas: false,
-        nation: false
-    })
-
-    const handleChange = event => {
-        const value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
-        setInfo({
-            ...info, [event.target.name] : value
-        })
-    }
 
     const handleSubmit = event => {
         event.preventDefault();
-        console.log(info)
+        console.log(userInfo)
         alert("Thank you for subscribing! Welcome to the club!")
     }
 
@@ -63,147 +47,189 @@ export default function Checkout(props) {
         })
     }, []);
 
-    //https://restcountries.com/v3.1/all
 
   return (
       
     <>
-        <div className='row'>
+        <div className='row main-font'>
             <div className='checkout-col1'>
-                <div className="form-container main-font">
-                    <h1 className='logoFont' style={{ textAlign: "center", fontSize: "4rem" }}><strong>Shoppingly</strong></h1>
-                    <div className='checkout-steps'>
-                        <li style={{ cursor: "pointer" }} onClick={() => window.alert("Go back")}>Cart&nbsp;</li>
-                        <li>{'>'}&nbsp;</li>
-                        <strong><li>Information&nbsp;</li></strong>
-                        <li>{'>'}&nbsp;</li>
-                        <li>Shipping&nbsp;</li>
-                        <li>{'>'}&nbsp;</li>
-                        <li>Payment</li>
+                <h1 className='logoFont' style={{ textAlign: "center", fontSize: "4rem" }}><strong>Shoppingly</strong></h1>
+                <div className='checkout-steps'>
+                    <li style={{ cursor: "pointer" }} onClick={() => window.alert("Go back")}>Cart&nbsp;</li>
+                    <li>{'>'}&nbsp;</li>
+                    <strong><li>Information&nbsp;</li></strong>
+                    <li>{'>'}&nbsp;</li>
+                    <li>Shipping&nbsp;</li>
+                    <li>{'>'}&nbsp;</li>
+                    <li>Payment</li>
+                </div>
+                <form className="signup form" onSubmit={handleSubmit}>
+                    <div className='contact-info'>
+                        <strong><p>Contact Information</p></strong><p className='login-info'>Already have an account?&nbsp;<a href="" className='login-link'>Log in</a></p>
                     </div>
-                    <form className="" onSubmit={handleSubmit}>
-                        <div className='contact-info'>
-                            <strong><p>Contact Information</p></strong><p>Already have an account?&nbsp;<a href="" className='login-link'>Log in</a></p>
-                        </div>
-                        <div className="signup-row">
-                            <div style={{ maxWidth: "100%"}}>
-                                <div className='floating-label-group'>
-                                    <input 
-                                        type="text" 
-                                        autocomplete="off" 
-                                        autofocus required 
-                                        className="signup-inputs"
-                                        name='email'
-                                        value={info.email} 
-                                        onChange={handleChange} />
-                                    <label className="floating-label">Email Address</label>
-                                    <input
-                                        className="checkboxes" 
-                                        style={{ margin: ".4rem" }} 
-                                        name="offers" 
-                                        type="checkbox"
-                                        onChange={handleChange}
-                                        checked={info.offers}/>
-                                    <label style={{ fontSize: "large" }}>Keep me up to date about my order</label>
-                                </div>
-                                <div className='contact-info'>
-                                    <strong><p>Shipping Address</p></strong>
-                                </div>
-                                <div className='floating-label-group'>
-                                    <select 
-                                        type="select" 
-                                        autocomplete="off" 
-                                        autofocus required 
-                                        className="signup-inputs"
-                                        name='country'
-                                        onChange={handleChange}
-                                        style={{ paddingTop: "1.5rem" }}>
-                                            {countries.map(country => <option>{country.name.common}</option>)}
-                                    </select>
-                                    <label className="floating-label">Country/Region</label>
-                                </div>
-                                <div className='floating-label-group signup-column'>
-                                    <input 
-                                        type="text" 
-                                        autocomplete="off" 
-                                        autofocus required 
-                                        className="signup-inputs"
-                                        name='firstName'
-                                        id='name-input'
-                                        value={info.firstName} 
-                                        onChange={handleChange} />
-                                    <label className="floating-label">First Name (optional)</label>
-                                </div>
-                            </div>
-                            <div className="floating-label-group signup-column">
+                    <div className="signup-row">
+                        <div style={{ maxWidth: "100%"}}>
+                            <div className='floating-label-group'>
                                 <input 
                                     type="text" 
                                     autocomplete="off" 
                                     autofocus required 
                                     className="signup-inputs"
-                                    name='lastName'
-                                    value={info.lastName} 
+                                    name='email'
+                                    value={userInfo.email} 
                                     onChange={handleChange} />
-                                <label className="floating-label">Last Name</label>
+                                <label className="floating-label">Email Address</label>
+                                <input
+                                    className="checkboxes" 
+                                    style={{ margin: ".4rem" }} 
+                                    name="tracking" 
+                                    type="checkbox"
+                                    onChange={handleChange}
+                                    checked={userInfo.tracking}/>
+                                <label style={{ fontSize: "large", display: "inline" }}>Keep me up to date about my order</label>
                             </div>
                         </div>
-                        <div className="signup-row">
-                            <strong>Email</strong><br />
+                    </div>
+                    <div className='contact-info'>
+                        <strong><p>Shipping Address</p></strong>
+                    </div>
+                    <div className="signup-row">
+                        <div className='floating-label-group'>
+                            <select 
+                                type="select" 
+                                autocomplete="off" 
+                                autofocus required 
+                                className="signup-inputs"
+                                name='country'
+                                onChange={handleChange}
+                                style={{ paddingTop: "1.5rem" }}>
+                                    <option value="">&nbsp;</option>
+                                    {countries.map(country => <option>{country.name.common}</option>)}
+                            </select>
+                            <label className="floating-label">Country/Region</label>
+                        </div>
+                    </div>
+                    <div className="signup-row">
+                        <div className='floating-label-group signup-column'>
                             <input 
-                                className="signup-inputs" 
                                 type="text" 
-                                name="email"
-                                placeholder="Email address"  
-                                value={info.email} 
-                                onChange={handleChange} 
-                                required/>
+                                autocomplete="off" 
+                                autofocus required
+                                className="signup-inputs"
+                                name='firstName'
+                                id='mid-input'
+                                value={userInfo.firstName} 
+                                onChange={handleChange} />
+                            <label className="floating-label">First Name</label>
                         </div>
-                        <div className="signup-row">
-                            <strong>Date of birth</strong><br />
+                        <div className="floating-label-group signup-column">
                             <input 
-                                className="signup-inputs" 
-                                type="date" 
-                                name="date"
-                                value={info.date} 
-                                onChange={handleChange} 
-                                required/>
+                                type="text" 
+                                autocomplete="off" 
+                                autofocus required 
+                                className="signup-inputs"
+                                name='lastName'
+                                value={userInfo.lastName} 
+                                onChange={handleChange} />
+                            <label className="floating-label">Last Name</label>
                         </div>
-                        <div className="signup-row">
-                            <strong>Preferences</strong><br />
+                    </div>
+                    <div className="signup-row">
+                        <div className='floating-label-group'>
+                            <input 
+                                type="text" 
+                                autocomplete="off" 
+                                autofocus required 
+                                className="signup-inputs"
+                                name='address'
+                                value={userInfo.address} 
+                                onChange={handleChange} />
+                            <label className="floating-label">Street and house number</label>
+                        </div>
+                    </div>
+                    <div className="signup-row">
+                        <div className='floating-label-group'>
+                            <input 
+                                type="text" 
+                                autocomplete="off" 
+                                autofocus required 
+                                className="signup-inputs"
+                                name='apt'
+                                value={userInfo.apt} 
+                                onChange={handleChange} />
+                            <label className="floating-label">Apartment, suite, etc.</label>
+                        </div>
+                    </div>
+                    <div className='signup-row'>
+                        <div>
+                            <div className='floating-label-group signup-column'>
+                                <input 
+                                    type="text" 
+                                    autocomplete="off" 
+                                    autofocus required
+                                    className="signup-inputs"
+                                    name='city'
+                                    id='mid-input'
+                                    value={userInfo.city} 
+                                    onChange={handleChange} />
+                                <label className="floating-label">City</label>
+                            </div>
+                        </div>
+                        <div className="floating-label-group signup-column">
+                            <input 
+                                type="text" 
+                                autocomplete="off" 
+                                autofocus required 
+                                className="signup-inputs"
+                                name='postalCode'
+                                value={userInfo.postalCode} 
+                                onChange={handleChange} />
+                            <label className="floating-label">Postal Code</label>
+                        </div>
+                    </div>
+                    <div className="signup-row">
+                        <div className='floating-label-group'>
+                            <input 
+                                type="text" 
+                                autocomplete="off" 
+                                autofocus required 
+                                className="signup-inputs"
+                                name='phone'
+                                value={userInfo.phone} 
+                                onChange={handleChange} />
+                            <label className="floating-label">Phone Number</label>
+                        </div>
+                    </div>
+                    <div className="signup-row">
+                        <div style={{ maxWidth: "100%"}}>
+                            <div className='floating-label-group'>
                                 <input
                                     className="checkboxes" 
                                     style={{ margin: ".4rem" }} 
                                     name="offers" 
                                     type="checkbox"
                                     onChange={handleChange}
-                                    checked={info.offers}/>
-                                <label className="check-labels">Exclusive offers</label><br />
-                                <input 
+                                    value={userInfo.offers}
+                                    checked={userInfo.offers}/>
+                                <label style={{ fontSize: "large", display: "inline" }}>Notify me about news and offers</label><br />
+                                <input
                                     className="checkboxes" 
                                     style={{ margin: ".4rem" }} 
-                                    name="ideas" 
+                                    name="terms" 
                                     type="checkbox"
                                     onChange={handleChange}
-                                    checked={info.ideas}/>
-                                <label className="check-labels">Sets ideas</label><br />
-                                <input 
-                                    className="checkboxes" 
-                                    style={{ margin: ".4rem" }} 
-                                    name="nation" 
-                                    type="checkbox"
-                                    onChange={handleChange}
-                                    checked={info.nation}/>
-                                <label className="check-labels">Shoppingly nation</label>
+                                    value={userInfo.terms}
+                                    checked={userInfo.terms}/>
+                                <label style={{ fontSize: "large", display: "inline" }}>I have read and accept the <a href="" className='login-link'>Terms &amp; Conditions</a> and <a href="" className='login-link'>Privacy Policy</a>.</label>
+                            </div>
                         </div>
-                        <div className="signup-row">
-                            <button className="signup-btn"><h3><strong>Sign Up</strong></h3></button>
-                        </div>
-                        <div className="signup-row" style={{ display: "flex" }}>
-                            <input className="checkboxes" style={{ margin: ".4rem" }} name="policy" type="checkbox" required/>
-                            <label className="check-labels">By entering your email address you agree to receive our marketing offers in accordance with our Privacy Policy.*</label><br />
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div className="signup-row shipping">
+                        <a href="" className='login-link' style={{ fontSize: "medium", display: "inline" }}>{'<'}&nbsp;Return to cart</a>
+                        {/*<button className="shipping-btn">Continue to shipping</button>*/}
+                        <Link to="/shipping" type='button' className='shipping-btn'>Continue to shipping</Link>
+                    </div>
+                </form>
             </div>
             <div className='checkout-col2'>
                 <h1>Order Summary:</h1>

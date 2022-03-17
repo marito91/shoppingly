@@ -29,10 +29,6 @@ export default function Bag(props) {
     function checkout() {
         const confirm = window.confirm("Do you want to check out?");
 
-        if (confirm) {
-            console.log("hello world");
-        }
-
     }
   
     return (
