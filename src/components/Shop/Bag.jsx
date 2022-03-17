@@ -14,17 +14,20 @@ import Checkout from './Checkout';
 
 
 export default function Bag(props) {
-    const [show, setShow] = useState(false);
-  
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+
 
     const { cartItems, onAdd, onRemove, name } = props;
 
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    
     const itemPrice = cartItems.reduce((accumulator, item) => accumulator + (item.price * item.qty), 0);
     const taxValue = itemPrice * 0.07;
     const shippingValue = itemPrice > 250 ? 0 : 25;
     const total = itemPrice + taxValue + shippingValue;
+    
 
     function checkout() {
         const confirm = window.confirm("Do you want to check out?");
@@ -96,7 +99,6 @@ export default function Bag(props) {
                     <hr />
                     <div className="bag-row">
                         <Link to="/checkout" className='checkout' onClick={checkout}>Checkout</Link>
-                        {/*<button className="checkout" onClick={checkout}>Checkout</button>*/}
                     </div>
                   </>
               )}

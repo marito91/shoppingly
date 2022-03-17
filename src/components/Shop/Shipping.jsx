@@ -10,13 +10,7 @@ import Cart from './Cart';
 
 export default function Shipping(props) {
 
-    const { cartItems, userInfo, handleChange, handleStandard, handleExpress } = props;
-
-    const handleSubmit = event => {
-        event.preventDefault();
-        console.log(userInfo)
-        alert("Thank you for subscribing! Welcome to the club!")
-    }
+    const { cartItems, userInfo, handleStandard, handleExpress, itemPrice, taxValue, shippingValue, total } = props;
 
   return (
       
@@ -37,7 +31,7 @@ export default function Shipping(props) {
                     <div className='shipping-row'>
                         <div className='shipping-col-1'>
                             <label>Contact</label><label id='spaces'>&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            <label style={{ display:"inline" }}>magv181091@gmail.com{userInfo.email}</label>        
+                            <label style={{ display:"inline" }}>{userInfo.email}</label>        
                         </div>
                         <div className='shipping-col-2'>
                             <a href="" className='login-link'>Change</a>           
@@ -47,7 +41,7 @@ export default function Shipping(props) {
                     <div className='shipping-row'>
                         <div className='shipping-col-1'>
                             <label>Ship to</label><label id='spaces'>&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            <label style={{ display:"inline" }}>Address{userInfo.address}</label>        
+                            <label style={{ display:"inline" }}>{userInfo.address}</label>        
                         </div>
                         <div className='shipping-col-2'>
                             <a href="" className='login-link'>Change</a>           

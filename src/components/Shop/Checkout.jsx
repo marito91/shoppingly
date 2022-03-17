@@ -21,7 +21,7 @@ export default function Checkout(props) {
      * Sign Up Button
      */
 
-    const { cartItems, userInfo, handleChange } = props;
+    const { cartItems, userInfo, handleChange, itemPrice, taxValue, shippingValue, total } = props;
 
     const [countries, setCountries] = useState([]);
 
@@ -37,13 +37,15 @@ export default function Checkout(props) {
         fetch(`https://restcountries.com/v3.1/all`)
         .then(res => res.json())
         .then(res => {
+            setCountries(res);
+            /*
             if (res.status === "ok") {
                 setCountries(res)
                 //console.log(res.mensShirtsCatalogue)
             } else {
                 setCountries(res)
                 //alert("Could not load info.");
-            }
+            }*/
         })
     }, []);
 
@@ -65,15 +67,16 @@ export default function Checkout(props) {
                 </div>
                 <form className="signup form" onSubmit={handleSubmit}>
                     <div className='contact-info'>
-                        <strong><p>Contact Information</p></strong><p className='login-info'>Already have an account?&nbsp;<a href="" className='login-link'>Log in</a></p>
+                        <strong><p>Contact Information</p></strong>
+                        <p className='login-info'>Already have an account?&nbsp;<a href="" className='login-link'>Log in</a></p>
                     </div>
                     <div className="signup-row">
                         <div style={{ maxWidth: "100%"}}>
                             <div className='floating-label-group'>
                                 <input 
                                     type="text" 
-                                    autocomplete="off" 
-                                    autofocus required 
+                                    autoComplete="off" 
+                                    autoFocus required 
                                     className="signup-inputs"
                                     name='email'
                                     value={userInfo.email} 
@@ -97,8 +100,8 @@ export default function Checkout(props) {
                         <div className='floating-label-group'>
                             <select 
                                 type="select" 
-                                autocomplete="off" 
-                                autofocus required 
+                                autoComplete="off" 
+                                autoFocus required 
                                 className="signup-inputs"
                                 name='country'
                                 onChange={handleChange}
@@ -113,8 +116,8 @@ export default function Checkout(props) {
                         <div className='floating-label-group signup-column'>
                             <input 
                                 type="text" 
-                                autocomplete="off" 
-                                autofocus required
+                                autoComplete="off" 
+                                autoFocus required
                                 className="signup-inputs"
                                 name='firstName'
                                 id='mid-input'
@@ -125,8 +128,8 @@ export default function Checkout(props) {
                         <div className="floating-label-group signup-column">
                             <input 
                                 type="text" 
-                                autocomplete="off" 
-                                autofocus required 
+                                autoComplete="off" 
+                                autoFocus required 
                                 className="signup-inputs"
                                 name='lastName'
                                 value={userInfo.lastName} 
@@ -138,8 +141,8 @@ export default function Checkout(props) {
                         <div className='floating-label-group'>
                             <input 
                                 type="text" 
-                                autocomplete="off" 
-                                autofocus required 
+                                autoComplete="off" 
+                                autoFocus required 
                                 className="signup-inputs"
                                 name='address'
                                 value={userInfo.address} 
@@ -151,8 +154,8 @@ export default function Checkout(props) {
                         <div className='floating-label-group'>
                             <input 
                                 type="text" 
-                                autocomplete="off" 
-                                autofocus required 
+                                autoComplete="off" 
+                                autoFocus required 
                                 className="signup-inputs"
                                 name='apt'
                                 value={userInfo.apt} 
@@ -165,8 +168,8 @@ export default function Checkout(props) {
                             <div className='floating-label-group signup-column'>
                                 <input 
                                     type="text" 
-                                    autocomplete="off" 
-                                    autofocus required
+                                    autoComplete="off" 
+                                    autoFocus required
                                     className="signup-inputs"
                                     name='city'
                                     id='mid-input'
@@ -178,8 +181,8 @@ export default function Checkout(props) {
                         <div className="floating-label-group signup-column">
                             <input 
                                 type="text" 
-                                autocomplete="off" 
-                                autofocus required 
+                                autoComplete="off" 
+                                autoFocus required 
                                 className="signup-inputs"
                                 name='postalCode'
                                 value={userInfo.postalCode} 
@@ -191,8 +194,8 @@ export default function Checkout(props) {
                         <div className='floating-label-group'>
                             <input 
                                 type="text" 
-                                autocomplete="off" 
-                                autofocus required 
+                                autoComplete="off" 
+                                autoFocus required 
                                 className="signup-inputs"
                                 name='phone'
                                 value={userInfo.phone} 
