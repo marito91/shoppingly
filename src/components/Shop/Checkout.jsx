@@ -21,7 +21,7 @@ export default function Checkout(props) {
      * Sign Up Button
      */
 
-    const { cartItems, userInfo, handleChange, itemPrice, taxValue, shippingValue, total } = props;
+    const { cartItems, userInfo, handleChange } = props;
 
     const [countries, setCountries] = useState([]);
 

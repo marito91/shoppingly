@@ -9,6 +9,7 @@ import Home from './components/Home';
 import Shop from './components/Shop';
 import Checkout from './components/Shop/Checkout';
 import Shipping from './components/Shop/Shipping';
+import Payment from './components/Shop/Payment';
 
 
 
@@ -30,7 +31,8 @@ function App() {
     offers: false,
     terms: false,
     standard: false,
-    express: false
+    express: false,
+    method: ""
   })
 
   /*
@@ -44,14 +46,14 @@ function App() {
   const handleStandard = event => {
     const value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
     setUserInfo({
-        ...userInfo, [event.target.name] : value, express : false
+        ...userInfo, [event.target.name] : value, express : false, method : "Standard shipping: 6 to 9 business days"
     })
   }
   // This is not practical but it is a temporary solution. It should also be removed from the component
   const handleExpress = event => {
     const value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
     setUserInfo({
-        ...userInfo, [event.target.name] : value, standard : false
+        ...userInfo, [event.target.name] : value, standard : false, method : "Express shipping: 3 business days"
     })/*
     setCartItems({
         ...cartItems, [event.target.name] : value, shippingValue : shippingValue + 20
@@ -139,6 +141,22 @@ function App() {
           <Route 
             path="/shipping" 
             element={<Shipping 
+              onAdd={onAdd} 
+              onRemove={onRemove} 
+              cartItems={cartItems} 
+              countCartItems={cartItems.length} 
+              userInfo={userInfo} 
+              handleChange={handleChange}
+              handleExpress={handleExpress}
+              handleStandard={handleStandard}/*
+              itemPrice={itemPrice}
+              taxValue={taxValue}
+              shippingValue={shippingValue} 
+              total={total}*/ />} /> 
+
+          <Route 
+            path="/payment" 
+            element={<Payment 
               onAdd={onAdd} 
               onRemove={onRemove} 
               cartItems={cartItems} 

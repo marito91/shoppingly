@@ -68,11 +68,6 @@ export default function Home(props) {
   return (
         <>
             <Header onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} countCartItems={cartItems.length} />  
-            {/*<Promo />
-            <Banner />
-            <Sections />
-            <Information />
-            <Signup />*/}
             <section style={{ backgroundColor: "white"}}>
               <div className="discount-section main-font">
                   <h3 className="discount-header header2">Up to </h3>

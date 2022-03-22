@@ -10,7 +10,7 @@ import '../../static/css/Main.css';
 import '../../static/css/Shop/Shopping.css';
 
 // Components
-import Checkout from './Checkout';
+
 
 
 export default function Bag(props) {

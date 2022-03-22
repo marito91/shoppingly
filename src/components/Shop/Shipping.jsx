@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 // CSS
 import '../../static/css/Main.css';
 import '../../static/css/Shop/Checkout.css';
-import hostbase from '../vars.js';
+
 
 // Components
 import Cart from './Cart';
 
 export default function Shipping(props) {
 
-    const { cartItems, userInfo, handleStandard, handleExpress, itemPrice, taxValue, shippingValue, total } = props;
+    const { cartItems, userInfo, handleStandard, handleExpress } = props;
 
   return (
       
@@ -88,7 +89,8 @@ export default function Shipping(props) {
                 </div>
                 <div className="signup-row shipping">
                     <a href="" className='login-link' style={{ fontSize: "medium", display: "inline" }}>{'<'}&nbsp;Return to cart</a>
-                    <button className="shipping-btn">Continue to payment</button>
+                    {/*<button className="shipping-btn">Continue to payment</button>*/}
+                    <Link to="/payment" type='button' className='shipping-btn'>Continue to payment</Link>
                 </div>
             </div>
             <div className='checkout-col2'>

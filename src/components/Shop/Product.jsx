@@ -11,7 +11,7 @@ export default function Product(props) {
 
     const { product, onAdd } = props;
 
-    // This is not working 100% right -> It's grabbing a global state size and not the one from each garment.
+    // This is not working 100% right -> It's grabbing a global state size and not the one from each product.
     const [size, setSize] = useState("XS");
 
     const handleChange = event => {

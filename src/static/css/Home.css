@@ -389,10 +389,7 @@ hr.section-border {
 
 .signup-inputs {
     width: 100%;
-    border-top-left-radius: calc(3.25rem - 15px);
-    border-top-right-radius: calc(3.25rem - 15px);
-    border-bottom-left-radius: calc(3.25rem - 15px);
-    border-bottom-right-radius: calc(3.25rem - 15px);
+    border-radius: 0.5rem;
 }
 
 #name-input {

@@ -209,6 +209,26 @@
   align-items: center;
 }
 
+.cards {
+  display: flex;
+  justify-content: space-between;
+  font-size: large;
+  margin-left: 1.5rem;
+  margin-top: 1rem;
+}
+
+.card-icons {
+  width: 32px;
+}
+
+.card-inputs {
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
 /* PHONES Signup */
 @media only screen and (max-width: 768px) {
 
