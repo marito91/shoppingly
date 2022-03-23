@@ -4,9 +4,10 @@ import { React, useState } from 'react';
 // Components
 import Header from '../components/Header';
 import Men from './Shop/Men'
+import Women from './Shop/Women'
 import Bag from './Shop/Bag';
 import Footer from '../components/Footer';
-import Checkout from './Shop/Checkout';
+
 
 export default function Shop(props) {
 
@@ -16,6 +17,7 @@ export default function Shop(props) {
     <>
       <Header onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} countCartItems={cartItems.length} />
       <Men onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} />
+      <Women onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} />
       <Bag onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} />
       <Footer />
     </>

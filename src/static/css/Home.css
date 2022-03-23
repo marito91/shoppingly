@@ -221,8 +221,13 @@ hr.section-border {
     width: 100%;
   }
   
-  .sections .p {
-    cursor: pointer;
+  .sections-links {
+    text-decoration: none;
+    color: #56453E;
+  }
+
+  .sections-links:hover {
+    color: #E0D7C7;
   }
 
 /* INFORMATION SECTION */
@@ -402,6 +407,11 @@ hr.section-border {
     width: 100%;
     margin-bottom: 1%;
     border-radius: 0.5rem;
+}
+
+#signupbtn {
+    padding-left: 3rem;
+    padding-right: 3rem;
 }
 
 .signup-btn:hover {

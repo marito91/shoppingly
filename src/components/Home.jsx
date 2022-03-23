@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 // Bootstrap
 import Card from 'react-bootstrap/Card'
@@ -20,19 +21,19 @@ import mask from '../static/img/stock-photos/safety.jpeg';
 import commitment from '../static/img/stock-photos/commitment.jpeg';
 import diversity from '../static/img/stock-photos/diversity.jpeg';
 
-// Media women
+// Women
 import clothes from '../static/img/stock-photos/clothes.jpeg';
 import womenModel from '../static/img/stock-photos/womenClothes.jpeg';
 
-// Media men
+// Men
 import display from '../static/img/stock-photos/display.jpg';
 import menModel from '../static/img/stock-photos/menModel.jpeg';
 
-// Media kids
+// Kids
 import kidModel from '../static/img/stock-photos/kids.jpeg';
 import kids from '../static/img/stock-photos/kids-clothes.jpeg';
 
-// Media offers
+// Offers
 import store from '../static/img/stock-photos/store.jpeg';
 import discount from '../static/img/stock-photos/discount.jpeg';
 
@@ -101,7 +102,7 @@ export default function Home(props) {
                             onMouseOver={image => (image.currentTarget.src = display)} 
                             onMouseOut={image => (image.currentTarget.src = menModel)}/>
                     <Card.Body>
-                      <p style={{ cursor: "pointer" }}>Men</p>
+                      <Link to="/shop/men" className='sections-links'>Men</Link>
                     </Card.Body>
                   </Card>
                 </div>
@@ -111,7 +112,7 @@ export default function Home(props) {
                             onMouseOver={image => (image.currentTarget.src = clothes)} 
                             onMouseOut={image => (image.currentTarget.src = womenModel)}/>
                     <Card.Body>
-                      <p style={{ cursor: "pointer" }}>Women</p>
+                    <Link to="/shop/women" className='sections-links'>Women</Link>
                     </Card.Body>
                   </Card>
                 </div>
@@ -123,7 +124,7 @@ export default function Home(props) {
                             onMouseOver={image => (image.currentTarget.src = kids)} 
                             onMouseOut={image => (image.currentTarget.src = kidModel)}/>
                     <Card.Body>
-                      <p style={{ cursor: "pointer" }}>Kids</p>
+                    <Link to="/shop/kids" className='sections-links'>Kids</Link>
                     </Card.Body>
                   </Card>
                 </div>
@@ -240,7 +241,7 @@ export default function Home(props) {
                               checked={information.nation}/>
                           <label className="check-labels">Shoppingly nation</label>
                     </div>
-                    <div className="signup-row">
+                    <div className="signup-row" id='signupbtn'>
                         <button className="signup-btn"><h3><strong>Sign Up</strong></h3></button>
                     </div>
                     <div className="signup-row" style={{ display: "flex" }}>

@@ -38,14 +38,6 @@ export default function Checkout(props) {
         .then(res => res.json())
         .then(res => {
             setCountries(res);
-            /*
-            if (res.status === "ok") {
-                setCountries(res)
-                //console.log(res.mensShirtsCatalogue)
-            } else {
-                setCountries(res)
-                //alert("Could not load info.");
-            }*/
         })
     }, []);
 

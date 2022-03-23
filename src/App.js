@@ -7,6 +7,9 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 // Components
 import Home from './components/Home';
 import Shop from './components/Shop';
+import Men from './components/Shop/Men';
+import Women from './components/Shop/Women';
+import Kids from './components/Shop/Kids';
 import Checkout from './components/Shop/Checkout';
 import Shipping from './components/Shop/Shipping';
 import Payment from './components/Shop/Payment';
@@ -40,8 +43,8 @@ function App() {
   const taxValue = itemPrice * 0.07;
   const shippingValue = itemPrice > 250 ? 0 : 25;
   const total = itemPrice + taxValue + shippingValue;
-  
   */
+
   // This is not practical but it is a temporary solution. It should also be removed from the component
   const handleStandard = event => {
     const value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
@@ -49,6 +52,7 @@ function App() {
         ...userInfo, [event.target.name] : value, express : false, method : "Standard shipping: 6 to 9 business days"
     })
   }
+
   // This is not practical but it is a temporary solution. It should also be removed from the component
   const handleExpress = event => {
     const value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
@@ -101,27 +105,47 @@ function App() {
               onAdd={onAdd} 
               onRemove={onRemove} 
               cartItems={cartItems} 
-              countCartItems={cartItems.length}/* 
-              itemPrice={itemPrice}
-              taxValue={taxValue}
-              shippingValue={shippingValue} 
-              total={total}*/ />} />
+              countCartItems={cartItems.length} />} />
 
           {/* Shopping route for men, receives cart items and basic functions so that data can be manipulated */}
           <Route 
-            path="/shop/men/" 
+            path="/shop" 
             element={<Shop 
               onAdd={onAdd} 
               onRemove={onRemove} 
               cartItems={cartItems} 
-              countCartItems={cartItems.length}/* 
-              itemPrice={itemPrice}
-              taxValue={taxValue}
-              shippingValue={shippingValue} 
-              total={total}*/ />} />
+              countCartItems={cartItems.length} />} />
 
-          {/*<Route path="/shop/women" element={<Shop />} />
-          <Route path="/shop/kids" element={<Shop />} />*/}
+          {/* Shopping route for men, receives cart items and basic functions so that data can be manipulated */}
+          <Route 
+            path="/shop/men" 
+            element={<Men 
+              onAdd={onAdd} 
+              onRemove={onRemove} 
+              cartItems={cartItems} 
+              countCartItems={cartItems.length} />} />
+
+          {/* Shopping route for women, receives cart items and basic functions so that data can be manipulated */}
+          <Route 
+            path="/shop/women" 
+            element={<Women 
+              onAdd={onAdd} 
+              onRemove={onRemove} 
+              cartItems={cartItems} 
+              countCartItems={cartItems.length}
+              userInfo={userInfo} 
+              handleChange={handleChange} />} />
+
+          {/* Shopping route for women, receives cart items and basic functions so that data can be manipulated */}
+          <Route 
+            path="/shop/kids" 
+            element={<Kids 
+              onAdd={onAdd} 
+              onRemove={onRemove} 
+              cartItems={cartItems} 
+              countCartItems={cartItems.length}
+              userInfo={userInfo} 
+              handleChange={handleChange} />} />
 
           {/* Checkout route, receives cart items so that the products transfer to the final steps */}
           <Route 
@@ -132,11 +156,7 @@ function App() {
               cartItems={cartItems} 
               countCartItems={cartItems.length} 
               userInfo={userInfo} 
-              handleChange={handleChange}/*
-              itemPrice={itemPrice}
-              taxValue={taxValue}
-              shippingValue={shippingValue} 
-              total={total}*/ />} /> 
+              handleChange={handleChange} />} /> 
 
           <Route 
             path="/shipping" 
@@ -148,11 +168,7 @@ function App() {
               userInfo={userInfo} 
               handleChange={handleChange}
               handleExpress={handleExpress}
-              handleStandard={handleStandard}/*
-              itemPrice={itemPrice}
-              taxValue={taxValue}
-              shippingValue={shippingValue} 
-              total={total}*/ />} /> 
+              handleStandard={handleStandard} />} /> 
 
           <Route 
             path="/payment" 
@@ -164,11 +180,7 @@ function App() {
               userInfo={userInfo} 
               handleChange={handleChange}
               handleExpress={handleExpress}
-              handleStandard={handleStandard}/*
-              itemPrice={itemPrice}
-              taxValue={taxValue}
-              shippingValue={shippingValue} 
-              total={total}*/ />} /> 
+              handleStandard={handleStandard} />} /> 
         </Routes>
       </BrowserRouter>
     </>

@@ -6,6 +6,8 @@ The Home components will let the page be updated across time so that new content
 
 Please bare in mind that you will need to change the hostbase name so that it connects with the Backend Server, which you can also find in this GitHub Profile. The project uses a little bit of bootstrap but it is mostly done with CSS.
 
+*** I DO NOT OWN ANY OF THE IMAGES USED IN THIS PROJECT. ALL OF THEM WERE EXTRACTED FROM PEXELS.COM SO SHOUTOUT TO THE WONDERFUL PHOTOGRAPHERS ***
+
 ## Available Scripts
 
 In the project directory, you can run:

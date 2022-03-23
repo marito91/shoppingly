@@ -23,7 +23,7 @@ export default function Product(props) {
 
     <div className="garments">
         <Card style={{ border: "none" }}>
-            <Card.Img variant="top" className="models" key={product.img1} value={product.img1} src={require('../../static/img/stock-photos/' + product.img1 + '.jpeg')}                         
+            <Card.Img variant="top" style={{ borderRadius : "0.5rem"}} className="models" key={product.img1} value={product.img1} src={require('../../static/img/stock-photos/' + product.img1 + '.jpeg')}                         
                 onMouseOver={image => (image.currentTarget.src = require('../../static/img/stock-photos/' + product.img2 + '.jpeg'))} 
                 onMouseOut={image => (image.currentTarget.src = require('../../static/img/stock-photos/' + product.img1 + '.jpeg'))}/>
             <Card.Body className="garment-body">
