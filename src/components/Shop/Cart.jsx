@@ -32,44 +32,44 @@ export default function Cart(props) {
             ))}
             {cartItems.length !== 0 && (
                 <>
-                <hr />
-                <div className="bag-row">
-                    <div className="bag-col-2">
-                        Items Price
-                    </div>
-                    <div className="bag-col-1 bag-price">
-                        ${itemPrice.toFixed(2)}
-                    </div>
-                </div>
-                <div className="bag-row">
-                    <div className="bag-col-2">
-                        Tax:
-                    </div>
-                    <div className="bag-col-1 bag-price">
-                        ${taxValue.toFixed(2)}
-                    </div>
-                </div>
-                <div className="bag-row">
-                    <div className="bag-col-2">
-                        Shipping:
-                    </div>
-                    <div className="bag-col-1 bag-price">
-                        ${shippingValue.toFixed(2)}
-                    </div>
-                </div>
-                <div className="bag-row">
-                    <div className="bag-col-2">
-                        <strong>
-                            Total:
-                        </strong>
-                    </div>
-                    <div className="bag-col-1 bag-price">
-                        <strong>
-                            ${total.toFixed(2)}
-                        </strong>
-                    </div>
-                </div>
-                <hr />
+                    <hr />
+                        <div className="bag-row">
+                            <div className="bag-col-2">
+                                Items Price
+                            </div>
+                            <div className="bag-col-1 bag-price">
+                                ${itemPrice.toFixed(2)}
+                            </div>
+                        </div>
+                        <div className="bag-row">
+                            <div className="bag-col-2">
+                                Tax:
+                            </div>
+                            <div className="bag-col-1 bag-price">
+                                ${taxValue.toFixed(2)}
+                            </div>
+                        </div>
+                        <div className="bag-row">
+                            <div className="bag-col-2">
+                                Shipping:
+                            </div>
+                            <div className="bag-col-1 bag-price">
+                                ${shippingValue.toFixed(2)}
+                            </div>
+                        </div>
+                        <div className="bag-row">
+                            <div className="bag-col-2">
+                                <strong>
+                                    Total:
+                                </strong>
+                            </div>
+                            <div className="bag-col-1 bag-price">
+                                <strong>
+                                    ${total.toFixed(2)}
+                                </strong>
+                            </div>
+                        </div>
+                    <hr />
                 </>
             )}
       </>

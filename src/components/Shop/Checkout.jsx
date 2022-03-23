@@ -45,6 +45,7 @@ export default function Checkout(props) {
   return (
       
     <>
+        <div style={{ backgroundColor: "#56453E", paddingTop: "4rem" }}/> 
         <div className='row main-font'>
             <div className='checkout-col1'>
                 <h1 className='logoFont' style={{ textAlign: "center", fontSize: "4rem" }}><strong>Shoppingly</strong></h1>

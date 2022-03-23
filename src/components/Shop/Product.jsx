@@ -31,8 +31,7 @@ export default function Product(props) {
                 <Card.Text key={product.price} value={product.price}>${product.price}</Card.Text>
                     <select key={product.id} value={size} onChange={handleChange} name="" id="" className="size">
                         {product.sizes.map(size => <option key={size} value={size}>{size}</option>)}
-                        </select>
-                    {/*<button className="add-btn" onClick={() => addProduct( product.name, product.price, size, product.img1 )}>Add to cart</button>*/}
+                    </select>
                     <button className="add-btn" onClick={() => onAdd(product)}>Add to cart</button>
             </Card.Body>
         </Card>

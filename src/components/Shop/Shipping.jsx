@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 // CSS
@@ -16,6 +16,7 @@ export default function Shipping(props) {
   return (
       
     <>
+        <div style={{ backgroundColor: "#56453E", paddingTop: "4rem" }}/> 
         <div className='row main-font'>
             <div className='checkout-col1'>
                 <h1 className='logoFont' style={{ textAlign: "center", fontSize: "4rem" }}><strong>Shoppingly</strong></h1>
@@ -69,7 +70,7 @@ export default function Shipping(props) {
                     </div>
                     <hr className='division' />
                     <div className='shipping-row'>
-                    <div className='shipping-col-1'>
+                        <div className='shipping-col-1'>
                             <input
                                 className="checkboxes" 
                                 style={{ margin: ".4rem" }} 
@@ -85,7 +86,6 @@ export default function Shipping(props) {
                 </div>
                 <div className="signup-row shipping">
                     <a href="" className='login-link' style={{ fontSize: "medium", display: "inline" }}>{'<'}&nbsp;Return to cart</a>
-                    {/*<button className="shipping-btn">Continue to payment</button>*/}
                     <Link to="/payment" type='button' className='shipping-btn'>Continue to payment</Link>
                 </div>
             </div>

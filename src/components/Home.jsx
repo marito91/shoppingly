@@ -1,6 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import hostbase from './vars.js';
 
 // Bootstrap
 import Card from 'react-bootstrap/Card'
@@ -47,18 +48,43 @@ export default function Home(props) {
       nation: false
     })
 
+    const nameRef = useRef();
+    const lastRef = useRef();
+    const mailRef = useRef();
+    const dateRef = useRef();
+    const offersRef = useRef();
+    const ideasRef = useRef();
+    const nationRef = useRef();
+
     const handleChange = event => {
         const value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
         setCrew({
             ...crew, [event.target.name] : value
         })
+        
     }
 
     const handleSubmit = event => {
         event.preventDefault();
-        console.log(crew)
+        setCrew({
+          ...crew,
+          firstName : nameRef.current.value,
+          lastName : lastRef.current.value,
+          email : mailRef.current.value,
+          date : dateRef.current.value
+        })
         alert("Thank you for subscribing! Welcome to the club!")
-    }
+
+        fetch(`${hostbase}/users/newsletter`, {
+          headers:{ "content-type" : "application/json" },
+          method:"POST",
+          body: JSON.stringify({crew})
+            }).then(res => res.json())
+              .then(res => {
+                  console.log(res.msg)
+          })
+        }
+
 
   return (
         <>
@@ -172,7 +198,8 @@ export default function Home(props) {
                               type="text" 
                               name="firstName"
                               placeholder="Your first name"
-                              value={crew.firstName} 
+                              value={crew.firstName}
+                              ref={nameRef} 
                               onChange={handleChange} 
                               required/>
                       </div>
@@ -183,7 +210,8 @@ export default function Home(props) {
                               type="text" 
                               name="lastName" 
                               placeholder="Your last name" 
-                              value={crew.lastName} 
+                              value={crew.lastName}
+                              ref={lastRef}  
                               onChange={handleChange} 
                               required/>
                       </div>
@@ -195,7 +223,8 @@ export default function Home(props) {
                           type="text" 
                           name="email"
                           placeholder="Email address"  
-                          value={crew.email} 
+                          value={crew.email}
+                          ref={mailRef}  
                           onChange={handleChange} 
                           required/>
                   </div>
@@ -206,6 +235,7 @@ export default function Home(props) {
                           type="date" 
                           name="date"
                           value={crew.date} 
+                          ref={dateRef} 
                           onChange={handleChange} 
                           required/>
                   </div>
@@ -216,6 +246,7 @@ export default function Home(props) {
                               style={{ margin: ".4rem" }} 
                               name="offers" 
                               type="checkbox"
+                              ref={offersRef} 
                               onChange={handleChange}
                               checked={crew.offers}/>
                           <label className="check-labels">Exclusive offers</label><br />
@@ -224,6 +255,7 @@ export default function Home(props) {
                               style={{ margin: ".4rem" }} 
                               name="ideas" 
                               type="checkbox"
+                              ref={ideasRef} 
                               onChange={handleChange}
                               checked={crew.ideas}/>
                           <label className="check-labels">Sets ideas</label><br />
@@ -232,6 +264,7 @@ export default function Home(props) {
                               style={{ margin: ".4rem" }} 
                               name="nation" 
                               type="checkbox"
+                              ref={nationRef} 
                               onChange={handleChange}
                               checked={crew.nation}/>
                           <label className="check-labels">Shoppingly nation</label>

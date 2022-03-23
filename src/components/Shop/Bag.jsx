@@ -29,6 +29,7 @@ export default function Bag(props) {
 
     function confirm() {
         window.confirm("Do you want to check out?");
+        handleClose()
     }
   
     return (
