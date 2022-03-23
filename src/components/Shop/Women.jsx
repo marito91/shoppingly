@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-// Libraries
-//import { Navbar, Nav, Container, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
-
 // CSS
 import '../../static/css/Main.css';
 import '../../static/css/Shop/Shopping.css';
@@ -10,9 +7,7 @@ import hostbase from '../vars.js';
 
 // Components
 import Product from './Product';
-import Header from '../../components/Header';
 import Bag from '../Shop/Bag';
-import Footer from '../../components/Footer';
 
 
 export default function Women(props) {
@@ -78,7 +73,6 @@ export default function Women(props) {
 
   return (
       <> 
-        <Header onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} countCartItems={cartItems.length} />
         <h1 className="main-font section">Women's Shirts</h1>
         <div className="shopping main-font">
             {shirts.map(product => (
@@ -120,7 +114,6 @@ export default function Women(props) {
             ))}
         </div>
         <Bag onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} />
-        <Footer />
     </>
   )
 }

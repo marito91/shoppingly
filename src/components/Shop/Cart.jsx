@@ -7,8 +7,6 @@ import React from 'react'
 import '../../static/css/Main.css';
 import '../../static/css/Shop/Shopping.css';
 
-// Components
-
 
 
 export default function Cart(props) {

@@ -5,10 +5,6 @@ import { Link } from 'react-router-dom';
 // Bootstrap
 import Card from 'react-bootstrap/Card'
 
-// Components
-import Header from './Header'
-import Footer from './Footer'
-
 // CSS
 import '../static/css/Main.css';
 import '../static/css/Home.css';
@@ -41,9 +37,7 @@ import discount from '../static/img/stock-photos/discount.jpeg';
 
 export default function Home(props) {
 
-    const { cartItems, onAdd, onRemove } = props;
-
-    const [information, setInformation] = useState({
+    const [crew, setCrew] = useState({
       firstName : "",
       lastName : "",
       email : "",
@@ -55,31 +49,28 @@ export default function Home(props) {
 
     const handleChange = event => {
         const value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
-        setInformation({
-            ...information, [event.target.name] : value
+        setCrew({
+            ...crew, [event.target.name] : value
         })
     }
 
     const handleSubmit = event => {
         event.preventDefault();
-        console.log(information)
+        console.log(crew)
         alert("Thank you for subscribing! Welcome to the club!")
     }
 
   return (
         <>
-            <Header onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} countCartItems={cartItems.length} />  
-            <section style={{ backgroundColor: "white"}}>
-              <div className="discount-section main-font">
-                  <h3 className="discount-header header2">Up to </h3>
-                  <h1 className="discount-header header1"> <strong> 50% </strong></h1>
-                  <h3 className="discount-header header2">discount</h3>
+          <div className='header-background'/> 
+            <section className='main-font'>
+              <div className="discount-section">
+                <h1 className="discount-header" >Up to <strong>50%</strong> discount</h1>
+                  <button className="discount-btn" style={{ color: "#56453E" }}>Learn more</button>
                   <br />
-                  <button className="discount-btn" style={{ color: "#56453E" }}><h6 className="header4">Learn more</h6></button>
-                  <br />
-                  <h5 className="discount-header header3">*Valid only for references for the selected event tag. 
+                  <h3 className="discount-header2">*Valid only for references for the selected event tag. 
                     Promos are subject to terms and conditions and each store's availability. 
-                    Coupons are valid for both online and physical stores.</h5>
+                    Coupons are valid for both online and physical stores.</h3>
               </div>
             </section>
             <div className="womens-wear">
@@ -95,12 +86,14 @@ export default function Home(props) {
             </div>
             <hr className="section-border" />
             <h2 className="main-font title" style={{ marginTop: "5%", marginBottom: "5%" }}>Clothing</h2>
-            <div className="row main-font">
+            <div className="row main-font sections-row">
                 <div className="column">
                   <Card style={{ textAlign: "center", border: "none"  }}>
-                    <Card.Img className="sections" src={menModel} 
+                    <Link to="/shop/men" className='sections-links'>
+                      <Card.Img className="sections" src={menModel}
                             onMouseOver={image => (image.currentTarget.src = display)} 
                             onMouseOut={image => (image.currentTarget.src = menModel)}/>
+                    </Link>
                     <Card.Body>
                       <Link to="/shop/men" className='sections-links'>Men</Link>
                     </Card.Body>
@@ -108,21 +101,25 @@ export default function Home(props) {
                 </div>
                 <div className="column">
                   <Card style={{ textAlign: "center", border: "none" }}>
-                    <Card.Img className="sections" src={womenModel} 
+                    <Link to="/shop/women" className='sections-links'>
+                      <Card.Img className="sections" src={womenModel} 
                             onMouseOver={image => (image.currentTarget.src = clothes)} 
                             onMouseOut={image => (image.currentTarget.src = womenModel)}/>
+                    </Link>
                     <Card.Body>
                     <Link to="/shop/women" className='sections-links'>Women</Link>
                     </Card.Body>
                   </Card>
                 </div>
             </div>
-            <div className="row main-font">
+            <div className="row main-font sections-row">
                 <div className="column">
                   <Card style={{ textAlign: "center", border: "none" }}>
-                    <Card.Img className="sections" src={kidModel} 
+                    <Link to="/shop/kids" className='sections-links'>
+                      <Card.Img className="sections" src={kidModel} 
                             onMouseOver={image => (image.currentTarget.src = kids)} 
                             onMouseOut={image => (image.currentTarget.src = kidModel)}/>
+                    </Link>
                     <Card.Body>
                     <Link to="/shop/kids" className='sections-links'>Kids</Link>
                     </Card.Body>
@@ -141,7 +138,7 @@ export default function Home(props) {
             </div>
             <hr className="section-border" />
             <h2 className="main-font title" style={{ marginTop: "5%", marginBottom: "5%" }}>More about <strong className="logoFont">Shoppingly</strong></h2>
-            <div className="row main-font" id="grid" style={{ marginBottom: "5%" }}>
+            <div className="row main-font sections-row" id="grid" style={{ marginBottom: "5%" }}>
                 <div className="info-sections" style={{ backgroundImage: `url(${mask})`, backgroundPosition: "center", backgroundSize: "cover" }}>
                     <h2 style={{ color: "white" }}>Safety</h2>
                     <p className="info-text">Our team meets all of the safety measures related to Covid-19. All of our products are cleaned constantly with no harm whatsoever on the materials.</p>
@@ -160,9 +157,7 @@ export default function Home(props) {
             </div>
             <div className="main-font invitation-banner">
                 <h1 className="join-header">Join the nation and get <strong>15%</strong> discount on your next purchase. Did we mention that a friend can also get an additional <strong>10%</strong> discount? </h1>
-                <br />
-                <button className="discount-btn" style={{ color: "#56453E" }}><h6 className="header4">Get now</h6></button>
-                <br />
+                <button className="discount-btn" style={{ color: "#56453E" }}>Get now</button>
             </div>
             <div className="form-container main-font">
               <h1 style={{ textAlign: "center" }}><strong>Join our crew!</strong></h1>
@@ -177,7 +172,7 @@ export default function Home(props) {
                               type="text" 
                               name="firstName"
                               placeholder="Your first name"
-                              value={information.firstName} 
+                              value={crew.firstName} 
                               onChange={handleChange} 
                               required/>
                       </div>
@@ -188,7 +183,7 @@ export default function Home(props) {
                               type="text" 
                               name="lastName" 
                               placeholder="Your last name" 
-                              value={information.lastName} 
+                              value={crew.lastName} 
                               onChange={handleChange} 
                               required/>
                       </div>
@@ -200,7 +195,7 @@ export default function Home(props) {
                           type="text" 
                           name="email"
                           placeholder="Email address"  
-                          value={information.email} 
+                          value={crew.email} 
                           onChange={handleChange} 
                           required/>
                   </div>
@@ -210,7 +205,7 @@ export default function Home(props) {
                           className="signup-inputs" 
                           type="date" 
                           name="date"
-                          value={information.date} 
+                          value={crew.date} 
                           onChange={handleChange} 
                           required/>
                   </div>
@@ -222,7 +217,7 @@ export default function Home(props) {
                               name="offers" 
                               type="checkbox"
                               onChange={handleChange}
-                              checked={information.offers}/>
+                              checked={crew.offers}/>
                           <label className="check-labels">Exclusive offers</label><br />
                           <input 
                               className="checkboxes" 
@@ -230,7 +225,7 @@ export default function Home(props) {
                               name="ideas" 
                               type="checkbox"
                               onChange={handleChange}
-                              checked={information.ideas}/>
+                              checked={crew.ideas}/>
                           <label className="check-labels">Sets ideas</label><br />
                           <input 
                               className="checkboxes" 
@@ -238,7 +233,7 @@ export default function Home(props) {
                               name="nation" 
                               type="checkbox"
                               onChange={handleChange}
-                              checked={information.nation}/>
+                              checked={crew.nation}/>
                           <label className="check-labels">Shoppingly nation</label>
                     </div>
                     <div className="signup-row" id='signupbtn'>
@@ -250,7 +245,6 @@ export default function Home(props) {
                     </div>
                 </form>
             </div>
-            <Footer />
         </>
     )
 }

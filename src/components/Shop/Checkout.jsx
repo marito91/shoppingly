@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 // CSS
 import '../../static/css/Main.css';
 import '../../static/css/Shop/Checkout.css';
-import hostbase from '../vars.js';
+
 
 // Components
 import Cart from './Cart';
@@ -60,7 +60,7 @@ export default function Checkout(props) {
                 <form className="signup form" onSubmit={handleSubmit}>
                     <div className='contact-info'>
                         <strong><p>Contact Information</p></strong>
-                        <p className='login-info'>Already have an account?&nbsp;<a href="" className='login-link'>Log in</a></p>
+                        <p className='login-info'>Already have an account?&nbsp;<a href="#" className='login-link'>Log in</a></p>
                     </div>
                     <div className="signup-row">
                         <div style={{ maxWidth: "100%"}}>

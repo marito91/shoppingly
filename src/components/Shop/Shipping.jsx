@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // CSS
@@ -11,7 +11,7 @@ import Cart from './Cart';
 
 export default function Shipping(props) {
 
-    const { cartItems, userInfo, handleStandard, handleExpress } = props;
+    const { cartItems, userInfo } = props;
 
   return (
       
@@ -58,11 +58,9 @@ export default function Shipping(props) {
                             <input
                                 className="checkboxes" 
                                 style={{ margin: ".4rem" }} 
-                                name="standard" 
-                                type="checkbox"
-                                value={userInfo.standard}
-                                onChange={handleStandard}
-                                checked={userInfo.standard}/>
+                                name="shipping" 
+                                type="radio"
+                                value={userInfo.standard} />
                             <label style={{ fontSize: "large", display: "inline" }}>Standard shipping: 6 to 9 business days</label>        
                         </div>
                         <div className='shipping-col-2'>
@@ -75,11 +73,9 @@ export default function Shipping(props) {
                             <input
                                 className="checkboxes" 
                                 style={{ margin: ".4rem" }} 
-                                name="express" 
-                                type="checkbox"
-                                value={userInfo.express}                                
-                                onChange={handleExpress}
-                                checked={userInfo.express}/>
+                                name="shipping" 
+                                type="radio"
+                                value={userInfo.express} />
                             <label style={{ fontSize: "large", display: "inline" }}>Express shipping: 3 business days</label>        
                         </div>
                         <div className='shipping-col-2'>

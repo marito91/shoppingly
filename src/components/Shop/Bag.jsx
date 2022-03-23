@@ -9,8 +9,6 @@ import { Link } from 'react-router-dom';
 import '../../static/css/Main.css';
 import '../../static/css/Shop/Shopping.css';
 
-// Components
-
 
 
 export default function Bag(props) {
@@ -29,9 +27,8 @@ export default function Bag(props) {
     const total = itemPrice + taxValue + shippingValue;
     
 
-    function checkout() {
-        const confirm = window.confirm("Do you want to check out?");
-
+    function confirm() {
+        window.confirm("Do you want to check out?");
     }
   
     return (
@@ -98,7 +95,7 @@ export default function Bag(props) {
                     </div>
                     <hr />
                     <div className="bag-row">
-                        <Link to="/checkout" className='checkout' onClick={checkout}>Checkout</Link>
+                        <Link to="/checkout" className='checkout' onClick={confirm}>Checkout</Link>
                     </div>
                   </>
               )}

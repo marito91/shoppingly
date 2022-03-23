@@ -5,6 +5,8 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 
 // Components
+import Header from './components/Header';
+import Footer from './components/Footer';
 import Home from './components/Home';
 import Shop from './components/Shop';
 import Men from './components/Shop/Men';
@@ -44,6 +46,7 @@ function App() {
   const shippingValue = itemPrice > 250 ? 0 : 25;
   const total = itemPrice + taxValue + shippingValue;
   */
+
 
   // This is not practical but it is a temporary solution. It should also be removed from the component
   const handleStandard = event => {
@@ -96,8 +99,8 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <Header onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} countCartItems={cartItems.length} /> 
         <Routes>
-
           {/* Home route, receives cart items so that the Header offcanvas works */}
           <Route 
             path="/" 
@@ -182,6 +185,7 @@ function App() {
               handleExpress={handleExpress}
               handleStandard={handleStandard} />} /> 
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   );

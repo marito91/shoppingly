@@ -1,83 +1,39 @@
 /* PROMO SECTION */
 
+.header-background {
+    background-color: #56453E;
+    padding-top: 4rem;
+}
+
 .discount-section {
     background-color: #56453E;
     text-align: center;
-    padding: 10px;
-    padding-top: 5%;
+    padding: 2rem;
 }
 
 .discount-header {
-    display: inline;
-    float: inline-end;
     color: #E0D7C7;
 }
 
-.header1 {
-    font-size: 130px;
-}
-
-.header2{
-    font-size: 80px;
-}
-
-.header3 {
-    font-size: 15px;
+.discount-header2 {
+    color: #E0D7C7;
+    font-size: medium;
 }
 
 .discount-btn {
-    margin-bottom: 1%;
-    padding-left: 55px;
-    padding-right: 55px;
+    padding: 0.5rem;
     border-radius: 0.5rem;
-}
-
-.header4 {
-    font-size: 40px;
+    margin-bottom: 1rem;
+    font-size: x-large;
 }
 
 .discount-btn:hover {
     background-color: #E0D7C7;
 }
 
-/* Small Laptops */
-@media only screen and (max-width: 1200px) {
-    /* Small Laptops */
-    .discount-section {
-        padding-top: 10%;
-    }
-
-    .header1 {
-        font-size: 50px;
-    }
-    
-    .header2{
-        font-size: 25px;
-    }
-
-    .header3 {
-        font-size: 10px;
-        margin-left: 2%;
-        margin-right: 2%;
-    }
-
-    .discount-btn {
-        margin-top: 2%;
-        margin-bottom: 2%;
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-    
-    .header4 {
-        font-size: 15px;
-    }
-}
 
 /* PHONES */
 @media only screen and (max-width: 768px) {
-    .discount-section {
-        padding-top: 20%;
-    }
 
     .pic1 {
         display: none;
@@ -85,6 +41,18 @@
 
     .pic3 {
         display: none;
+    }
+
+    .discount-btn {
+        margin-top: 0.3rem;
+        padding: 0.5rem;
+        font-size: medium;
+    }
+
+    .discount-header2 {
+        margin-top: 0.5rem;
+        color: #E0D7C7;
+        font-size: small;
     }
 }
     
@@ -138,36 +106,6 @@
     }
 }
 
-    /* Small Laptops */
-    @media only screen and (max-width: 1200px) {  
-
-        
-    }
-    
-    /* TABLETS */
-    @media only screen and (max-width: 1020px) {
-        
-
-    }
-
-
-    /* PHONES */
-    @media only screen and (max-width: 768px) {
-
-        .womens-wear {
-            display: none;
-        }
-
-        .pic1 {
-            display: none;
-        }
-
-        .pic3 {
-            display: none;
-        }
-
-    }
-    
 
 
 /* SECTIONS SECTION */
@@ -278,19 +216,13 @@ hr.section-border {
 
 .invitation-banner {
   background-color: #56453E;
-  margin-bottom: 5%;
-  padding-right: 2%;
-  padding-left: 2%;
-  padding-top: 6%;
-  padding-bottom: 6%;
+  margin-bottom: 2rem;
+  padding: 2rem;
   text-align: center;
 }
 
 .join-header {
-    display: inline;
-    float: inline-end;
     color: #E0D7C7;
-    font-size: 60px;
 }
 
 .join-btn {
@@ -315,24 +247,24 @@ hr.section-border {
         padding-top: 4%;
         padding-right: 4%;
         padding-bottom: 4%;
-        margin-bottom: 5%;
-
+        margin-bottom: 1rem;
       }
 
-      .info-text {
+    .info-text {
         font-size: large;
     }
 
     .join-header {
-        display: inline;
-        float: inline-end;
-        color: #E0D7C7;
         font-size: 20px;
+    }
+
+    .sections-row {
+        margin: 1rem;
     }
 
 }
 
-  /* PHONES */
+  /* Only for Desktop */
   @media only screen and (min-width: 992px) {
 
         #grid {
@@ -343,7 +275,6 @@ hr.section-border {
             padding-left: 3%;
             padding-right: 3%;
         }
-
 }
 
   /* PHONES */
@@ -355,6 +286,9 @@ hr.section-border {
 
     .info-btn {
         font-size: large;
+    }
+    .sections-row {
+        margin: 1rem;
     }
 
 }
