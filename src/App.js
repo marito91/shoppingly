@@ -40,13 +40,6 @@ function App() {
     method: ""
   })
 
-  /*
-  const itemPrice = cartItems.reduce((accumulator, item) => accumulator + (item.price * item.qty), 0);
-  const taxValue = itemPrice * 0.07;
-  const shippingValue = itemPrice > 250 ? 0 : 25;
-  const total = itemPrice + taxValue + shippingValue;
-  */
-
   const handleChange = event => {
     const value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
     setUserInfo({
@@ -54,6 +47,7 @@ function App() {
     })
   }
   
+  // Function for adding products to cart. First it checks if the product exists, and if so it adds 1 to the quantity. If not, then it adds the new product to the list.
   const onAdd = (product) => {
     const productExists = cartItems.find(item => item.id === product.id);
     if (productExists) {
@@ -65,6 +59,8 @@ function App() {
     }
   }
 
+  // Function for removing products from the cart. It checks first if the product exists in the list. If so, it removes it from the list (filter) if there is only one. 
+  // If there is more than one, then it subtracts one from the quantity.
   const onRemove = (product) => {
     const productExists = cartItems.find(item => item.id === product.id);
     if (productExists.qty === 1) {
@@ -81,16 +77,12 @@ function App() {
       <BrowserRouter>
         <Header onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} countCartItems={cartItems.length} /> 
         <Routes>
-          {/* Home route, receives cart items so that the Header offcanvas works */}
+          {/* Home route */}
           <Route 
             path="/" 
-            element={<Home 
-              onAdd={onAdd} 
-              onRemove={onRemove} 
-              cartItems={cartItems} 
-              countCartItems={cartItems.length} />} />
+            element={<Home />} />
 
-          {/* Shopping route for men, receives cart items and basic functions so that data can be manipulated */}
+          {/* Shopping route for all products, receives cart items and basic functions so that data can be manipulated */}
           <Route 
             path="/shop" 
             element={<Shop 
@@ -119,7 +111,7 @@ function App() {
               userInfo={userInfo} 
               handleChange={handleChange} />} />
 
-          {/* Shopping route for women, receives cart items and basic functions so that data can be manipulated */}
+          {/* Shopping route for kids, receives cart items and basic functions so that data can be manipulated */}
           <Route 
             path="/shop/kids" 
             element={<Kids 
@@ -160,7 +152,7 @@ function App() {
               countCartItems={cartItems.length} 
               userInfo={userInfo} 
               handleChange={handleChange} />} /> 
-              
+
         </Routes>
         <Footer />
       </BrowserRouter>

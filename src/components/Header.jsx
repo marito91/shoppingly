@@ -31,7 +31,7 @@ export default function Header(props) {
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse className="main-font" id="basic-navbar-nav">
-                        <Nav className="me-auto links" style={{ fontSize: "x-large" }} >
+                        <Nav className="me-auto links" style={{ fontSize: "large" }} >
                             <NavDropdown title="Clothing" id="basic-nav-dropdown">
                                 <Link to="/shop/men" className='dropdown-item' role="button">Men</Link>
                                 <Link to="/shop/women" className='dropdown-item' role="button">Women</Link>

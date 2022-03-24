@@ -36,7 +36,7 @@ import discount from '../static/img/stock-photos/discount.jpeg';
 
 
 
-export default function Home(props) {
+export default function Home() {
 
     const [crew, setCrew] = useState({
       firstName : "",
