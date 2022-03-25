@@ -49,9 +49,9 @@ function App() {
   
   // Function for adding products to cart. First it checks if the product exists, and if so it adds 1 to the quantity. If not, then it adds the new product to the list.
   const onAdd = (product) => {
-    const productExists = cartItems.find(item => item.id === product.id);
+    const productExists = cartItems.find(item => item._id === product._id);
     if (productExists) {
-      setCartItems(cartItems.map(item => item.id === product.id ? {...productExists, qty: productExists.qty + 1} : item 
+      setCartItems(cartItems.map(item => item._id === product._id ? {...productExists, qty: productExists.qty + 1} : item 
         )
       );
     } else {
@@ -62,11 +62,11 @@ function App() {
   // Function for removing products from the cart. It checks first if the product exists in the list. If so, it removes it from the list (filter) if there is only one. 
   // If there is more than one, then it subtracts one from the quantity.
   const onRemove = (product) => {
-    const productExists = cartItems.find(item => item.id === product.id);
+    const productExists = cartItems.find(item => item._id === product._id);
     if (productExists.qty === 1) {
-      setCartItems(cartItems.filter((item) => item.id !== product.id ));
+      setCartItems(cartItems.filter((item) => item._id !== product._id ));
     } else {
-      setCartItems(cartItems.map(item => item.id === product.id ? {...productExists, qty: productExists.qty - 1} : item 
+      setCartItems(cartItems.map(item => item._id === product._id ? {...productExists, qty: productExists.qty - 1} : item 
         )
       );
     }

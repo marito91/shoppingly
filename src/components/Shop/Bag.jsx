@@ -44,7 +44,7 @@ export default function Bag(props) {
           <Offcanvas.Body>
               <div>{cartItems.length === 0 && <div>Your cart is empty</div>}</div>     
               {cartItems.map((item) => (
-                  <div key={item.id} className="bag-row">
+                  <div key={item._id} className="bag-row">
                     <div className="bag-col-2">{item.name}</div>
                     <div>
                         <button onClick={() => onRemove(item)} className="remove">-</button>

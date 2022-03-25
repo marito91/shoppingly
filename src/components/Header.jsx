@@ -38,8 +38,8 @@ export default function Header(props) {
                                 <Link to="/shop/kids" className='dropdown-item' role="button">Kids</Link>
                             </NavDropdown>
                             <Nav.Link href="#">Accesories</Nav.Link>
-                            <Nav.Link href="#">About Us</Nav.Link>
                             <Nav.Link href="#">Offers</Nav.Link>
+                            <Nav.Link href="#">About Us</Nav.Link>
                         </Nav>
                         <Form className="d-flex" style={{ fontSize: "large" }} >
                             <FormControl type="search" placeholder="Something in mind?" className="me-2" aria-label="Search" />
