@@ -73,7 +73,7 @@ export default function Home() {
           email : mailRef.current.value,
           date : dateRef.current.value
         })
-        alert("Thank you for subscribing! Welcome to the club!")
+        
 
         fetch(`${hostbase}/users/newsletter`, {
           headers:{ "content-type" : "application/json" },
@@ -82,6 +82,7 @@ export default function Home() {
             }).then(res => res.json())
               .then(res => {
                   console.log(res.msg)
+                  alert(res.msg)
           })
         }
 

@@ -33,9 +33,9 @@ export default function Header(props) {
                     <Navbar.Collapse className="main-font" id="basic-navbar-nav">
                         <Nav className="me-auto links" style={{ fontSize: "large" }} >
                             <NavDropdown title="Clothing" id="basic-nav-dropdown">
-                                <Link to="/shop/men" className='dropdown-item' role="button">Men</Link>
-                                <Link to="/shop/women" className='dropdown-item' role="button">Women</Link>
-                                <Link to="/shop/kids" className='dropdown-item' role="button">Kids</Link>
+                                <NavDropdown.Item><Link to="/shop/men" className='dropdown-item' role="button">Men</Link></NavDropdown.Item>
+                                <NavDropdown.Item><Link to="/shop/women" className='dropdown-item' role="button">Women</Link></NavDropdown.Item>
+                                <NavDropdown.Item><Link to="/shop/kids" className='dropdown-item' role="button">Kids</Link></NavDropdown.Item>
                             </NavDropdown>
                             <Nav.Link href="#">Accesories</Nav.Link>
                             <Nav.Link href="#">Offers</Nav.Link>

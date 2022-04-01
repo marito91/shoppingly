@@ -9,6 +9,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
 import Shop from './components/Shop';
+import Signup from './components/Signup';
 import Men from './components/Shop/Men';
 import Women from './components/Shop/Women';
 import Kids from './components/Shop/Kids';
@@ -25,7 +26,9 @@ function App() {
   const [userInfo, setUserInfo] = useState({
     firstName : "",
     lastName : "",
+    document : "",
     email : "",
+    birthdate : "",
     phone: "",
     country : "",
     city : "",
@@ -76,11 +79,17 @@ function App() {
     <>
       <BrowserRouter>
         <Header onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} countCartItems={cartItems.length} /> 
+        
         <Routes>
           {/* Home route */}
           <Route 
             path="/" 
             element={<Home />} />
+
+          {/* Signup route */}
+          <Route 
+            path="/signup" 
+            element={<Signup />} />
 
           {/* Shopping route for all products, receives cart items and basic functions so that data can be manipulated */}
           <Route 
