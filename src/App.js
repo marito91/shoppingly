@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
+import hostbase from './components/vars';
+
 
 // Components
 import Header from './components/Header';
@@ -28,26 +30,55 @@ function App() {
     lastName : "",
     document : "",
     email : "",
-    birthdate : "",
-    phone: "",
-    country : "",
-    city : "",
+    date : "",
     address : "",
-    apt : "",
-    postalCode : "",
-    tracking: false,
+    phone : "",
+    username : "",
+    password : "",
     offers: false,
-    terms: false,
-    standard: false,
-    express: false,
-    method: ""
-  })
+    ideas: false,
+    nation: false
+})
 
   const handleChange = event => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setUserInfo(userInfo => ({...userInfo, [name]: value}))
+  }
+
+  const handleChangeCheckbox = event => {
     const value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
     setUserInfo({
         ...userInfo, [event.target.name] : value
     })
+  }
+
+  // Function for submitting new users, it is used in the Signup component.
+  const submitNewUser = event => {
+    event.preventDefault();
+    fetch(`${hostbase}/users/newUsers`, {
+      headers:{ "content-type" : "application/json" },
+      method:"POST",
+      body: JSON.stringify({userInfo})
+        }).then(res => res.json())
+          .then(res => {
+              console.log(res.msg)
+              alert(res.msg)
+      })
+  }
+
+  // Function for submitting newsletter users, it is used in the Home component.
+  const submitNewsletter = event => {
+    event.preventDefault();
+    fetch(`${hostbase}/users/newsletter`, {
+      headers:{ "content-type" : "application/json" },
+      method:"POST",
+      body: JSON.stringify({userInfo})
+        }).then(res => res.json())
+          .then(res => {
+              console.log(res.msg)
+              alert(res.msg)
+      })
   }
   
   // Function for adding products to cart. First it checks if the product exists, and if so it adds 1 to the quantity. If not, then it adds the new product to the list.
@@ -75,21 +106,31 @@ function App() {
     }
   }
 
+
   return (
     <>
       <BrowserRouter>
+
         <Header onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} countCartItems={cartItems.length} /> 
         
         <Routes>
           {/* Home route */}
           <Route 
             path="/" 
-            element={<Home />} />
+            element={<Home
+              userInfo={userInfo} 
+              handleChange={handleChange}
+              handleChangeCheckbox={handleChangeCheckbox}
+              submitNewsletter={submitNewsletter} />} />
 
           {/* Signup route */}
           <Route 
             path="/signup" 
-            element={<Signup />} />
+            element={<Signup
+              userInfo={userInfo} 
+              handleChange={handleChange}
+              handleChangeCheckbox={handleChangeCheckbox}
+              submitNewUser={submitNewUser} />} />
 
           {/* Shopping route for all products, receives cart items and basic functions so that data can be manipulated */}
           <Route 
@@ -117,7 +158,6 @@ function App() {
               onRemove={onRemove} 
               cartItems={cartItems} 
               countCartItems={cartItems.length}
-              userInfo={userInfo} 
               handleChange={handleChange} />} />
 
           {/* Shopping route for kids, receives cart items and basic functions so that data can be manipulated */}
@@ -128,7 +168,6 @@ function App() {
               onRemove={onRemove} 
               cartItems={cartItems} 
               countCartItems={cartItems.length}
-              userInfo={userInfo} 
               handleChange={handleChange} />} />
 
           {/* Checkout route, receives cart items so that the products transfer to the final steps */}
@@ -163,7 +202,9 @@ function App() {
               handleChange={handleChange} />} /> 
 
         </Routes>
+
         <Footer />
+
       </BrowserRouter>
     </>
   );

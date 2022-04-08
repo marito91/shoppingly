@@ -1,79 +1,20 @@
-import React, {useState, useRef} from 'react'
+import React, {useState} from 'react'
 import hostbase from './vars.js';
 
 // CSS
 import '../static/css/Main.css';
 import '../static/css/Home.css';
 
-export default function Signup() {
+export default function Signup(props) {
 
-    const [user, setUser] = useState({
-        firstName : "",
-        lastName : "",
-        document : "",
-        email : "",
-        date : "",
-        address : "",
-        phone : "",
-        username : "",
-        password : "",
-        offers: false,
-        ideas: false,
-        nation: false
-    })
+    const { userInfo, handleChange, handleChangeCheckbox, submitNewUser } = props;
 
-    const nameRef = useRef();
-    const lastRef = useRef();
-    const mailRef = useRef();
-    const docRef = useRef();
-    const addressRef = useRef();
-    const phoneRef = useRef();
-    const dateRef = useRef();
-    const offersRef = useRef();
-    const ideasRef = useRef();
-    const nationRef = useRef();
-    const userRef = useRef();
-    const passRef = useRef();
-
-    const handleChange = event => {
-        const value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
-        setUser({
-            ...user, [event.target.name] : value
-        })
-        
-    }
-
-    const handleSubmit = event => {
-        event.preventDefault();
-        setUser({
-          ...user,
-          firstName : nameRef.current.value,
-          lastName : lastRef.current.value,
-          email : mailRef.current.value,
-          date : dateRef.current.value,
-          document : docRef.current.value,
-          phone : phoneRef.current.value,
-          address : addressRef.current.value,
-          username : userRef.current.value,
-          password : passRef.current.value,
-        })
-                
-
-        fetch(`${hostbase}/users/newUsers`, {
-            headers:{ "content-type" : "application/json" },
-            method:"POST",
-            body: JSON.stringify({user})
-              }).then(res => res.json())
-                .then(res => {
-                    console.log(res.msg)
-                    alert(res.msg)
-            })
-    }
 
   return (
     <>
         <div className='header-background'/> 
-        <form className="signup" onSubmit={handleSubmit} style={{ paddingTop: "2rem" }}>
+        <h2 className="main-font title" style={{ marginTop: "2rem", marginBottom: "2rem", paddingTop: "2rem" }}>Be part of <strong className="logoFont">Shoppingly</strong> and get exclusive deals</h2>
+        <form className="signup" onSubmit={submitNewUser}>
             <div className="signup-row">
                 <div className="signup-column" style={{ maxWidth: "100%"}}>
                     <strong>First Name</strong><br />
@@ -83,8 +24,7 @@ export default function Signup() {
                         type="text" 
                         name="firstName"
                         placeholder="Your first name"
-                        value={user.firstName}
-                        ref={nameRef} 
+                        value={userInfo.firstName} 
                         onChange={handleChange} 
                         required/>
                 </div>
@@ -95,8 +35,7 @@ export default function Signup() {
                         type="text" 
                         name="lastName" 
                         placeholder="Your last name" 
-                        value={user.lastName}
-                        ref={lastRef}  
+                        value={userInfo.lastName} 
                         onChange={handleChange} 
                         required/>
                 </div>
@@ -109,8 +48,7 @@ export default function Signup() {
                         type="date" 
                         name="date"
                         id="name-input"
-                        value={user.date} 
-                        ref={dateRef} 
+                        value={userInfo.date}  
                         onChange={handleChange} 
                         required/>
                 </div>
@@ -121,8 +59,7 @@ export default function Signup() {
                         type="text" 
                         name="email"
                         placeholder="Your email address"  
-                        value={user.email}
-                        ref={docRef}  
+                        value={userInfo.email}  
                         onChange={handleChange} 
                         required/>
                 </div>
@@ -136,8 +73,7 @@ export default function Signup() {
                         name="document"
                         placeholder="Your id"
                         id="name-input"  
-                        value={user.document}
-                        ref={docRef}  
+                        value={userInfo.document} 
                         onChange={handleChange} 
                         required/>
                 </div>
@@ -148,8 +84,7 @@ export default function Signup() {
                         type="text" 
                         name="phone" 
                         placeholder="Phone Number" 
-                        value={user.phone}
-                        ref={phoneRef}  
+                        value={userInfo.phone} 
                         onChange={handleChange} 
                         required/>
                 </div>
@@ -161,8 +96,7 @@ export default function Signup() {
                     type="text" 
                     name="address"
                     placeholder="Your address"  
-                    value={user.address}
-                    ref={addressRef}  
+                    value={userInfo.address}  
                     onChange={handleChange} 
                     required/>
             </div>
@@ -175,8 +109,7 @@ export default function Signup() {
                         name="username"
                         placeholder="Pick a unique username"
                         id="name-input"  
-                        value={user.username}
-                        ref={userRef}  
+                        value={userInfo.username} 
                         onChange={handleChange} 
                         required/>
                 </div>
@@ -187,8 +120,7 @@ export default function Signup() {
                         type="text" 
                         name="password" 
                         placeholder="Min. 8 characters" 
-                        value={user.password}
-                        ref={passRef}  
+                        value={userInfo.password} 
                         onChange={handleChange} 
                         required/>
                 </div>
@@ -200,27 +132,27 @@ export default function Signup() {
                         style={{ margin: ".4rem" }} 
                         name="offers" 
                         type="checkbox"
-                        ref={offersRef} 
-                        onChange={handleChange}
-                        checked={user.offers}/>
+                        onChange={handleChangeCheckbox}
+                        value={userInfo.offers}
+                        checked={userInfo.offers}/>
                     <label className="check-labels">Exclusive offers</label><br />
                     <input 
                         className="checkboxes" 
                         style={{ margin: ".4rem" }} 
                         name="ideas" 
                         type="checkbox"
-                        ref={ideasRef} 
-                        onChange={handleChange}
-                        checked={user.ideas}/>
+                        onChange={handleChangeCheckbox}
+                        value={userInfo.ideas}
+                        checked={userInfo.ideas}/>
                     <label className="check-labels">Sets ideas</label><br />
                     <input 
                         className="checkboxes" 
                         style={{ margin: ".4rem" }} 
                         name="nation" 
                         type="checkbox"
-                        ref={nationRef} 
-                        onChange={handleChange}
-                        checked={user.nation}/>
+                        onChange={handleChangeCheckbox}
+                        value={userInfo.nation}
+                        checked={userInfo.nation}/>
                     <label className="check-labels">Shoppingly nation</label>
             </div>
             <div className="signup-row" id='signupbtn'>

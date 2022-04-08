@@ -36,57 +36,10 @@ import discount from '../static/img/stock-photos/discount.jpeg';
 
 
 
-export default function Home() {
+export default function Home(props) {
 
-    const [crew, setCrew] = useState({
-      firstName : "",
-      lastName : "",
-      email : "",
-      date : "",
-      offers: false,
-      ideas: false,
-      nation: false
-    })
-
-    const nameRef = useRef();
-    const lastRef = useRef();
-    const mailRef = useRef();
-    const dateRef = useRef();
-    const offersRef = useRef();
-    const ideasRef = useRef();
-    const nationRef = useRef();
-
-    const handleChange = event => {
-        const value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
-        setCrew({
-            ...crew, [event.target.name] : value
-        })
-        
-    }
-
-    const handleSubmit = event => {
-        event.preventDefault();
-        setCrew({
-          ...crew,
-          firstName : nameRef.current.value,
-          lastName : lastRef.current.value,
-          email : mailRef.current.value,
-          date : dateRef.current.value
-        })
-        
-
-        fetch(`${hostbase}/users/newsletter`, {
-          headers:{ "content-type" : "application/json" },
-          method:"POST",
-          body: JSON.stringify({crew})
-            }).then(res => res.json())
-              .then(res => {
-                  console.log(res.msg)
-                  alert(res.msg)
-          })
-        }
-
-
+  const { userInfo, handleChange, handleChangeCheckbox, submitNewsletter } = props;
+  
   return (
         <>
           <div className='header-background'/> 
@@ -189,7 +142,7 @@ export default function Home() {
             <div className="form-container main-font">
               <h1 style={{ textAlign: "center" }}><strong>Join our crew!</strong></h1>
               <h3 style={{ textAlign: "center" }}>Free exclusive content for you to enjoy by signing up.</h3>
-              <form className="signup" onSubmit={handleSubmit}>
+              <form className="signup" onSubmit={submitNewsletter}>
                   <div className="signup-row">
                       <div className="signup-column" style={{ maxWidth: "100%"}}>
                           <strong>First Name</strong><br />
@@ -199,8 +152,7 @@ export default function Home() {
                               type="text" 
                               name="firstName"
                               placeholder="Your first name"
-                              value={crew.firstName}
-                              ref={nameRef} 
+                              value={userInfo.firstName}
                               onChange={handleChange} 
                               required/>
                       </div>
@@ -211,8 +163,7 @@ export default function Home() {
                               type="text" 
                               name="lastName" 
                               placeholder="Your last name" 
-                              value={crew.lastName}
-                              ref={lastRef}  
+                              value={userInfo.lastName}
                               onChange={handleChange} 
                               required/>
                       </div>
@@ -224,8 +175,7 @@ export default function Home() {
                           type="text" 
                           name="email"
                           placeholder="Email address"  
-                          value={crew.email}
-                          ref={mailRef}  
+                          value={userInfo.email} 
                           onChange={handleChange} 
                           required/>
                   </div>
@@ -235,8 +185,7 @@ export default function Home() {
                           className="signup-inputs" 
                           type="date" 
                           name="date"
-                          value={crew.date} 
-                          ref={dateRef} 
+                          value={userInfo.date} 
                           onChange={handleChange} 
                           required/>
                   </div>
@@ -247,27 +196,24 @@ export default function Home() {
                               style={{ margin: ".4rem" }} 
                               name="offers" 
                               type="checkbox"
-                              ref={offersRef} 
-                              onChange={handleChange}
-                              checked={crew.offers}/>
+                              onChange={handleChangeCheckbox}
+                              checked={userInfo.offers}/>
                           <label className="check-labels">Exclusive offers</label><br />
                           <input 
                               className="checkboxes" 
                               style={{ margin: ".4rem" }} 
                               name="ideas" 
-                              type="checkbox"
-                              ref={ideasRef} 
-                              onChange={handleChange}
-                              checked={crew.ideas}/>
+                              type="checkbox" 
+                              onChange={handleChangeCheckbox}
+                              checked={userInfo.ideas}/>
                           <label className="check-labels">Sets ideas</label><br />
                           <input 
                               className="checkboxes" 
                               style={{ margin: ".4rem" }} 
                               name="nation" 
                               type="checkbox"
-                              ref={nationRef} 
-                              onChange={handleChange}
-                              checked={crew.nation}/>
+                              onChange={handleChangeCheckbox}
+                              checked={userInfo.nation}/>
                           <label className="check-labels">Shoppingly nation</label>
                     </div>
                     <div className="signup-row" id='signupbtn'>

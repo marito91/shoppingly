@@ -46,7 +46,7 @@ export default function Header(props) {
                             <Button variant="outline-success">Search</Button>
                         </Form>
                         <Nav.Link href="#">
-                            <img alt="" src={user} width="30" height="30" className="d-inline-block align-top header-icons user-logo" />
+                        <Link to="/signup"><img alt="" src={user} width="30" height="30" className="d-inline-block align-top header-icons user-logo" /></Link>
                         </Nav.Link>
                         <Navbar.Brand href="#home" className="links" style={{ display: "inline" }}>
                             {['end'].map((placement, idx) => (
