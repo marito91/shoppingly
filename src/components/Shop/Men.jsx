@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 // CSS
 import '../../static/css/Main.css';
 import '../../static/css/Shop/Shopping.css';
+
 import hostbase from '../vars.js';
 
 // Components

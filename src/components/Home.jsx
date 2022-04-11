@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import hostbase from './vars.js';
 
@@ -45,7 +44,7 @@ export default function Home(props) {
           <div className='header-background'/> 
             <section className='main-font'>
               <div className="discount-section">
-                <h1 className="discount-header" >Up to <strong>50%</strong> discount</h1>
+                <h1 className="discount-header">Up to <strong>50%</strong> discount</h1>
                   <button className="discount-btn" style={{ color: "#56453E" }}>Learn more</button>
                   <br />
                   <h3 className="discount-header2">*Valid only for references for the selected event tag. 

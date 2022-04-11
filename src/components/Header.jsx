@@ -19,13 +19,13 @@ import Bag from './Shop/Bag';
 
 export default function Header(props) {
 
-    const { cartItems, onAdd, onRemove, countCartItems } = props;
+const { cartItems, onAdd, onRemove, countCartItems } = props; 
    
     return (
         <> 
             <Navbar fixed="top" className="border" expand="lg" style={{ backgroundColor: "#E0D7C7" }}>
                 <Container>
-                    <Navbar.Brand href="#home" className="logoFont" style={{ fontSize: "2.0em" }}>
+                    <Navbar.Brand className="logoFont" style={{ fontSize: "2.0em" }}>
                         <img alt="" src={dress} width="32" height="32" style={{ marginTop: "3%" }} className="d-inline-block align-top" />{' '}
                         <Link to="/" style={{ textDecoration:"none", color:"black" }}>Shoppingly</Link>
                     </Navbar.Brand>

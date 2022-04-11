@@ -24,7 +24,6 @@ import Payment from './components/Shop/Payment';
 function App() {  
 
   const [cartItems, setCartItems] = useState([]);
-
   const [userInfo, setUserInfo] = useState({
     firstName : "",
     lastName : "",
@@ -38,7 +37,7 @@ function App() {
     offers: false,
     ideas: false,
     nation: false
-})
+  })
 
   const handleChange = event => {
     const name = event.target.name;
