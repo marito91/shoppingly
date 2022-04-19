@@ -294,7 +294,7 @@ hr.section-border {
 }
 
 
-/* SIGNUP SECTION */
+/* SIGNUP & LOGIN SECTION */
 
 .form-container {
     margin: 0 auto;
@@ -338,7 +338,7 @@ hr.section-border {
 .signup-btn {
     color: white;
     background-color: #56453E;
-    width: 100%;
+    /*width: 100%;*/
     margin-bottom: 1%;
     border-radius: 0.5rem;
 }
@@ -348,6 +348,10 @@ hr.section-border {
     padding-right: 3rem;
 }
 
+#btn-row {
+    text-align: center;
+}
+
 .signup-btn:hover {
     background-color: #E0D7C7;
     color: #56453E;
@@ -355,6 +359,15 @@ hr.section-border {
 
 .checkboxes {
     cursor: pointer;
+}
+
+.forget {
+    text-decoration: none;
+    color: #E0D7C7;
+}
+
+.forget:hover {
+    color: #56453E;
 }
 
 

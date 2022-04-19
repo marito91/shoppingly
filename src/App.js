@@ -11,6 +11,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
 import Shop from './components/Shop';
+import Login from './components/Login';
 import Signup from './components/Signup';
 import Men from './components/Shop/Men';
 import Women from './components/Shop/Women';
@@ -24,20 +25,33 @@ import Payment from './components/Shop/Payment';
 function App() {  
 
   const [cartItems, setCartItems] = useState([]);
+
+  const [user, setUser] = useState({
+    email: "",
+    password: ""
+  });
+
   const [userInfo, setUserInfo] = useState({
     firstName : "",
     lastName : "",
     document : "",
     email : "",
     date : "",
+    country : "",
+    city : "",
     address : "",
     phone : "",
-    username : "",
     password : "",
     offers: false,
     ideas: false,
     nation: false
-  })
+  });
+
+  const handleCredentials = event => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setUser(user => ({...user, [name]: value}))
+  }
 
   const handleChange = event => {
     const name = event.target.name;
@@ -63,6 +77,21 @@ function App() {
           .then(res => {
               console.log(res.msg)
               alert(res.msg)
+      });
+      setUserInfo({
+        firstName : "",
+        lastName : "",
+        document : "",
+        email : "",
+        date : "",
+        country : "",
+        city : "",
+        address : "",
+        phone : "",
+        password : "",
+        offers: false,
+        ideas: false,
+        nation: false
       })
   }
 
@@ -77,10 +106,25 @@ function App() {
           .then(res => {
               console.log(res.msg)
               alert(res.msg)
-      })
+      });
+    setUserInfo({
+      firstName : "",
+      lastName : "",
+      document : "",
+      email : "",
+      date : "",
+      country : "",
+      city : "",
+      address : "",
+      phone : "",
+      password : "",
+      offers: false,
+      ideas: false,
+      nation: false
+    })
   }
   
-  // Function for adding products to cart. First it checks if the product exists, and if so it adds 1 to the quantity. If not, then it adds the new product to the list.
+  // Function for adding products to cart. First it checks if the product exists, and if it does it adds 1 to the quantity. If not, then it adds the new product to the list.
   const onAdd = (product) => {
     const productExists = cartItems.find(item => item._id === product._id);
     if (productExists) {
@@ -105,6 +149,26 @@ function App() {
     }
   }
 
+  // Function for logging in. Checks if the data input from the user is correct in the backend server by fetching.
+  const login = event => {
+    event.preventDefault();
+    fetch(`${hostbase}/users/login`, {
+        headers: { "content-type": "application/json" },
+        method: "POST",
+        body: JSON.stringify({ user })
+    }).then(res => res.json())
+        .then(res => {
+            if (res.status === "ok") {
+                {
+                    localStorage.setItem("token", res.token);
+                    window.location.href = res.url;
+                }
+            } else {
+                alert(res.msg);
+            }
+        })
+  }
+
 
   return (
     <>
@@ -121,6 +185,15 @@ function App() {
               handleChange={handleChange}
               handleChangeCheckbox={handleChangeCheckbox}
               submitNewsletter={submitNewsletter} />} />
+
+          {/* Signup route */}
+          <Route 
+            path="/login" 
+            element={<Login
+              user={user} 
+              handleCredentials={handleCredentials}
+              login={login} />} />
+
 
           {/* Signup route */}
           <Route 

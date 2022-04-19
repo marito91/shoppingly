@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 // CSS
 import '../static/css/Main.css';
@@ -7,6 +7,22 @@ import '../static/css/Home.css';
 export default function Signup(props) {
 
     const { userInfo, handleChange, handleChangeCheckbox, submitNewUser } = props;
+
+
+    const [countries, setCountries] = useState([]);
+
+    // Fetches Countries 
+    useEffect(() => {
+        fetch(`https://restcountries.com/v3.1/all`)
+        .then(res => res.json())
+        .then(res => {
+            setCountries(res);
+        })
+    }, []);
+
+    let countryList = countries.map(country => country.name.common);
+
+    countryList.sort();
 
 
     return (
@@ -89,6 +105,35 @@ export default function Signup(props) {
                     </div>
                 </div>
                 <div className="signup-row">
+                    <div className="signup-column" style={{ maxWidth: "100%"}}>
+                        <strong>Country/Region</strong><br />
+                        <select
+                            className="signup-inputs"
+                            type="select" 
+                            autoComplete="off" 
+                            autoFocus required  
+                            name="country" 
+                            id="name-input"
+                            onChange={handleChange}
+                            value={userInfo.country}
+                            style={{ paddingTop: "1.3rem" }}>
+                                <option value="">&nbsp;</option>
+                                {countryList.map(country => <option>{country}</option>)}
+                        </select>
+                    </div>
+                    <div className="signup-column">
+                        <strong>City</strong><br />
+                        <input 
+                            className="signup-inputs" 
+                            type="text" 
+                            name="city" 
+                            placeholder="" 
+                            value={userInfo.city} 
+                            onChange={handleChange} 
+                            required/>
+                    </div>
+                </div>
+                <div className="signup-row">
                     <strong>Address</strong><br />
                     <input 
                         className="signup-inputs" 
@@ -100,29 +145,15 @@ export default function Signup(props) {
                         required/>
                 </div>
                 <div className="signup-row">
-                    <div className="signup-column" style={{ maxWidth: "100%"}}>
-                        <strong>Username</strong><br />
-                        <input 
-                            className="signup-inputs" 
-                            type="text" 
-                            name="username"
-                            placeholder="Pick a unique username"
-                            id="name-input"  
-                            value={userInfo.username} 
-                            onChange={handleChange} 
-                            required/>
-                    </div>
-                    <div className="signup-column">
-                        <strong>Password</strong><br />
-                        <input 
-                            className="signup-inputs" 
-                            type="text" 
-                            name="password" 
-                            placeholder="Min. 8 characters" 
-                            value={userInfo.password} 
-                            onChange={handleChange} 
-                            required/>
-                    </div>
+                    <strong>Password</strong><br />
+                    <input 
+                        className="signup-inputs" 
+                        type="text" 
+                        name="password" 
+                        placeholder="Min. 8 characters" 
+                        value={userInfo.password} 
+                        onChange={handleChange} 
+                        required/>
                 </div>
                 <div className="signup-row">
                     <strong>Preferences</strong><br />
@@ -154,7 +185,7 @@ export default function Signup(props) {
                             checked={userInfo.nation}/>
                         <label className="check-labels">Shoppingly nation</label>
                 </div>
-                <div className="signup-row" id='signupbtn'>
+                <div className="signup-row" id='btn-row'>
                     <button className="signup-btn"><h3><strong>Sign Up</strong></h3></button>
                 </div>
                 <div className="signup-row" style={{ display: "flex" }}>

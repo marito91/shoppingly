@@ -215,7 +215,7 @@ export default function Home(props) {
                               checked={userInfo.nation}/>
                           <label className="check-labels">Shoppingly nation</label>
                     </div>
-                    <div className="signup-row" id='signupbtn'>
+                    <div className="signup-row" id='btn-row'>
                         <button className="signup-btn"><h3><strong>Sign Up</strong></h3></button>
                     </div>
                     <div className="signup-row" style={{ display: "flex" }}>

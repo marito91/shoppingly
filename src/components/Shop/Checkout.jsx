@@ -41,6 +41,10 @@ export default function Checkout(props) {
         })
     }, []);
 
+    let countryList = countries.map(country => country.name.common);
+
+    countryList.sort();
+
 
   return (
       
@@ -100,7 +104,7 @@ export default function Checkout(props) {
                                 onChange={handleChange}
                                 style={{ paddingTop: "1.5rem" }}>
                                     <option value="">&nbsp;</option>
-                                    {countries.map(country => <option>{country.name.common}</option>)}
+                                    {countryList.map(country => <option>{country.name.common}</option>)}
                             </select>
                             <label className="floating-label">Country/Region</label>
                         </div>
