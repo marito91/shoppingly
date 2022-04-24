@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 import '../static/css/Main.css';
 import '../static/css/Home.css';
 
-export default function Signup(props) {
+export default function Login(props) {
 
-    const { user, handleCredentials, login } = props;
+    const { user, handleCredentials, login, error } = props;
 
 
     return (
@@ -15,6 +15,7 @@ export default function Signup(props) {
             <div className='header-background'/> 
             <h2 className="main-font title" style={{ marginTop: "2rem", marginBottom: "2rem", paddingTop: "2rem" }}><strong>Login</strong></h2>
             <form className="signup" style={{ marginLeft: "6rem", marginRight: "6rem"}} onSubmit={login}>
+                <h6>{error}</h6>
                 <div className="signup-row">
                     <strong>Email</strong><br />
                     <input 

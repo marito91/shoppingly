@@ -8,7 +8,7 @@ export function auth() {
         if (localStorage.getItem("token")) {
             const token = localStorage.getItem("token");
             const payload = jwtDecode(token);
-            if (payload.usuario){
+            if (payload.email){
                 resp = true;
             }
         }

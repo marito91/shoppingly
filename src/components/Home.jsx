@@ -215,12 +215,12 @@ export default function Home(props) {
                               checked={userInfo.nation}/>
                           <label className="check-labels">Shoppingly nation</label>
                     </div>
-                    <div className="signup-row" id='btn-row'>
-                        <button className="signup-btn"><h3><strong>Sign Up</strong></h3></button>
-                    </div>
                     <div className="signup-row" style={{ display: "flex" }}>
                         <input className="checkboxes" style={{ margin: ".4rem" }} name="policy" type="checkbox" required/>
                         <label className="check-labels">By entering your email address you agree to receive our marketing offers in accordance with our Privacy Policy.*</label><br />
+                    </div>
+                    <div className="signup-row" id='btn-row'>
+                        <button className="signup-btn"><h3><strong>Sign Up</strong></h3></button>
                     </div>
                 </form>
             </div>

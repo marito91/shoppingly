@@ -2,7 +2,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-
+import jwtDecode from "jwt-decode";
 import hostbase from './components/vars';
 
 
@@ -10,6 +10,7 @@ import hostbase from './components/vars';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
+import Account from './components/Account';
 import Shop from './components/Shop';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -25,6 +26,8 @@ import Payment from './components/Shop/Payment';
 function App() {  
 
   const [cartItems, setCartItems] = useState([]);
+
+  const [error, setError] = useState("");
 
   const [user, setUser] = useState({
     email: "",
@@ -47,6 +50,28 @@ function App() {
     nation: false
   });
 
+  // State for orders. Date, status and tracking number can be set in backend server. 
+  const [order, setOrder] = useState({
+    email : "",
+    date : "",
+    name : "",
+    phone : "",
+    address : "",
+    apt : "",
+    message : "",
+    content : [],
+    offers : false,
+    express : false,
+    status : "",
+    guide : ""
+  })
+
+  const [method, setMethod] = useState(false)
+
+  const handleMethod = event => {
+    
+  }
+
   const handleCredentials = event => {
     const name = event.target.name;
     const value = event.target.value;
@@ -57,6 +82,12 @@ function App() {
     const name = event.target.name;
     const value = event.target.value;
     setUserInfo(userInfo => ({...userInfo, [name]: value}))
+  }
+
+  const handleOrder = event => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setOrder(order => ({...order, [name]: value}))
   }
 
   const handleChangeCheckbox = event => {
@@ -164,10 +195,42 @@ function App() {
                     window.location.href = res.url;
                 }
             } else {
-                alert(res.msg);
+                //alert(res.msg);
+                setError("Your email or password is incorrect")
             }
         })
   }
+
+  function logout() {
+    localStorage.removeItem("token");
+    window.location.href = "/";
+  }
+
+  // This functions extracts the information from the localstorage token and decodes it. Variables are arranged in an array which is instantiated in the component that requires it.
+  function getData() {
+    let data = [];
+    try {
+        const token = localStorage.getItem("token")
+        const payload = jwtDecode(token);
+        const firstName = payload.first;
+        const lastName = payload.last;
+        const email = payload.email;
+        const address = payload.address;
+        const city = payload.city;
+        const country = payload.country;
+        const document = payload.document;
+        const phone = payload.phone;
+        const birthdate = payload.birthdate;
+        data = [firstName, lastName, email, address, city, country, document, birthdate, phone];
+        return data
+    } catch (error) {
+        console.log(error);
+    }
+    return data;
+  }
+
+
+
 
 
   return (
@@ -186,14 +249,14 @@ function App() {
               handleChangeCheckbox={handleChangeCheckbox}
               submitNewsletter={submitNewsletter} />} />
 
-          {/* Signup route */}
+          {/* Login route */}
           <Route 
             path="/login" 
             element={<Login
               user={user} 
               handleCredentials={handleCredentials}
+              error={error}
               login={login} />} />
-
 
           {/* Signup route */}
           <Route 
@@ -203,6 +266,17 @@ function App() {
               handleChange={handleChange}
               handleChangeCheckbox={handleChangeCheckbox}
               submitNewUser={submitNewUser} />} />
+
+          {/* Account route */}
+          <Route 
+            path="/account" 
+            element={<Account
+              user={user} 
+              handleCredentials={handleCredentials}
+              error={error}
+              login={login}
+              logout={logout}
+              getData={getData} />} />
 
           {/* Shopping route for all products, receives cart items and basic functions so that data can be manipulated */}
           <Route 
@@ -251,7 +325,8 @@ function App() {
               cartItems={cartItems} 
               countCartItems={cartItems.length} 
               userInfo={userInfo} 
-              handleChange={handleChange} />} /> 
+              handleChange={handleChange}
+              getData={getData}  />} /> 
 
           <Route 
             path="/shipping" 
@@ -261,7 +336,8 @@ function App() {
               cartItems={cartItems} 
               countCartItems={cartItems.length} 
               userInfo={userInfo} 
-              handleChange={handleChange} />} /> 
+              handleChange={handleChange}
+              getData={getData} />} /> 
 
           <Route 
             path="/payment" 
@@ -271,7 +347,9 @@ function App() {
               cartItems={cartItems} 
               countCartItems={cartItems.length} 
               userInfo={userInfo} 
-              handleChange={handleChange} />} /> 
+              handleChange={handleChange} 
+              getData={getData}
+              handleOrder={handleOrder} />} /> 
 
         </Routes>
 

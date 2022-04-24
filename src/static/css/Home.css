@@ -370,6 +370,30 @@ hr.section-border {
     color: #56453E;
 }
 
+.account-col1 {
+    float: left;
+    width: 50%;
+    align-items: center;
+    font-size: xx-large;
+    color: #56453E;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-bottom: 6%;
+    border-right: 2px solid #56453E;
+  }
+
+.account-col2 {
+    float: left;
+    width: 50%;
+    align-items: center;
+    font-size: xx-large;
+    color: #56453E;
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-bottom: 6%;
+    border-right: 2px solid #56453E;
+  }
+
 
 
 /* PHONES */

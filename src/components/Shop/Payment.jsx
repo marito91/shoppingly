@@ -15,7 +15,21 @@ import Cart from './Cart';
 
 export default function Payment(props) {
 
-    const { cartItems, userInfo, handleExpress, handleChange } = props;
+    const { cartItems, userInfo, handleExpress, handleChange, getData, handleOrder } = props;
+
+    const data = getData();
+
+    /** Data array order:
+     * First name = 0
+     * Last name = 1
+     * Email = 2
+     * Address = 3
+     * City = 4
+     * Country = 5
+     * Document = 6
+     * Birthdate = 7
+     * Phone = 8
+     */
 
   return (
       
@@ -37,7 +51,7 @@ export default function Payment(props) {
                     <div className='shipping-row'>
                         <div className='shipping-col-1'>
                             <label>Contact</label><label id='spaces'>&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            <label style={{ display:"inline" }}>{userInfo.email}</label>        
+                            <label style={{ display:"inline" }}>{data[0] + " " + data[1]}</label>        
                         </div>
                         <div className='shipping-col-2'>
                             <a href="" className='login-link'>Change</a>           
@@ -47,7 +61,7 @@ export default function Payment(props) {
                     <div className='shipping-row'>
                         <div className='shipping-col-1'>
                             <label>Ship to</label><label id='spaces'>&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            <label style={{ display:"inline" }}>{userInfo.address}</label>        
+                            <label style={{ display:"inline" }}>{data[3]}</label>        
                         </div>
                         <div className='shipping-col-2'>
                             <a href="" className='login-link'>Change</a>           
@@ -149,7 +163,7 @@ export default function Payment(props) {
                 </div>
                 <div className="signup-row shipping">
                     <a href="" className='login-link' style={{ fontSize: "medium", display: "inline" }}>{'<'}&nbsp;Return to shipping</a>
-                    <button className="shipping-btn">Continue to payment</button>
+                    <button className="shipping-btn">Place order</button>
                 </div>
             </div>
             <div className='checkout-col2'>
