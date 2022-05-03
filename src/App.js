@@ -1,7 +1,7 @@
 // Libraries
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {BrowserRouter, Routes, Route } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import hostbase from './components/vars';
 
@@ -29,6 +29,10 @@ function App() {
 
   const [error, setError] = useState("");
 
+  const [pay, setPay] = useState(false);
+
+  const loggedUser = getData();
+
   const [user, setUser] = useState({
     email: "",
     password: ""
@@ -54,23 +58,24 @@ function App() {
   const [order, setOrder] = useState({
     email : "",
     date : "",
-    name : "",
+    firstName : "",
+    lastName : "",
     phone : "",
+    country : "",
+    city : "",
+    postalCode : "",
     address : "",
     apt : "",
     message : "",
     content : [],
     offers : false,
     express : false,
+    tracking :false,
     status : "",
-    guide : ""
+    guide : "",
+    payment : false
   })
 
-  const [method, setMethod] = useState(false)
-
-  const handleMethod = event => {
-    
-  }
 
   const handleCredentials = event => {
     const name = event.target.name;
@@ -85,9 +90,45 @@ function App() {
   }
 
   const handleOrder = event => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setOrder(order => ({...order, [name]: value}))
+    /** Data array order:
+     * First name = 0
+     * Last name = 1
+     * Email = 2
+     * Address = 3
+     * City = 4
+     * Country = 5
+     * Document = 6
+     * Birthdate = 7
+     * Phone = 8
+     */
+    event.preventDefault();
+    if (loggedUser.length !== 0 && loggedUser[0] !== "") {
+      setOrder(order => ({...order, 
+        firstName : loggedUser[0],
+        lastName : loggedUser[1],
+        email : loggedUser[2],
+        address : loggedUser[3],
+        city : loggedUser[4],
+        country : loggedUser[5],
+        phone : loggedUser[8],
+        content : cartItems,
+      }))
+    } else {
+      const name = event.target.name;
+      const value = event.target.value;
+      setOrder(order => ({...order, [name]: value}))
+    }
+}
+
+const handleOrderCheckbox = event => {
+  const value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
+  setOrder(order => ({...order, [event.target.name]: value}))
+}
+
+  // Checks if the user wants standard or express shipment and assigns true or false depending on what the user chooses.
+  const handleMethod = event => {
+    const isExpress = event.target.type === "radio" && event.target.value !== "standard" ? true : false
+    setOrder(order => ({...order, express : isExpress}))        
   }
 
   const handleChangeCheckbox = event => {
@@ -124,6 +165,35 @@ function App() {
         ideas: false,
         nation: false
       })
+  }
+
+  // Function for submitting new orders, it is used in the Checkout component.
+  const submitOrder = event => {
+    event.preventDefault();
+    /*fetch(`${hostbase}/users/newUsers`, {
+      headers:{ "content-type" : "application/json" },
+      method:"POST",
+      body: JSON.stringify({userInfo})
+        }).then(res => res.json())
+          .then(res => {
+              console.log(res.msg)
+              alert(res.msg)
+      });
+      setUserInfo({
+        firstName : "",
+        lastName : "",
+        document : "",
+        email : "",
+        date : "",
+        country : "",
+        city : "",
+        address : "",
+        phone : "",
+        password : "",
+        offers: false,
+        ideas: false,
+        nation: false
+      })*/
   }
 
   // Function for submitting newsletter users, it is used in the Home component.
@@ -195,7 +265,6 @@ function App() {
                     window.location.href = res.url;
                 }
             } else {
-                //alert(res.msg);
                 setError("Your email or password is incorrect")
             }
         })
@@ -206,7 +275,7 @@ function App() {
     window.location.href = "/";
   }
 
-  // This functions extracts the information from the localstorage token and decodes it. Variables are arranged in an array which is instantiated in the component that requires it.
+  // This function extracts the information from the localstorage token and decodes it. Variables are arranged in an array which is instantiated in the component that requires it.
   function getData() {
     let data = [];
     try {
@@ -237,7 +306,7 @@ function App() {
     <>
       <BrowserRouter>
 
-        <Header onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} countCartItems={cartItems.length} /> 
+        <Header onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} countCartItems={cartItems.length} order={order} /> 
         
         <Routes>
           {/* Home route */}
@@ -303,8 +372,7 @@ function App() {
               onAdd={onAdd} 
               onRemove={onRemove} 
               cartItems={cartItems} 
-              countCartItems={cartItems.length}
-              handleChange={handleChange} />} />
+              countCartItems={cartItems.length} />} />
 
           {/* Shopping route for kids, receives cart items and basic functions so that data can be manipulated */}
           <Route 
@@ -313,43 +381,44 @@ function App() {
               onAdd={onAdd} 
               onRemove={onRemove} 
               cartItems={cartItems} 
-              countCartItems={cartItems.length}
-              handleChange={handleChange} />} />
+              countCartItems={cartItems.length} />} />
 
           {/* Checkout route, receives cart items so that the products transfer to the final steps */}
           <Route 
             path="/checkout" 
             element={<Checkout 
-              onAdd={onAdd} 
-              onRemove={onRemove} 
               cartItems={cartItems} 
               countCartItems={cartItems.length} 
               userInfo={userInfo} 
-              handleChange={handleChange}
-              getData={getData}  />} /> 
+              getData={getData}
+              order={order}
+              handleMethod={handleMethod}
+              handleOrder={handleOrder}
+              handleOrderCheckbox={handleOrderCheckbox} />} /> 
 
           <Route 
             path="/shipping" 
             element={<Shipping 
-              onAdd={onAdd} 
-              onRemove={onRemove} 
               cartItems={cartItems} 
               countCartItems={cartItems.length} 
               userInfo={userInfo} 
               handleChange={handleChange}
-              getData={getData} />} /> 
+              getData={getData}
+              order={order} 
+              handleMethod={handleMethod}
+              handleOrder={handleOrder} />} /> 
 
           <Route 
             path="/payment" 
             element={<Payment 
-              onAdd={onAdd} 
-              onRemove={onRemove} 
               cartItems={cartItems} 
               countCartItems={cartItems.length} 
               userInfo={userInfo} 
               handleChange={handleChange} 
               getData={getData}
-              handleOrder={handleOrder} />} /> 
+              order={order} 
+              handleOrder={handleOrder}
+              submitOrder={submitOrder} />} /> 
 
         </Routes>
 

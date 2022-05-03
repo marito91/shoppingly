@@ -11,12 +11,12 @@ import '../../static/css/Shop/Shopping.css';
 
 export default function Cart(props) {
 
-    const { cartItems } = props;
+    const { cartItems, order } = props;
     
-    
+    let expressValue = order.express === true ? 20 : 0;
     const itemPrice = cartItems.reduce((accumulator, item) => accumulator + (item.price * item.qty), 0);
     const taxValue = itemPrice * 0.07;
-    const shippingValue = itemPrice > 250 ? 0 : 25;
+    const shippingValue = itemPrice > 250 ? 0 + expressValue : 25 + expressValue;
     const total = itemPrice + taxValue + shippingValue;
   
     return (

@@ -41,13 +41,12 @@ const { cartItems, onAdd, onRemove, countCartItems } = props;
                             <Nav.Link href="#">Offers</Nav.Link>
                             <Nav.Link href="#">About Us</Nav.Link>
                         </Nav>
+                        {/* This is not working yet as it has not been implemented*/}
                         <Form className="d-flex" style={{ fontSize: "large" }} >
                             <FormControl type="search" placeholder="Something in mind?" className="me-2" aria-label="Search" />
-                            <Button variant="outline-success">Search</Button>
+                            <Button variant="outline-success" style={{ marginRight : "0.5rem" }}>Search</Button>
                         </Form>
-                        <Nav.Link href="#">
                         <Link to="/account"><img alt="" src={user} width="30" height="30" className="d-inline-block align-top header-icons user-logo" /></Link>
-                        </Nav.Link>
                         <Navbar.Brand href="#home" className="links" style={{ display: "inline" }}>
                             {['end'].map((placement, idx) => (
                                 <Bag key={idx} 

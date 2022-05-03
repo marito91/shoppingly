@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { auth } from '../authentication/auth';
+import jwtDecode from "jwt-decode";
 
 
 import Login from './Login';
@@ -13,6 +14,7 @@ export default function Account(props) {
     const { user, handleCredentials, error, login, logout, getData } = props;
 
     const data = getData();
+
 
 
     /** Data array order:

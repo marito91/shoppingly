@@ -15,9 +15,13 @@ import Cart from './Cart';
 
 export default function Payment(props) {
 
-    const { cartItems, userInfo, handleExpress, handleChange, getData, handleOrder } = props;
+    const { cartItems, userInfo, order, handleChange, getData, handleOrder } = props;
 
     const data = getData();
+
+    const shippingMethod = order.express === true ? "Express" : "Standard";
+
+    
 
     /** Data array order:
      * First name = 0
@@ -39,9 +43,9 @@ export default function Payment(props) {
             <div className='checkout-col1'>
                 <h1 className='logoFont' style={{ textAlign: "center", fontSize: "4rem" }}><strong>Shoppingly</strong></h1>
                 <div className='checkout-steps'>
-                    <li style={{ cursor: "pointer" }} onClick={() => window.alert("Go back")}>Cart&nbsp;</li>
+                    <li>Cart&nbsp;</li>
                     <li>{'>'}&nbsp;</li>
-                    <li style={{ cursor: "pointer" }} onClick={() => window.alert("Go back")}>Information&nbsp;</li>
+                    <li>Information&nbsp;</li>
                     <li>{'>'}&nbsp;</li>
                     <li>Shipping&nbsp;</li>
                     <li>{'>'}&nbsp;</li>
@@ -71,7 +75,7 @@ export default function Payment(props) {
                     <div className='shipping-row'>
                         <div className='shipping-col-1'>
                             <label>Method</label><label id='spaces'>&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            <label style={{ display:"inline" }}>{userInfo.method}</label>        
+                            <label style={{ display:"inline" }}>{shippingMethod}</label>        
                         </div>
                         <div className='shipping-col-2'>
                             <a href="" className='login-link'>Change</a>           
@@ -142,10 +146,10 @@ export default function Payment(props) {
                         </div>
                     </form>
                     
-                    
+                    {/*
                     <hr className='division' />
                     <div className='shipping-row'>
-                    <div className='shipping-col-1'>
+                        <div className='shipping-col-1'>
                             <input
                                 className="checkboxes" 
                                 style={{ margin: ".4rem" }} 
@@ -159,7 +163,7 @@ export default function Payment(props) {
                         <div className='shipping-col-2'>
                             <strong>$20.00</strong>          
                         </div>
-                    </div>
+  </div>*/}
                 </div>
                 <div className="signup-row shipping">
                     <a href="" className='login-link' style={{ fontSize: "medium", display: "inline" }}>{'<'}&nbsp;Return to shipping</a>
@@ -168,7 +172,7 @@ export default function Payment(props) {
             </div>
             <div className='checkout-col2'>
                 <h1>Order Summary:</h1>
-                <Cart cartItems={cartItems} countCartItems={cartItems.length} />
+                <Cart cartItems={cartItems} countCartItems={cartItems.length} order={order} />
             </div>
         </div>
     </>

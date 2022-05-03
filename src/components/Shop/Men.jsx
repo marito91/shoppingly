@@ -26,7 +26,7 @@ export default function Men(props) {
             if (res.status === "ok") {
                 setShirts(res.mensShirtsCatalogue)
             } else {
-                alert("Could not load info.");
+                console.log("Could not load products.");
             }
         })
     }, []);
@@ -39,7 +39,7 @@ export default function Men(props) {
             if (res.status === "ok") {
                 setPants(res.mensPantsCatalogue)
             } else {
-                alert("Could not load info.");
+                console.log("Could not load products.");
             }
         })
     }, []);
@@ -52,7 +52,7 @@ export default function Men(props) {
             if (res.status === "ok") {
                 setShoes(res.mensShoesCatalogue)
             } else {
-                alert("Could not load info.");
+                console.log("Could not load products.");
             }
         })
     }, []);

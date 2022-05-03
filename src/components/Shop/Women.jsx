@@ -26,7 +26,7 @@ export default function Women(props) {
             if (res.status === "ok") {
                 setShirts(res.womensShirtsCatalogue)
             } else {
-                alert("Could not load info.");
+                console.log("Could not load products.");
             }
         })
     }, []);
@@ -39,7 +39,7 @@ export default function Women(props) {
             if (res.status === "ok") {
                 setPants(res.womensPantsCatalogue)
             } else {
-                alert("Could not load info.");
+                console.log("Could not load products.");
             }
         })
     }, []);
@@ -52,7 +52,7 @@ export default function Women(props) {
             if (res.status === "ok") {
                 setDresses(res.womensDressesCatalogue)
             } else {
-                alert("Could not load info.");
+                console.log("Could not load products.");
             }
         })
     }, []);
@@ -65,7 +65,7 @@ export default function Women(props) {
             if (res.status === "ok") {
                 setShoes(res.womensShoesCatalogue)
             } else {
-                alert("Could not load info.");
+                console.log("Could not load products.");
             }
         })
     }, []);

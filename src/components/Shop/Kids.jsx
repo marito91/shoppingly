@@ -25,7 +25,7 @@ export default function Kids(props) {
             if (res.status === "ok") {
                 setShirts(res.kidsShirtsCatalogue)
             } else {
-                alert("Could not load info.");
+                console.log("Could not load products.");
             }
         })
     }, []);
@@ -38,7 +38,7 @@ export default function Kids(props) {
             if (res.status === "ok") {
                 setPants(res.kidsPantsCatalogue)
             } else {
-                alert("Could not load info.");
+                console.log("Could not load products.");
             }
         })
     }, []);
@@ -51,7 +51,7 @@ export default function Kids(props) {
             if (res.status === "ok") {
                 setShoes(res.kidsShoesCatalogue)
             } else {
-                alert("Could not load info.");
+                console.log("Could not load products.");
             }
         })
     }, []);

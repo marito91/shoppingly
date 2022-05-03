@@ -14,30 +14,24 @@ import Shipping from './Shipping';
 export default function Checkout(props) {
 
     /** Information required
-     * First Name
-     * Last Name
-     * Email
-     * Date of birth
-     * Terms of service Checkbox
-     * Sign Up Button
+     * Email 
+     * Name
+     * Phone
+     * Address
+     * Apt
+     * Message
+     * Content
+     * Offers
+     * Express
      */
 
-    const { cartItems, userInfo, handleChange, getData } = props;
+    const { cartItems, userInfo, handleMethod, handleOrderCheckbox, handleOrder, getData, order } = props;
 
     const [countries, setCountries] = useState([]);
 
-    const [terms, setTerms] = useState(false)
-
-    const handleTerms = event => {
-        const value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
-        setTerms(true)
-    }
-
-
     const handleSubmit = event => {
         event.preventDefault();
-        console.log(userInfo)
-        alert("Thank you for subscribing! Welcome to the club!")
+        console.log(order)
     }
 
     // Fetches Countries 
@@ -58,7 +52,7 @@ export default function Checkout(props) {
       
     <>
         { auth() ?
-            <Shipping cartItems={cartItems} userInfo={userInfo} getData={getData} /> 
+            <Shipping cartItems={cartItems} userInfo={userInfo} getData={getData} order={order} handleMethod={handleMethod} handleOrder={handleOrder} /> 
             :
         <>
             <div style={{ backgroundColor: "#56453E", paddingTop: "4rem" }}/> 
@@ -66,7 +60,7 @@ export default function Checkout(props) {
                 <div className='checkout-col1'>
                     <h1 className='logoFont' style={{ textAlign: "center", fontSize: "4rem" }}><strong>Shoppingly</strong></h1>
                     <div className='checkout-steps'>
-                        <li style={{ cursor: "pointer" }} onClick={() => window.alert("Go back")}>Cart&nbsp;</li>
+                        <li>Cart&nbsp;</li>
                         <li>{'>'}&nbsp;</li>
                         <strong><li>Information&nbsp;</li></strong>
                         <li>{'>'}&nbsp;</li>
@@ -74,7 +68,7 @@ export default function Checkout(props) {
                         <li>{'>'}&nbsp;</li>
                         <li>Payment</li>
                     </div>
-                    <form className="signup form" onSubmit={handleSubmit}>
+                    <form className="signup form" onSubmit={handleOrder}>
                         <div className='contact-info'>
                             <strong><p>Contact Information</p></strong>
                             {/*<p className='login-info'>Already have an account?&nbsp;<Link to="/login" className='login-link'>Log in</Link></p>*/}
@@ -88,16 +82,16 @@ export default function Checkout(props) {
                                         autoFocus required 
                                         className="signup-inputs"
                                         name='email'
-                                        value={userInfo.email} 
-                                        onChange={handleChange} />
+                                        value={order.email} 
+                                        onChange={handleOrder} />
                                     <label className="floating-label">Email Address</label>
                                     <input
                                         className="checkboxes" 
                                         style={{ margin: ".4rem" }} 
                                         name="tracking" 
                                         type="checkbox"
-                                        onChange={handleChange}
-                                        checked={userInfo.tracking}/>
+                                        onChange={handleOrderCheckbox}
+                                        checked={order.tracking}/>
                                     <label style={{ fontSize: "large", display: "inline" }}>Keep me up to date about my order</label>
                                 </div>
                             </div>
@@ -113,7 +107,8 @@ export default function Checkout(props) {
                                     autoFocus required 
                                     className="signup-inputs"
                                     name='country'
-                                    onChange={handleChange}
+                                    value={order.country}
+                                    onChange={handleOrder}
                                     style={{ paddingTop: "1.5rem" }}>
                                         <option value="">&nbsp;</option>
                                         {countryList.map(country => <option>{country}</option>)}
@@ -130,8 +125,8 @@ export default function Checkout(props) {
                                     className="signup-inputs"
                                     name='firstName'
                                     id='mid-input'
-                                    value={userInfo.firstName} 
-                                    onChange={handleChange} />
+                                    value={order.firstName} 
+                                    onChange={handleOrder} />
                                 <label className="floating-label">First Name</label>
                             </div>
                             <div className="floating-label-group signup-column">
@@ -141,8 +136,8 @@ export default function Checkout(props) {
                                     autoFocus required 
                                     className="signup-inputs"
                                     name='lastName'
-                                    value={userInfo.lastName} 
-                                    onChange={handleChange} />
+                                    value={order.lastName} 
+                                    onChange={handleOrder} />
                                 <label className="floating-label">Last Name</label>
                             </div>
                         </div>
@@ -154,8 +149,8 @@ export default function Checkout(props) {
                                     autoFocus required 
                                     className="signup-inputs"
                                     name='address'
-                                    value={userInfo.address} 
-                                    onChange={handleChange} />
+                                    value={order.address} 
+                                    onChange={handleOrder} />
                                 <label className="floating-label">Street and house number</label>
                             </div>
                         </div>
@@ -167,8 +162,8 @@ export default function Checkout(props) {
                                     autoFocus required 
                                     className="signup-inputs"
                                     name='apt'
-                                    value={userInfo.apt} 
-                                    onChange={handleChange} />
+                                    value={order.apt} 
+                                    onChange={handleOrder} />
                                 <label className="floating-label">Apartment, suite, etc.</label>
                             </div>
                         </div>
@@ -182,8 +177,8 @@ export default function Checkout(props) {
                                         className="signup-inputs"
                                         name='city'
                                         id='mid-input'
-                                        value={userInfo.city} 
-                                        onChange={handleChange} />
+                                        value={order.city} 
+                                        onChange={handleOrder} />
                                     <label className="floating-label">City</label>
                                 </div>
                             </div>
@@ -194,8 +189,8 @@ export default function Checkout(props) {
                                     autoFocus required 
                                     className="signup-inputs"
                                     name='postalCode'
-                                    value={userInfo.postalCode} 
-                                    onChange={handleChange} />
+                                    value={order.postalCode} 
+                                    onChange={handleOrder} />
                                 <label className="floating-label">Postal Code</label>
                             </div>
                         </div>
@@ -207,8 +202,8 @@ export default function Checkout(props) {
                                     autoFocus required 
                                     className="signup-inputs"
                                     name='phone'
-                                    value={userInfo.phone} 
-                                    onChange={handleChange} />
+                                    value={order.phone} 
+                                    onChange={handleOrder} />
                                 <label className="floating-label">Phone Number</label>
                             </div>
                         </div>
@@ -220,18 +215,16 @@ export default function Checkout(props) {
                                         style={{ margin: ".4rem" }} 
                                         name="offers" 
                                         type="checkbox"
-                                        onChange={handleChange}
-                                        value={userInfo.offers}
-                                        checked={userInfo.offers}/>
+                                        onChange={handleOrderCheckbox}
+                                        value={order.offers}
+                                        checked={order.offers}/>
                                     <label style={{ fontSize: "large", display: "inline" }}>Notify me about news and offers</label><br />
                                     <input
                                         className="checkboxes" 
                                         style={{ margin: ".4rem" }}
                                         required 
                                         name="terms" 
-                                        type="checkbox"
-                                        onChange={handleTerms}
-                                        value={terms}/>
+                                        type="checkbox"/>
                                     <label style={{ fontSize: "large", display: "inline" }}>I have read and accept the <a href="" className='login-link'>Terms &amp; Conditions</a> and <a href="" className='login-link'>Privacy Policy</a>.</label>
                                 </div>
                             </div>
@@ -245,7 +238,7 @@ export default function Checkout(props) {
                 </div>
                 <div className='checkout-col2'>
                     <h1>Order Summary:</h1>
-                    <Cart cartItems={cartItems} countCartItems={cartItems.length} />
+                    <Cart cartItems={cartItems} countCartItems={cartItems.length} order={order} />
                 </div>
             </div>
         </>

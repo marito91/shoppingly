@@ -25,6 +25,8 @@ export default function Bag(props) {
     const taxValue = itemPrice * 0.07;
     const shippingValue = itemPrice > 250 ? 0 : 25;
     const total = itemPrice + taxValue + shippingValue;
+
+    
     
 
     function confirm() {
