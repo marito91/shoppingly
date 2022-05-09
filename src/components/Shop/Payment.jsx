@@ -15,13 +15,20 @@ import Cart from './Cart';
 
 export default function Payment(props) {
 
-    const { cartItems, userInfo, order, handleChange, getData, handleOrder } = props;
-
-    const data = getData();
+    const { cartItems, getData, order, submitOrder, handleOrder } = props;
 
     const shippingMethod = order.express === true ? "Express" : "Standard";
 
+    let contact, shipTo = "";
+    let loggedUser = getData();
     
+    if (loggedUser.length !== 0) {
+        contact = loggedUser[0] + " " + loggedUser[1];
+        shipTo = loggedUser[3] + ", " + loggedUser[4] + ", " + loggedUser[5];
+    } else {
+        contact = order.firstName + " " + order.lastName;
+        shipTo = order.address + ", " + order.city + ", " + order.country;
+    }
 
     /** Data array order:
      * First name = 0
@@ -55,7 +62,7 @@ export default function Payment(props) {
                     <div className='shipping-row'>
                         <div className='shipping-col-1'>
                             <label>Contact</label><label id='spaces'>&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            <label style={{ display:"inline" }}>{data[0] + " " + data[1]}</label>        
+                            <label style={{ display:"inline" }}>{contact}</label>        
                         </div>
                         <div className='shipping-col-2'>
                             <a href="" className='login-link'>Change</a>           
@@ -65,7 +72,7 @@ export default function Payment(props) {
                     <div className='shipping-row'>
                         <div className='shipping-col-1'>
                             <label>Ship to</label><label id='spaces'>&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                            <label style={{ display:"inline" }}>{data[3]}</label>        
+                            <label style={{ display:"inline" }}>{shipTo}</label>        
                         </div>
                         <div className='shipping-col-2'>
                             <a href="" className='login-link'>Change</a>           
@@ -96,18 +103,18 @@ export default function Payment(props) {
                             <img src={mastercard} className='card-icons' alt="" />&nbsp;
                             <img src={amex} className='card-icons' alt="" />
                         </div>
-                    </div>
-                    <form action="">
+                    </div>                
+                    <form onSubmit={submitOrder} >
                         <div className="shipping-row">
                             <input 
                                 type="text" 
                                 autoComplete="off"
                                 placeholder='Card Number' 
                                 autoFocus required
-                                maxLength={12} 
+                                maxLength={19} 
                                 className="card-inputs"
                                 name='number'
-                                onChange={handleChange} />
+                                onChange={handleOrder} />
                         </div>
                         <div className="shipping-row">
                             <input 
@@ -117,7 +124,7 @@ export default function Payment(props) {
                                 autoFocus required 
                                 className="card-inputs"
                                 name='name'
-                                onChange={handleChange} />
+                                onChange={handleOrder} />
                         </div>
                         <div className='shipping-row'>
                             <div className='signup-column'>
@@ -130,7 +137,7 @@ export default function Payment(props) {
                                     className="card-inputs"
                                     name='expiration'
                                     id='mid-input' 
-                                    onChange={handleChange} />
+                                    onChange={handleOrder} />
                             </div>
                             <div className='signup-column'>
                                 <input 
@@ -141,33 +148,14 @@ export default function Payment(props) {
                                     maxLength={3} 
                                     className="card-inputs"
                                     name='cvc' 
-                                    onChange={handleChange} />
+                                    onChange={handleOrder} />
                             </div>
+                        </div>                    
+                        <div className="signup-row shipping" style={{ paddingTop: "1rem" }}>
+                            <a href="" className='login-link' style={{ fontSize: "medium", display: "inline" }}>{'<'}&nbsp;Return to shipping</a>
+                            <button className="shipping-btn">Place order</button>
                         </div>
                     </form>
-                    
-                    {/*
-                    <hr className='division' />
-                    <div className='shipping-row'>
-                        <div className='shipping-col-1'>
-                            <input
-                                className="checkboxes" 
-                                style={{ margin: ".4rem" }} 
-                                name="express" 
-                                type="checkbox"
-                                value={userInfo.express}                                
-                                onChange={handleExpress}
-                                checked={userInfo.express}/>
-                            <label style={{ fontSize: "large", display: "inline" }}>Express shipping: 3 business days</label>        
-                        </div>
-                        <div className='shipping-col-2'>
-                            <strong>$20.00</strong>          
-                        </div>
-  </div>*/}
-                </div>
-                <div className="signup-row shipping">
-                    <a href="" className='login-link' style={{ fontSize: "medium", display: "inline" }}>{'<'}&nbsp;Return to shipping</a>
-                    <button className="shipping-btn">Place order</button>
                 </div>
             </div>
             <div className='checkout-col2'>

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import {BrowserRouter, Routes, Route } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import hostbase from './components/vars';
+import { auth } from './authentication/auth';
 
 
 // Components
@@ -25,13 +26,13 @@ import Payment from './components/Shop/Payment';
 
 function App() {  
 
+  let loggedUser = [];
+
   const [cartItems, setCartItems] = useState([]);
 
   const [error, setError] = useState("");
 
   const [pay, setPay] = useState(false);
-
-  const loggedUser = getData();
 
   const [user, setUser] = useState({
     email: "",
@@ -76,7 +77,6 @@ function App() {
     payment : false
   })
 
-
   const handleCredentials = event => {
     const name = event.target.name;
     const value = event.target.value;
@@ -90,35 +90,32 @@ function App() {
   }
 
   const handleOrder = event => {
-    /** Data array order:
-     * First name = 0
-     * Last name = 1
-     * Email = 2
-     * Address = 3
-     * City = 4
-     * Country = 5
-     * Document = 6
-     * Birthdate = 7
-     * Phone = 8
-     */
     event.preventDefault();
-    if (loggedUser.length !== 0 && loggedUser[0] !== "") {
-      setOrder(order => ({...order, 
-        firstName : loggedUser[0],
-        lastName : loggedUser[1],
-        email : loggedUser[2],
-        address : loggedUser[3],
-        city : loggedUser[4],
-        country : loggedUser[5],
-        phone : loggedUser[8],
-        content : cartItems,
-      }))
-    } else {
-      const name = event.target.name;
-      const value = event.target.value;
-      setOrder(order => ({...order, [name]: value}))
+    // Orders need to be handled when user is already logged in. Until now, order state is only updated when checkout form is filled.
+    if (event.target.name === "number") {
+      event.target.value = event.target.value.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
+    } else if (event.target.name === "expiration") {
+      event.target.value = formatString(event.target.value)
     }
-}
+    const name = event.target.name;
+    const value = event.target.value;
+    setOrder(order => ({...order, [name]: value, content: cartItems}))   
+  }
+
+  // Function to check Regex of Expiry Date
+  function formatString(string) {
+      return string.replace(
+          /[^0-9]/g, '' // To allow only numbers
+      ).replace(
+          /^([2-9])$/g, '0$1' // To handle 3 > 03
+      ).replace(
+          /^(1{1})([3-9]{1})$/g, '0$1/$2' // 13 > 01/3
+      ).replace(
+          /^0{1,}/g, '0' // To handle 00 > 0
+      ).replace(
+          /^([0-1]{1}[0-9]{1})([0-9]{1,2}).*/g, '$1/$2' // To handle 113 > 11/3
+      );
+  }
 
 const handleOrderCheckbox = event => {
   const value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
@@ -170,30 +167,42 @@ const handleOrderCheckbox = event => {
   // Function for submitting new orders, it is used in the Checkout component.
   const submitOrder = event => {
     event.preventDefault();
-    /*fetch(`${hostbase}/users/newUsers`, {
-      headers:{ "content-type" : "application/json" },
-      method:"POST",
-      body: JSON.stringify({userInfo})
-        }).then(res => res.json())
-          .then(res => {
-              console.log(res.msg)
-              alert(res.msg)
-      });
-      setUserInfo({
-        firstName : "",
-        lastName : "",
-        document : "",
-        email : "",
-        date : "",
-        country : "",
-        city : "",
-        address : "",
-        phone : "",
-        password : "",
-        offers: false,
-        ideas: false,
-        nation: false
-      })*/
+    console.log(order)
+    if (pay !== true) {
+      alert("Please enter valid credentials")
+    } else {
+        fetch(`${hostbase}/orders/new_order`, {
+        headers:{ "content-type" : "application/json" },
+        method:"POST",
+        body: JSON.stringify({order})
+          }).then(res => res.json())
+            .then(res => {
+                console.log(res.msg)
+                alert(res.msg)
+        });
+        setOrder({
+          email : "",
+          date : "",
+          firstName : "",
+          lastName : "",
+          phone : "",
+          country : "",
+          city : "",
+          postalCode : "",
+          address : "",
+          apt : "",
+          message : "",
+          content : [],
+          offers : false,
+          express : false,
+          tracking :false,
+          status : "",
+          guide : "",
+          payment : false
+        })
+        
+    }
+    
   }
 
   // Function for submitting newsletter users, it is used in the Home component.
@@ -390,11 +399,12 @@ const handleOrderCheckbox = event => {
               cartItems={cartItems} 
               countCartItems={cartItems.length} 
               userInfo={userInfo} 
-              getData={getData}
               order={order}
               handleMethod={handleMethod}
               handleOrder={handleOrder}
-              handleOrderCheckbox={handleOrderCheckbox} />} /> 
+              handleOrderCheckbox={handleOrderCheckbox}
+              submitOrder={submitOrder}
+              getData={getData} />} /> 
 
           <Route 
             path="/shipping" 
@@ -403,10 +413,10 @@ const handleOrderCheckbox = event => {
               countCartItems={cartItems.length} 
               userInfo={userInfo} 
               handleChange={handleChange}
-              getData={getData}
               order={order} 
               handleMethod={handleMethod}
-              handleOrder={handleOrder} />} /> 
+              submitOrder={submitOrder}
+              getData={getData} />} /> 
 
           <Route 
             path="/payment" 
@@ -414,11 +424,10 @@ const handleOrderCheckbox = event => {
               cartItems={cartItems} 
               countCartItems={cartItems.length} 
               userInfo={userInfo} 
-              handleChange={handleChange} 
-              getData={getData}
               order={order} 
               handleOrder={handleOrder}
-              submitOrder={submitOrder} />} /> 
+              submitOrder={submitOrder}
+              getData={getData} />} /> 
 
         </Routes>
 

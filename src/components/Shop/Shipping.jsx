@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import jwtDecode from "jwt-decode";
+
 
 // CSS
 import '../../static/css/Main.css';
@@ -12,9 +12,8 @@ import Cart from './Cart';
 
 export default function Shipping(props) {
 
-    const { cartItems, userInfo, getData, order, handleMethod, handleOrder } = props;
+    const { cartItems, getData, order, handleMethod, handleOrder } = props;
 
-    const data = getData();
     /** Data array order:
      * First name = 0
      * Last name = 1
@@ -28,10 +27,11 @@ export default function Shipping(props) {
      */
 
     let contact, shipTo = "";
+    let loggedUser = getData();
     
-    if (data[0] !== undefined) {
-        contact = data[0] + " " + data[1];
-        shipTo = data[3] + ", " + data[4] + ", " + data[5];
+    if (loggedUser.length !== 0) {
+        contact = loggedUser[0] + " " + loggedUser[1];
+        shipTo = loggedUser[3] + ", " + loggedUser[4] + ", " + loggedUser[5];
     } else {
         contact = order.firstName + " " + order.lastName;
         shipTo = order.address + ", " + order.city + ", " + order.country;
@@ -53,7 +53,7 @@ export default function Shipping(props) {
                     <li>{'>'}&nbsp;</li>
                     <li>Payment</li>
                 </div>
-                <form onSubmit={handleOrder}>
+                <form>
                     <div className='shipping-container'>
                         <div className='shipping-row'>
                             <div className='shipping-col-1'>
@@ -114,8 +114,8 @@ export default function Shipping(props) {
                     </div>
                     <div className="signup-row shipping">
                         <a href="" className='login-link' style={{ fontSize: "medium", display: "inline" }}>{'<'}&nbsp;Return to cart</a>
-                        <button className="shipping-btn">Continue to payment</button>
-                        {/*<Link to="/payment" type='button' className='shipping-btn'>Continue to payment</Link>*/}
+                        {/*<button className="shipping-btn">Continue to payment</button>*/}
+                        <Link to="/payment" type='button' className='shipping-btn'>Continue to payment</Link>
                     </div>
                 </form>
             </div>

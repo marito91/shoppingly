@@ -25,14 +25,9 @@ export default function Checkout(props) {
      * Express
      */
 
-    const { cartItems, userInfo, handleMethod, handleOrderCheckbox, handleOrder, getData, order } = props;
+    const { cartItems, userInfo, handleMethod, handleOrderCheckbox, handleOrder, order, getData } = props;
 
     const [countries, setCountries] = useState([]);
-
-    const handleSubmit = event => {
-        event.preventDefault();
-        console.log(order)
-    }
 
     // Fetches Countries 
     useEffect(() => {
@@ -52,7 +47,13 @@ export default function Checkout(props) {
       
     <>
         { auth() ?
-            <Shipping cartItems={cartItems} userInfo={userInfo} getData={getData} order={order} handleMethod={handleMethod} handleOrder={handleOrder} /> 
+            <Shipping 
+                cartItems={cartItems} 
+                userInfo={userInfo} 
+                order={order} 
+                handleMethod={handleMethod} 
+                handleOrder={handleOrder} 
+                getData={getData} /> 
             :
         <>
             <div style={{ backgroundColor: "#56453E", paddingTop: "4rem" }}/> 
@@ -68,7 +69,7 @@ export default function Checkout(props) {
                         <li>{'>'}&nbsp;</li>
                         <li>Payment</li>
                     </div>
-                    <form className="signup form" onSubmit={handleOrder}>
+                    <form className="signup form">
                         <div className='contact-info'>
                             <strong><p>Contact Information</p></strong>
                             {/*<p className='login-info'>Already have an account?&nbsp;<Link to="/login" className='login-link'>Log in</Link></p>*/}
@@ -231,8 +232,8 @@ export default function Checkout(props) {
                         </div>
                         <div className="signup-row shipping">
                             <a href="" className='login-link' style={{ fontSize: "medium", display: "inline" }}>{'<'}&nbsp;Return to cart</a>
-                            <button className="shipping-btn">Continue to shipping</button>
-                            {/*<Link to="/shipping" type='button' className='shipping-btn'>Continue to shipping</Link>*/}
+                            {/*<button className="shipping-btn">Continue to shipping</button>*/}
+                            <Link to="/shipping" type='button' className='shipping-btn'>Continue to shipping</Link>
                         </div>
                     </form>
                 </div>

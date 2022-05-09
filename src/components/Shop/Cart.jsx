@@ -14,6 +14,7 @@ export default function Cart(props) {
     const { cartItems, order } = props;
     
     let expressValue = order.express === true ? 20 : 0;
+    let expressApplied = order.express === true ? "Express shipping applied" : "";
     const itemPrice = cartItems.reduce((accumulator, item) => accumulator + (item.price * item.qty), 0);
     const taxValue = itemPrice * 0.07;
     const shippingValue = itemPrice > 250 ? 0 + expressValue : 25 + expressValue;
@@ -67,6 +68,7 @@ export default function Cart(props) {
                                 <strong>
                                     ${total.toFixed(2)}
                                 </strong>
+                                <p style={{ fontSize : "small" }}>{expressApplied}</p>
                             </div>
                         </div>
                     <hr />
