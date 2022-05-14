@@ -19,7 +19,7 @@ import Bag from './Shop/Bag';
 
 export default function Header(props) {
 
-const { cartItems, onAdd, onRemove, countCartItems } = props; 
+const { cartItems, onAdd, onRemove, countCartItems, checkout } = props; 
    
     return (
         <> 
@@ -54,6 +54,7 @@ const { cartItems, onAdd, onRemove, countCartItems } = props;
                                     onAdd={onAdd} 
                                     onRemove={onRemove} 
                                     cartItems={cartItems}
+                                    checkout={checkout}
                                     name={<img alt="" src={cart} width="30" height="30" className="d-inline-block align-top header-icons" />} 
                                 />
                             ))}

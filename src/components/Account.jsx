@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { auth } from '../authentication/auth';
-import jwtDecode from "jwt-decode";
+import hostbase from './vars.js';
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
 
 import Login from './Login';
@@ -15,6 +17,20 @@ export default function Account(props) {
 
     const data = getData();
 
+    const [listado, setListado] = useState([]);
+
+    useEffect(()=>{
+        fetch(`${hostbase}/orders/recent_orders/${data[2]}`,{
+            method:"GET"
+        }).then(res => res.json()) // Se guardan los datos en la variables, en este caso, convertidos a json
+        .then(res => { // Se capturan los datos 
+            if (res.status === "ok"){
+                setListado(res.orders);
+            }              
+        })
+    }, []);
+
+    
 
 
     /** Data array order:
@@ -49,35 +65,35 @@ export default function Account(props) {
                                 <div className='shipping-row'>
                                     <div className='shipping-col-1'>
                                         <label>Name :</label><label id='spaces'>&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                        <label style={{ display:"inline" }}>{data[0] + " " + data[1]}</label>        
+                                        <label style={{ display:"inline" }}>{" " + data[0] + " " + data[1]}</label>        
                                     </div>
                                 </div>
                                 <hr className='division' />
                                 <div className='shipping-row'>
                                     <div className='shipping-col-1'>
                                         <label>Email :</label><label id='spaces'>&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                        <label style={{ display:"inline" }}>{data[2]}</label>        
+                                        <label style={{ display:"inline" }}>{" " + data[2]}</label>        
                                     </div>
                                 </div>
                                 <hr className='division' />
                                 <div className='shipping-row'>
                                     <div className='shipping-col-1'>
                                         <label>Document :</label><label id='spaces'>&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                        <label style={{ display:"inline" }}>{data[6]}</label>        
+                                        <label style={{ display:"inline" }}>{" " + data[6]}</label>        
                                     </div>
                                 </div>
                                 <hr className='division' />
                                 <div className='shipping-row'>
                                     <div className='shipping-col-1'>
                                         <label>Birthdate :</label><label id='spaces'>&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                        <label style={{ display:"inline" }}>{data[7]}</label>        
+                                        <label style={{ display:"inline" }}>{" " + data[7]}</label>        
                                     </div>
                                 </div>
                                 <hr className='division' />
                                 <div className='shipping-row'>
                                 <div className='shipping-col-1'>
                                         <label>Phone Number :</label><label id='spaces'>&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                        <label style={{ display:"inline" }}>{data[8]}</label>        
+                                        <label style={{ display:"inline" }}>{" " + data[8]}</label>        
                                     </div>
                                     <div className='shipping-col-2'>
                                         <a href="" className='login-link'>Change</a>           
@@ -91,21 +107,21 @@ export default function Account(props) {
                                 <div className='shipping-row'>
                                     <div className='shipping-col-1'>
                                         <label>Address :</label><label id='spaces'>&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                        <label style={{ display:"inline" }}>{data[3]}</label>        
+                                        <label style={{ display:"inline" }}>{" " + data[3]}</label>        
                                     </div>
                                 </div>
                                 <hr className='division' />
                                 <div className='shipping-row'>
                                     <div className='shipping-col-1'>
                                         <label>City :</label><label id='spaces'>&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                        <label style={{ display:"inline" }}>{data[4]}</label>        
+                                        <label style={{ display:"inline" }}>{" " + data[4]}</label>        
                                     </div>
                                 </div>
                                 <hr className='division' />
                                 <div className='shipping-row'>
                                     <div className='shipping-col-1'>
                                         <label>Country :</label><label id='spaces'>&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                        <label style={{ display:"inline" }}>{data[5]}</label>        
+                                        <label style={{ display:"inline" }}>{" " + data[5]}</label>        
                                     </div>
                                     <div className='shipping-col-2'>
                                         <a href="" className='login-link'>Change</a>           
@@ -115,6 +131,21 @@ export default function Account(props) {
                         </div>
                         <div className='account-col2'>
                             <h2 className="main-font title"><strong>Order history</strong></h2>
+                            <div className="order-history" style={{ display: 'flex', rowGap: "0.5rem", columnGap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
+                                {listado.map(({ _id, name, email, address, date, express, guide, products, status }) => 
+                                    <Card key={_id} style={{ width: '18rem' }}>
+                                        {/*<Card.Img variant="top" src={web} />*/}
+                                        <Card.Body>
+                                            <Card.Title>{guide}</Card.Title>
+                                            <Card.Text>
+                                                <p style={{ fontSize: 'medium' }}>Shipped to: {address}</p>
+                                                <p style={{ fontSize: 'medium' }}>Date created: {date}</p>
+                                                <p style={{ fontSize: 'medium' }}>Current status: {status}</p>
+                                            </Card.Text>
+                                            <Button variant='outline-dark' className='order-btn'>See more</Button>
+                                        </Card.Body>
+                                    </Card>)}
+                            </div>
                         </div>
                     </div>
                 </>

@@ -14,7 +14,7 @@ import '../../static/css/Shop/Shopping.css';
 export default function Bag(props) {
 
 
-    const { cartItems, onAdd, onRemove, name } = props;
+    const { cartItems, onAdd, onRemove, name, checkout } = props;
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -31,7 +31,8 @@ export default function Bag(props) {
 
     function confirm() {
         window.confirm("Do you want to check out?");
-        handleClose()
+        checkout();
+        handleClose();
     }
   
     return (

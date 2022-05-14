@@ -4,7 +4,6 @@ import { useState } from 'react';
 import {BrowserRouter, Routes, Route } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import hostbase from './components/vars';
-import { auth } from './authentication/auth';
 
 
 // Components
@@ -25,8 +24,6 @@ import Payment from './components/Shop/Payment';
 
 
 function App() {  
-
-  let loggedUser = [];
 
   const [cartItems, setCartItems] = useState([]);
 
@@ -76,6 +73,20 @@ function App() {
     guide : "",
     payment : false
   })
+
+  const checkout = event => {
+    let oldUser = getData()
+    setOrder(order => ({
+      ...order,
+      email : oldUser[2],
+      firstName : oldUser[0],
+      lastName : oldUser[1],
+      phone : oldUser[8],
+      country : oldUser[5],
+      city : oldUser[4],
+      address : oldUser[3]
+    }))
+  }
 
   const handleCredentials = event => {
     const name = event.target.name;
@@ -168,7 +179,7 @@ const handleOrderCheckbox = event => {
   const submitOrder = event => {
     event.preventDefault();
     console.log(order)
-    if (pay !== true) {
+    if (pay !== false) {
       alert("Please enter valid credentials")
     } else {
         fetch(`${hostbase}/orders/new_order`, {
@@ -216,6 +227,7 @@ const handleOrderCheckbox = event => {
           .then(res => {
               console.log(res.msg)
               alert(res.msg)
+              window.location.href = res.url;
       });
     setUserInfo({
       firstName : "",
@@ -269,12 +281,13 @@ const handleOrderCheckbox = event => {
     }).then(res => res.json())
         .then(res => {
             if (res.status === "ok") {
-                {
-                    localStorage.setItem("token", res.token);
-                    window.location.href = res.url;
-                }
+              localStorage.setItem("token", res.token);
+              window.location.href = res.url;
+              const payload = jwtDecode(res.token);
+              //getOrders(payload.email)
+              console.log(payload.email)
             } else {
-                setError("Your email or password is incorrect")
+              setError("Your email or password is incorrect")
             }
         })
   }
@@ -315,7 +328,7 @@ const handleOrderCheckbox = event => {
     <>
       <BrowserRouter>
 
-        <Header onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} countCartItems={cartItems.length} order={order} /> 
+        <Header onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} countCartItems={cartItems.length} order={order} checkout={checkout} /> 
         
         <Routes>
           {/* Home route */}
